@@ -1,166 +1,194 @@
-Year,Player,Team,Team_Type,Position
-2025,Donovan Mitchell,Cleveland Cavaliers,1st Team,SG
-2025,Giannis Antetokounmpo,Milwaukee Bucks,1st Team,PF
-2025,Jayson Tatum,Boston Celtics,1st Team,SF
-2025,Nikola Jokic,Denver Nuggets,1st Team,C
-2025,Shai Gilgeous-Alexander,Oklahoma City Thunder,1st Team,PG
-2025,Anthony Edwards,Minnesota Timberwolves,2nd Team,SG
-2025,Evan Mobley,Cleveland Cavaliers,2nd Team,PF
-2025,Jalen Brunson,New York Knicks,2nd Team,PG
-2025,LeBron James,Los Angeles Lakers,2nd Team,SF
-2025,Stephen Curry,Golden State Warriors,2nd Team,PG
-2025,Cade Cunningham,Detroit Pistons,3rd Team,PG
-2025,Jalen Williams,Oklahoma City Thunder,3rd Team,F
-2025,James Harden,LA Clippers,3rd Team,SG
-2025,Karl-Anthony Towns,New York Knicks,3rd Team,C
-2025,Tyrese Haliburton,Indiana Pacers,3rd Team,PG
-2024,Giannis Antetokounmpo,Milwaukee Bucks,1st Team,PF
-2024,Jayson Tatum,Boston Celtics,1st Team,SF
-2024,Luka Doncic,Dallas Mavericks,1st Team,PG
-2024,Nikola Jokic,Denver Nuggets,1st Team,C
-2024,Shai Gilgeous-Alexander,Oklahoma City Thunder,1st Team,PG
-2024,Anthony Davis,Los Angeles Lakers,2nd Team,PF
-2024,Anthony Edwards,Minnesota Timberwolves,2nd Team,SG
-2024,Jalen Brunson,New York Knicks,2nd Team,PG
-2024,Kawhi Leonard,LA Clippers,2nd Team,SF
-2024,Kevin Durant,Phoenix Suns,2nd Team,PF
-2024,Devin Booker,Phoenix Suns,3rd Team,SG
-2024,Domantas Sabonis,Sacramento Kings,3rd Team,PF
-2024,LeBron James,Los Angeles Lakers,3rd Team,SF
-2024,Stephen Curry,Golden State Warriors,3rd Team,PG
-2024,Tyrese Haliburton,Indiana Pacers,3rd Team,PG
-2023,Giannis Antetokounmpo,Milwaukee Bucks,1st Team,PF
-2023,Jayson Tatum,Boston Celtics,1st Team,SF
-2023,Joel Embiid,Philadelphia 76ers,1st Team,C
-2023,Luka Doncic,Dallas Mavericks,1st Team,PG
-2023,Shai Gilgeous-Alexander,Oklahoma City Thunder,1st Team,PG
-2023,Donovan Mitchell,Cleveland Cavaliers,2nd Team,SG
-2023,Jaylen Brown,Boston Celtics,2nd Team,SG
-2023,Jimmy Butler III,Miami Heat,2nd Team,SF
-2023,Nikola Jokic,Denver Nuggets,2nd Team,C
-2023,Stephen Curry,Golden State Warriors,2nd Team,PG
-2023,Damian Lillard,Portland Trail Blazers,3rd Team,PG
-2023,De'Aaron Fox,Sacramento Kings,3rd Team,PG
-2023,Domantas Sabonis,Sacramento Kings,3rd Team,PF
-2023,Julius Randle,New York Knicks,3rd Team,PF
-2023,LeBron James,Los Angeles Lakers,3rd Team,SF
-2022,Devin Booker,Phoenix Suns,1st Team,SG
-2022,Giannis Antetokounmpo,Milwaukee Bucks,1st Team,PF
-2022,Jayson Tatum,Boston Celtics,1st Team,SF
-2022,Luka Doncic,Dallas Mavericks,1st Team,PG
-2022,Nikola Jokic,Denver Nuggets,1st Team,C
-2022,DeMar DeRozan,Chicago Bulls,2nd Team,SF
-2022,Ja Morant,Memphis Grizzlies,2nd Team,PG
-2022,Joel Embiid,Philadelphia 76ers,2nd Team,C
-2022,Kevin Durant,Brooklyn Nets,2nd Team,PF
-2022,Stephen Curry,Golden State Warriors,2nd Team,PG
-2022,Chris Paul,Phoenix Suns,3rd Team,PG
-2022,Karl-Anthony Towns,Minnesota Timberwolves,3rd Team,C
-2022,LeBron James,Los Angeles Lakers,3rd Team,SF
-2022,Pascal Siakam,Toronto Raptors,3rd Team,PF
-2022,Trae Young,Atlanta Hawks,3rd Team,PG
-2021,Giannis Antetokounmpo,Milwaukee Bucks,1st Team,PF
-2021,Kawhi Leonard,LA Clippers,1st Team,SF
-2021,Luka Doncic,Dallas Mavericks,1st Team,PG
-2021,Nikola Jokic,Denver Nuggets,1st Team,C
-2021,Stephen Curry,Golden State Warriors,1st Team,PG
-2021,Chris Paul,Phoenix Suns,2nd Team,PG
-2021,Damian Lillard,Portland Trail Blazers,2nd Team,PG
-2021,Joel Embiid,Philadelphia 76ers,2nd Team,C
-2021,Julius Randle,New York Knicks,2nd Team,PF
-2021,LeBron James,Los Angeles Lakers,2nd Team,SF
-2021,Bradley Beal,Washington Wizards,3rd Team,SG
-2021,Jimmy Butler III,Miami Heat,3rd Team,SF
-2021,Kyrie Irving,Brooklyn Nets,3rd Team,PG
-2021,Paul George,LA Clippers,3rd Team,SG
-2021,Rudy Gobert,Utah Jazz,3rd Team,C
-2020,Anthony Davis,Los Angeles Lakers,1st Team,F
-2020,Giannis Antetokounmpo,Milwaukee Bucks,1st Team,F
-2020,James Harden,Houston Rockets,1st Team,G
-2020,LeBron James,Los Angeles Lakers,1st Team,F
-2020,Luka Doncic,Dallas Mavericks,1st Team,G
-2020,Chris Paul,Oklahoma City Thunder,2nd Team,G
-2020,Damian Lillard,Portland Trail Blazers,2nd Team,G
-2020,Kawhi Leonard,LA Clippers,2nd Team,F
-2020,Nikola Jokic,Denver Nuggets,2nd Team,C
-2020,Pascal Siakam,Toronto Raptors,2nd Team,F
-2020,Ben Simmons,Philadelphia 76ers,3rd Team,F
-2020,Jayson Tatum,Boston Celtics,3rd Team,F
-2020,Jimmy Butler III,Miami Heat,3rd Team,F
-2020,Rudy Gobert,Utah Jazz,3rd Team,C
-2020,Russell Westbrook,Houston Rockets,3rd Team,G
-2019,Giannis Antetokounmpo,Milwaukee Bucks,1st Team,F
-2019,James Harden,Houston Rockets,1st Team,G
-2019,Nikola Jokic,Denver Nuggets,1st Team,C
-2019,Paul George,Oklahoma City Thunder,1st Team,F
-2019,Stephen Curry,Golden State Warriors,1st Team,G
-2019,Damian Lillard,Portland Trail Blazers,2nd Team,G
-2019,Joel Embiid,Philadelphia 76ers,2nd Team,C
-2019,Kawhi Leonard,Toronto Raptors,2nd Team,F
-2019,Kevin Durant,Golden State Warriors,2nd Team,F
-2019,Kyrie Irving,Boston Celtics,2nd Team,G
-2019,Blake Griffin,Detroit Pistons,3rd Team,F
-2019,Kemba Walker,Charlotte Hornets,3rd Team,G
-2019,LeBron James,Los Angeles Lakers,3rd Team,F
-2019,Rudy Gobert,Utah Jazz,3rd Team,C
-2019,Russell Westbrook,Oklahoma City Thunder,3rd Team,G
-2018,Anthony Davis,New Orleans Pelicans,1st Team,F
-2018,Damian Lillard,Portland Trail Blazers,1st Team,G
-2018,James Harden,Houston Rockets,1st Team,G
-2018,Kevin Durant,Golden State Warriors,1st Team,F
-2018,LeBron James,Cleveland Cavaliers,1st Team,F
-2018,DeMar DeRozan,Toronto Raptors,2nd Team,G
-2018,Giannis Antetokounmpo,Milwaukee Bucks,2nd Team,F
-2018,Joel Embiid,Philadelphia 76ers,2nd Team,C
-2018,LaMarcus Aldridge,San Antonio Spurs,2nd Team,F
-2018,Russell Westbrook,Oklahoma City Thunder,2nd Team,G
-2018,Jimmy Butler III,Minnesota Timberwolves,3rd Team,G
-2018,Karl-Anthony Towns,Minnesota Timberwolves,3rd Team,F
-2018,Paul George,Oklahoma City Thunder,3rd Team,F
-2018,Stephen Curry,Golden State Warriors,3rd Team,G
-2018,Victor Oladipo,Indiana Pacers,3rd Team,G
-2017,Anthony Davis,New Orleans Pelicans,1st Team,F
-2017,James Harden,Houston Rockets,1st Team,G
-2017,Kawhi Leonard,San Antonio Spurs,1st Team,F
-2017,LeBron James,Cleveland Cavaliers,1st Team,F
-2017,Russell Westbrook,Oklahoma City Thunder,1st Team,G
-2017,Giannis Antetokounmpo,Milwaukee Bucks,2nd Team,F
-2017,Isaiah Thomas,Boston Celtics,2nd Team,G
-2017,Kevin Durant,Golden State Warriors,2nd Team,F
-2017,Rudy Gobert,Utah Jazz,2nd Team,C
-2017,Stephen Curry,Golden State Warriors,2nd Team,G
-2017,DeAndre Jordan,LA Clippers,3rd Team,C
-2017,DeMar DeRozan,Toronto Raptors,3rd Team,G
-2017,Draymond Green,Golden State Warriors,3rd Team,F
-2017,Jimmy Butler III,Chicago Bulls,3rd Team,G
-2017,John Wall,Washington Wizards,3rd Team,G
-2016,DeAndre Jordan,LA Clippers,1st Team,C
-2016,Kawhi Leonard,San Antonio Spurs,1st Team,F
-2016,LeBron James,Cleveland Cavaliers,1st Team,F
-2016,Russell Westbrook,Oklahoma City Thunder,1st Team,G
-2016,Stephen Curry,Golden State Warriors,1st Team,G
-2016,Chris Paul,LA Clippers,2nd Team,G
-2016,Damian Lillard,Portland Trail Blazers,2nd Team,G
-2016,DeMarcus Cousins,Sacramento Kings,2nd Team,C
-2016,Draymond Green,Golden State Warriors,2nd Team,F
-2016,Kevin Durant,Oklahoma City Thunder,2nd Team,F
-2016,Andre Drummond,Detroit Pistons,3rd Team,C
-2016,Klay Thompson,Golden State Warriors,3rd Team,G
-2016,Kyle Lowry,Toronto Raptors,3rd Team,G
-2016,LaMarcus Aldridge,San Antonio Spurs,3rd Team,F
-2016,Paul George,Indiana Pacers,3rd Team,F
-2015,Anthony Davis,New Orleans Pelicans,1st Team,F
-2015,James Harden,Houston Rockets,1st Team,G
-2015,LeBron James,Cleveland Cavaliers,1st Team,F
-2015,Marc Gasol,Memphis Grizzlies,1st Team,C
-2015,Stephen Curry,Golden State Warriors,1st Team,G
-2015,Chris Paul,LA Clippers,2nd Team,G
-2015,DeMarcus Cousins,Sacramento Kings,2nd Team,C
-2015,LaMarcus Aldridge,Portland Trail Blazers,2nd Team,F
-2015,Pau Gasol,Chicago Bulls,2nd Team,F
-2015,Russell Westbrook,Oklahoma City Thunder,2nd Team,G
-2015,Blake Griffin,LA Clippers,3rd Team,F
-2015,DeAndre Jordan,LA Clippers,3rd Team,C
-2015,Klay Thompson,Golden State Warriors,3rd Team,G
-2015,Kyrie Irving,Cleveland Cavaliers,3rd Team,G
-2015,Tim Duncan,San Antonio Spurs,3rd Team,F
+Year,Player,Team,Position
+2026,Alperen Sengun,Houston Rockets,C
+2026,Anthony Edwards,Minnesota Timberwolves,SG
+2026,Brandon Ingram,Toronto Raptors,SF
+2026,Cade Cunningham,Detroit Pistons,PG
+2026,Chet Holmgren,Oklahoma City Thunder,C
+2026,De'Aaron Fox,San Antonio Spurs,PG
+2026,Deni Avdija,Portland Trail Blazers,SF
+2026,Devin Booker,Phoenix Suns,SG
+2026,Donovan Mitchell,Cleveland Cavaliers,SG
+2026,Giannis Antetokounmpo,Milwaukee Bucks,PF
+2026,Jalen Brunson,New York Knicks,PG
+2026,Jalen Duren,Detroit Pistons,C
+2026,Jalen Johnson,Atlanta Hawks,PF
+2026,Jamal Murray,Denver Nuggets,PG
+2026,Jaylen Brown,Boston Celtics,SG
+2026,Karl-Anthony Towns,New York Knicks,C
+2026,Kawhi Leonard,LA Clippers,SF
+2026,Kevin Durant,Houston Rockets,PF
+2026,LeBron James,Los Angeles Lakers,SF
+2026,Luka Doncic,Los Angeles Lakers,PG
+2026,Nikola Jokic,Denver Nuggets,C
+2026,Norman Powell,Miami Heat,SG
+2026,Pascal Siakam,Indiana Pacers,PF
+2026,Scottie Barnes,Toronto Raptors,SF
+2026,Shai Gilgeous-Alexander,Oklahoma City Thunder,PG
+2026,Stephen Curry,Golden State Warriors,PG
+2026,Tyrese Maxey,Philadelphia 76ers,PG
+2026,Victor Wembanyama,San Antonio Spurs,C
+2025,Anthony Edwards,Minnesota Timberwolves,SG
+2025,Cade Cunningham,Detroit Pistons,PG
+2025,Donovan Mitchell,Cleveland Cavaliers,SG
+2025,Evan Mobley,Cleveland Cavaliers,PF
+2025,Giannis Antetokounmpo,Milwaukee Bucks,PF
+2025,Jalen Brunson,New York Knicks,PG
+2025,Jalen Williams,Oklahoma City Thunder,F
+2025,James Harden,LA Clippers,SG
+2025,Jayson Tatum,Boston Celtics,SF
+2025,Karl-Anthony Towns,New York Knicks,C
+2025,LeBron James,Los Angeles Lakers,SF
+2025,Nikola Jokic,Denver Nuggets,C
+2025,Shai Gilgeous-Alexander,Oklahoma City Thunder,PG
+2025,Stephen Curry,Golden State Warriors,PG
+2025,Tyrese Haliburton,Indiana Pacers,PG
+2024,Anthony Davis,Los Angeles Lakers,PF
+2024,Anthony Edwards,Minnesota Timberwolves,SG
+2024,Devin Booker,Phoenix Suns,SG
+2024,Domantas Sabonis,Sacramento Kings,PF
+2024,Giannis Antetokounmpo,Milwaukee Bucks,PF
+2024,Jalen Brunson,New York Knicks,PG
+2024,Jayson Tatum,Boston Celtics,SF
+2024,Kawhi Leonard,LA Clippers,SF
+2024,Kevin Durant,Phoenix Suns,PF
+2024,LeBron James,Los Angeles Lakers,SF
+2024,Luka Doncic,Dallas Mavericks,PG
+2024,Nikola Jokic,Denver Nuggets,C
+2024,Shai Gilgeous-Alexander,Oklahoma City Thunder,PG
+2024,Stephen Curry,Golden State Warriors,PG
+2024,Tyrese Haliburton,Indiana Pacers,PG
+2023,Damian Lillard,Portland Trail Blazers,PG
+2023,De'Aaron Fox,Sacramento Kings,PG
+2023,Domantas Sabonis,Sacramento Kings,PF
+2023,Donovan Mitchell,Cleveland Cavaliers,SG
+2023,Giannis Antetokounmpo,Milwaukee Bucks,PF
+2023,Jaylen Brown,Boston Celtics,SG
+2023,Jayson Tatum,Boston Celtics,SF
+2023,Jimmy Butler III,Miami Heat,SF
+2023,Joel Embiid,Philadelphia 76ers,C
+2023,Julius Randle,New York Knicks,PF
+2023,LeBron James,Los Angeles Lakers,SF
+2023,Luka Doncic,Dallas Mavericks,PG
+2023,Nikola Jokic,Denver Nuggets,C
+2023,Shai Gilgeous-Alexander,Oklahoma City Thunder,PG
+2023,Stephen Curry,Golden State Warriors,PG
+2022,Chris Paul,Phoenix Suns,PG
+2022,DeMar DeRozan,Chicago Bulls,SF
+2022,Devin Booker,Phoenix Suns,SG
+2022,Giannis Antetokounmpo,Milwaukee Bucks,PF
+2022,Ja Morant,Memphis Grizzlies,PG
+2022,Jayson Tatum,Boston Celtics,SF
+2022,Joel Embiid,Philadelphia 76ers,C
+2022,Karl-Anthony Towns,Minnesota Timberwolves,C
+2022,Kevin Durant,Brooklyn Nets,PF
+2022,LeBron James,Los Angeles Lakers,SF
+2022,Luka Doncic,Dallas Mavericks,PG
+2022,Nikola Jokic,Denver Nuggets,C
+2022,Pascal Siakam,Toronto Raptors,PF
+2022,Stephen Curry,Golden State Warriors,PG
+2022,Trae Young,Atlanta Hawks,PG
+2021,Bradley Beal,Washington Wizards,SG
+2021,Chris Paul,Phoenix Suns,PG
+2021,Damian Lillard,Portland Trail Blazers,PG
+2021,Giannis Antetokounmpo,Milwaukee Bucks,PF
+2021,Jimmy Butler III,Miami Heat,SF
+2021,Joel Embiid,Philadelphia 76ers,C
+2021,Julius Randle,New York Knicks,PF
+2021,Kawhi Leonard,LA Clippers,SF
+2021,Kyrie Irving,Brooklyn Nets,PG
+2021,LeBron James,Los Angeles Lakers,SF
+2021,Luka Doncic,Dallas Mavericks,PG
+2021,Nikola Jokic,Denver Nuggets,C
+2021,Paul George,LA Clippers,SG
+2021,Rudy Gobert,Utah Jazz,C
+2021,Stephen Curry,Golden State Warriors,PG
+2020,Anthony Davis,Los Angeles Lakers,F
+2020,Ben Simmons,Philadelphia 76ers,F
+2020,Chris Paul,Oklahoma City Thunder,G
+2020,Damian Lillard,Portland Trail Blazers,G
+2020,Giannis Antetokounmpo,Milwaukee Bucks,F
+2020,James Harden,Houston Rockets,G
+2020,Jayson Tatum,Boston Celtics,F
+2020,Jimmy Butler III,Miami Heat,F
+2020,Kawhi Leonard,LA Clippers,F
+2020,LeBron James,Los Angeles Lakers,F
+2020,Luka Doncic,Dallas Mavericks,G
+2020,Nikola Jokic,Denver Nuggets,C
+2020,Pascal Siakam,Toronto Raptors,F
+2020,Rudy Gobert,Utah Jazz,C
+2020,Russell Westbrook,Houston Rockets,G
+2019,Blake Griffin,Detroit Pistons,F
+2019,Damian Lillard,Portland Trail Blazers,G
+2019,Giannis Antetokounmpo,Milwaukee Bucks,F
+2019,James Harden,Houston Rockets,G
+2019,Joel Embiid,Philadelphia 76ers,C
+2019,Kawhi Leonard,Toronto Raptors,F
+2019,Kemba Walker,Charlotte Hornets,G
+2019,Kevin Durant,Golden State Warriors,F
+2019,Kyrie Irving,Boston Celtics,G
+2019,LeBron James,Los Angeles Lakers,F
+2019,Nikola Jokic,Denver Nuggets,C
+2019,Paul George,Oklahoma City Thunder,F
+2019,Rudy Gobert,Utah Jazz,C
+2019,Russell Westbrook,Oklahoma City Thunder,G
+2019,Stephen Curry,Golden State Warriors,G
+2018,Anthony Davis,New Orleans Pelicans,F
+2018,Damian Lillard,Portland Trail Blazers,G
+2018,DeMar DeRozan,Toronto Raptors,G
+2018,Giannis Antetokounmpo,Milwaukee Bucks,F
+2018,James Harden,Houston Rockets,G
+2018,Jimmy Butler III,Minnesota Timberwolves,G
+2018,Joel Embiid,Philadelphia 76ers,C
+2018,Karl-Anthony Towns,Minnesota Timberwolves,F
+2018,Kevin Durant,Golden State Warriors,F
+2018,LaMarcus Aldridge,San Antonio Spurs,F
+2018,LeBron James,Cleveland Cavaliers,F
+2018,Paul George,Oklahoma City Thunder,F
+2018,Russell Westbrook,Oklahoma City Thunder,G
+2018,Stephen Curry,Golden State Warriors,G
+2018,Victor Oladipo,Indiana Pacers,G
+2017,Anthony Davis,New Orleans Pelicans,F
+2017,DeAndre Jordan,LA Clippers,C
+2017,DeMar DeRozan,Toronto Raptors,G
+2017,Draymond Green,Golden State Warriors,F
+2017,Giannis Antetokounmpo,Milwaukee Bucks,F
+2017,Isaiah Thomas,Boston Celtics,G
+2017,James Harden,Houston Rockets,G
+2017,Jimmy Butler III,Chicago Bulls,G
+2017,John Wall,Washington Wizards,G
+2017,Kawhi Leonard,San Antonio Spurs,F
+2017,Kevin Durant,Golden State Warriors,F
+2017,LeBron James,Cleveland Cavaliers,F
+2017,Rudy Gobert,Utah Jazz,C
+2017,Russell Westbrook,Oklahoma City Thunder,G
+2017,Stephen Curry,Golden State Warriors,G
+2016,Andre Drummond,Detroit Pistons,C
+2016,Chris Paul,LA Clippers,G
+2016,Damian Lillard,Portland Trail Blazers,G
+2016,DeAndre Jordan,LA Clippers,C
+2016,DeMarcus Cousins,Sacramento Kings,C
+2016,Draymond Green,Golden State Warriors,F
+2016,Kawhi Leonard,San Antonio Spurs,F
+2016,Kevin Durant,Oklahoma City Thunder,F
+2016,Klay Thompson,Golden State Warriors,G
+2016,Kyle Lowry,Toronto Raptors,G
+2016,LaMarcus Aldridge,San Antonio Spurs,F
+2016,LeBron James,Cleveland Cavaliers,F
+2016,Paul George,Indiana Pacers,F
+2016,Russell Westbrook,Oklahoma City Thunder,G
+2016,Stephen Curry,Golden State Warriors,G
+2015,Anthony Davis,New Orleans Pelicans,F
+2015,Blake Griffin,LA Clippers,F
+2015,Chris Paul,LA Clippers,G
+2015,DeAndre Jordan,LA Clippers,C
+2015,DeMarcus Cousins,Sacramento Kings,C
+2015,James Harden,Houston Rockets,G
+2015,Klay Thompson,Golden State Warriors,G
+2015,Kyrie Irving,Cleveland Cavaliers,G
+2015,LaMarcus Aldridge,Portland Trail Blazers,F
+2015,LeBron James,Cleveland Cavaliers,F
+2015,Marc Gasol,Memphis Grizzlies,C
+2015,Pau Gasol,Chicago Bulls,F
+2015,Russell Westbrook,Oklahoma City Thunder,G
+2015,Stephen Curry,Golden State Warriors,G
+2015,Tim Duncan,San Antonio Spurs,F
