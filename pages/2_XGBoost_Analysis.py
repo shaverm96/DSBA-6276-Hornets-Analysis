@@ -109,18 +109,54 @@ c3, c4 = st.columns(2)
 with c3:
     if not view.empty and {"day_of_week", "actual_attendance"}.issubset(set(view.columns)):
         dow_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        overall_avg = view["actual_attendance"].mean()
         by_dow = view.groupby("day_of_week", as_index=False)["actual_attendance"].mean()
+        by_dow["pct_from_avg"] = ((by_dow["actual_attendance"] - overall_avg) / overall_avg) * 100
+        by_dow["direction"] = np.where(by_dow["pct_from_avg"] >= 0, "Above Avg", "Below Avg")
+        by_dow["label"] = by_dow["pct_from_avg"].map(lambda v: f"{v:+.1f}%")
         by_dow["day_of_week"] = pd.Categorical(by_dow["day_of_week"], dow_order)
         by_dow = by_dow.sort_values("day_of_week")
-        fig = px.bar(by_dow, x="day_of_week", y="actual_attendance", title="Average Attendance by Day of Week")
+        fig = px.bar(
+            by_dow,
+            x="day_of_week",
+            y="pct_from_avg",
+            color="direction",
+            color_discrete_map={"Above Avg": "#22c55e", "Below Avg": "#ef4444"},
+            title="Attendance by Day of Week vs Overall Average (0% Baseline)",
+            text="label",
+        )
+        fig.add_hline(y=0, line_dash="dash", line_color="white")
+        fig.update_traces(textposition="outside")
+        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Day of Week")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Day-of-week chart unavailable.")
 
 with c4:
     if not view.empty and {"opponent", "actual_attendance"}.issubset(set(view.columns)):
-        by_opp = view.groupby("opponent", as_index=False)["actual_attendance"].mean().sort_values("actual_attendance", ascending=False)
-        fig = px.bar(by_opp.head(12), x="opponent", y="actual_attendance", title="Top Opponents by Average Attendance")
+        overall_avg = view["actual_attendance"].mean()
+        by_opp = view.groupby("opponent", as_index=False)["actual_attendance"].mean()
+        by_opp["pct_from_avg"] = ((by_opp["actual_attendance"] - overall_avg) / overall_avg) * 100
+        by_opp["direction"] = np.where(by_opp["pct_from_avg"] >= 0, "Above Avg", "Below Avg")
+        by_opp["label"] = by_opp["pct_from_avg"].map(lambda v: f"{v:+.1f}%")
+
+        top5 = by_opp.nlargest(5, "pct_from_avg")
+        bottom5 = by_opp.nsmallest(5, "pct_from_avg")
+        top_bottom = pd.concat([top5, bottom5], ignore_index=True).drop_duplicates(subset=["opponent"]) 
+        top_bottom = top_bottom.sort_values("pct_from_avg", ascending=False)
+
+        fig = px.bar(
+            top_bottom,
+            x="opponent",
+            y="pct_from_avg",
+            color="direction",
+            color_discrete_map={"Above Avg": "#22c55e", "Below Avg": "#ef4444"},
+            title="Top 5 and Bottom 5 Opponents vs Overall Average (0% Baseline)",
+            text="label",
+        )
+        fig.add_hline(y=0, line_dash="dash", line_color="white")
+        fig.update_traces(textposition="outside")
+        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Opponent")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Opponent chart unavailable.")
