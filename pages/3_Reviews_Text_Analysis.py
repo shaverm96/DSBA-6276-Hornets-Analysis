@@ -613,9 +613,3 @@ if st.button("Generate Review Executive Summary", type="primary"):
     with st.spinner("Calling Gemini..."):
         text = generate_gemini_insight(api_key, prompt)
     render_executive_sections(text)
-
-with st.expander("Methodology Notes"):
-    st.write(
-        "This page reuses notebook-exported review outputs whenever available (theme summary, recommendations, executive summary, "
-        "and representative examples). Lightweight preprocessing and sentiment scoring are recalculated only for interactive filtering."
-    )

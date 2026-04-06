@@ -740,9 +740,3 @@ if st.button("Generate Executive Insight Summary", type="primary"):
     with st.spinner("Calling Gemini..."):
         text = generate_gemini_insight(api_key, prompt)
     render_executive_sections(text)
-
-with st.expander("Methodology Notes"):
-    st.write(
-        "This page prioritizes notebook-derived artifacts (high-risk game table, revenue scenarios, and executed notebook metric tables). "
-        "Fallback computations are used only when an artifact is unavailable for the selected view."
-    )
