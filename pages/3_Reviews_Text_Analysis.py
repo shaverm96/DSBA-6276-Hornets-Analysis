@@ -85,8 +85,40 @@ st.markdown("### Core Review Visuals")
 c1, c2 = st.columns(2)
 with c1:
     if not view.empty and "rating" in view.columns:
-        fig = px.histogram(view, x="rating", nbins=5, title="Rating Distribution")
-        fig.update_layout(xaxis_title="Star Rating", yaxis_title="Number of Reviews")
+        rating_counts = (
+            pd.to_numeric(view["rating"], errors="coerce")
+            .dropna()
+            .round()
+            .astype(int)
+            .clip(lower=1, upper=5)
+            .value_counts()
+            .reindex([1, 2, 3, 4, 5], fill_value=0)
+            .rename_axis("rating")
+            .reset_index(name="count")
+        )
+        total_reviews = max(int(rating_counts["count"].sum()), 1)
+        rating_counts["pct"] = (100 * rating_counts["count"] / total_reviews).round(1)
+        rating_counts["star_label"] = rating_counts["rating"].astype(str) + "★"
+
+        fig = px.bar(
+            rating_counts,
+            x="star_label",
+            y="count",
+            text="count",
+            title="Rating Distribution",
+            color_discrete_sequence=["#7ec0ee"],
+        )
+        fig.update_traces(
+            textposition="outside",
+            hovertemplate="Rating=%{x}<br>Reviews=%{y:,}<br>Share=%{customdata[0]}%<extra></extra>",
+            customdata=rating_counts[["pct"]].to_numpy(),
+        )
+        fig.update_layout(
+            xaxis_title="Star Rating",
+            yaxis_title="Number of Reviews",
+            showlegend=False,
+            bargap=0.2,
+        )
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Rating distribution unavailable.")
@@ -96,8 +128,17 @@ with c2:
         sent = view["sentiment_label"].value_counts().reset_index()
         sent.columns = ["sentiment_label", "count"]
         sent["sentiment_label"] = sent["sentiment_label"].astype(str).str.title()
-        fig = px.pie(sent, values="count", names="sentiment_label", title="Sentiment Distribution")
-        fig.update_layout(legend_title_text="Sentiment Label")
+        fig = px.pie(
+            sent,
+            values="count",
+            names="sentiment_label",
+            title="Sentiment Distribution",
+            hole=0.55,
+            color="sentiment_label",
+            color_discrete_map={"Positive": "#7ec0ee", "Neutral": "#2d7dd2", "Negative": "#f2a3a3"},
+        )
+        fig.update_traces(textposition="inside", textinfo="percent")
+        fig.update_layout(showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Sentiment distribution unavailable.")
