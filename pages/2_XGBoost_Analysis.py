@@ -490,7 +490,49 @@ with w2:
 st.markdown("### High-Risk Games Table")
 if not view.empty:
     cols = [c for c in ["game_date", "opponent", "day_of_week", "predicted_attendance", "actual_attendance", "demand_tier", "low_demand_risk_flag", "key_explanatory_factors"] if c in view.columns]
-    st.dataframe(view.sort_values("predicted_attendance").head(50)[cols], use_container_width=True, height=420)
+    table_view = view.sort_values("predicted_attendance").head(50)[cols].copy()
+
+    if "game_date" in table_view.columns:
+        table_view["game_date"] = pd.to_datetime(table_view["game_date"], errors="coerce").dt.strftime("%Y-%m-%d")
+    if "opponent" in table_view.columns:
+        table_view["opponent"] = table_view["opponent"].astype(str)
+    if "day_of_week" in table_view.columns:
+        table_view["day_of_week"] = table_view["day_of_week"].astype(str)
+    if "predicted_attendance" in table_view.columns:
+        table_view["predicted_attendance"] = pd.to_numeric(table_view["predicted_attendance"], errors="coerce").map(
+            lambda v: f"{v:,.0f}" if pd.notna(v) else "N/A"
+        )
+    if "actual_attendance" in table_view.columns:
+        table_view["actual_attendance"] = pd.to_numeric(table_view["actual_attendance"], errors="coerce").map(
+            lambda v: f"{v:,.0f}" if pd.notna(v) else "N/A"
+        )
+    if "demand_tier" in table_view.columns:
+        table_view["demand_tier"] = table_view["demand_tier"].astype(str).str.title()
+    if "low_demand_risk_flag" in table_view.columns:
+        table_view["low_demand_risk_flag"] = pd.to_numeric(table_view["low_demand_risk_flag"], errors="coerce").map(
+            lambda v: "Yes" if pd.notna(v) and int(v) == 1 else "No"
+        )
+    if "key_explanatory_factors" in table_view.columns:
+        table_view["key_explanatory_factors"] = (
+            table_view["key_explanatory_factors"]
+            .fillna("")
+            .astype(str)
+            .str.replace(",", " | ", regex=False)
+        )
+
+    table_view = table_view.rename(
+        columns={
+            "game_date": "Game Date",
+            "opponent": "Opponent",
+            "day_of_week": "Day of Week",
+            "predicted_attendance": "Predicted Attendance",
+            "actual_attendance": "Actual Attendance",
+            "demand_tier": "Demand Tier",
+            "low_demand_risk_flag": "Low-Demand Risk",
+            "key_explanatory_factors": "Key Explanatory Factors",
+        }
+    )
+    st.dataframe(table_view, use_container_width=True, height=420, hide_index=True)
 else:
     st.warning("No high-risk table data available after filters.")
 
