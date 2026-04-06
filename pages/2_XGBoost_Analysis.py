@@ -533,6 +533,43 @@ if not view.empty:
         }
     )
     st.dataframe(table_view, use_container_width=True, height=420, hide_index=True)
+
+    with st.expander("Key Explanatory Factor Definitions"):
+        factor_definitions = pd.DataFrame(
+            [
+                {
+                    "Factor": "Weekday",
+                    "Definition": "Game is scheduled on a weekday, which often has lower turnout than weekend games.",
+                },
+                {
+                    "Factor": "Weak Opponent",
+                    "Definition": "Opponent is projected to draw lower fan interest relative to stronger marquee matchups.",
+                },
+                {
+                    "Factor": "Bad Weather",
+                    "Definition": "Weather conditions are likely unfavorable for attendance (for example precipitation or severe conditions).",
+                },
+                {
+                    "Factor": "Dense Schedule",
+                    "Definition": "Game falls in a tightly packed sequence of events, which can reduce demand and discretionary attendance.",
+                },
+                {
+                    "Factor": "No major risk signal",
+                    "Definition": "No primary attendance risk driver was identified in the model diagnostics for this game.",
+                },
+            ]
+        )
+
+        present_factors = set()
+        if "Key Explanatory Factors" in table_view.columns:
+            for raw in table_view["Key Explanatory Factors"].dropna().astype(str):
+                parts = [p.strip() for p in raw.split("|") if p.strip()]
+                present_factors.update(parts)
+
+        if present_factors:
+            factor_definitions = factor_definitions[factor_definitions["Factor"].isin(present_factors)].copy()
+
+        st.dataframe(factor_definitions, use_container_width=True, hide_index=True)
 else:
     st.warning("No high-risk table data available after filters.")
 
