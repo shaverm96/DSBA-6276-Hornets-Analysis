@@ -34,21 +34,14 @@ st.caption("Notebook-aligned customer sentiment and theme intelligence for opera
 with st.sidebar:
     st.header("Page Controls")
 
-    rating_options = sorted([int(x) for x in reviews["rating"].dropna().unique()]) if (not reviews.empty and "rating" in reviews.columns) else []
-    selected_ratings = st.multiselect("Ratings", options=rating_options, default=rating_options)
-
     sentiment_options = ["positive", "neutral", "negative"]
     selected_sentiment = st.multiselect("Sentiment Labels", options=sentiment_options, default=sentiment_options)
 
-    st.divider()
-    st.subheader("Gemini 2.5 Flash")
-    key_input = st.text_input("Gemini API Key", type="password", placeholder="Paste key for live insights")
-    api_key = get_api_key_from_sources(key_input)
+# API key is sourced from st.secrets or environment (no sidebar input).
+api_key = get_api_key_from_sources("")
 
 view = reviews.copy()
 if not view.empty:
-    if selected_ratings:
-        view = view[view["rating"].isin(selected_ratings)]
     if selected_sentiment:
         view = view[view["sentiment_label"].isin(selected_sentiment)]
 
@@ -212,7 +205,6 @@ if st.button("Generate Review Executive Summary", type="primary"):
 
     payload = {
         "filters": {
-            "ratings": selected_ratings,
             "sentiment": selected_sentiment,
         },
         "kpis": {
