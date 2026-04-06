@@ -137,7 +137,7 @@ st.markdown(
     """
     <style>
         [data-testid="stSidebarHeader"] {
-            height: 140px;
+            height: 170px;
             display: flex;
             justify-content: center; /* Center horizontally */
             align-items: center;     /* Center vertically */
