@@ -660,7 +660,7 @@ if not view.empty:
 else:
     st.warning("No high-risk table data available after filters.")
 
-st.markdown("### LLM Business Insights (Gemini 2.5 Flash)")
+st.markdown("### LLM Business Insights")
 
 if st.button("Generate Executive Insight Summary", type="primary"):
     context_payload = {
@@ -701,7 +701,7 @@ if st.button("Generate Executive Insight Summary", type="primary"):
         f"Data context:\n{context_payload}"
     )
 
-    with st.spinner("Calling Gemini 2.5 Flash..."):
+    with st.spinner("Calling Gemini..."):
         text = generate_gemini_insight(api_key, prompt)
     st.write(text)
 

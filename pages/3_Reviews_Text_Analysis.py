@@ -248,7 +248,7 @@ if not exec_summary.empty:
     st.markdown("### Executive Summary Table")
     st.dataframe(exec_summary, use_container_width=True)
 
-st.markdown("### LLM Review Insights (Gemini 2.5 Flash)")
+st.markdown("### LLM Review Insights")
 if st.button("Generate Review Executive Summary", type="primary"):
     theme_records = theme_summary.to_dict(orient="records")[:8] if not theme_summary.empty else []
     recommendation_records = recommendations.to_dict(orient="records")[:8] if not recommendations.empty else []
@@ -292,7 +292,7 @@ if st.button("Generate Review Executive Summary", type="primary"):
         f"Data context:\n{payload}"
     )
 
-    with st.spinner("Calling Gemini 2.5 Flash..."):
+    with st.spinner("Calling Gemini..."):
         text = generate_gemini_insight(api_key, prompt)
     st.write(text)
 
