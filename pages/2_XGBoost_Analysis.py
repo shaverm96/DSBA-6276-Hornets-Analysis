@@ -58,20 +58,23 @@ if not view.empty:
     if year_filter and "game_date" in view.columns:
         view = view[view["game_date"].dt.year.isin(year_filter)].copy()
 
-st.markdown("### Model and Demand KPIs")
+st.markdown("### Business and Demand KPIs")
 
-metric_source = nb_tables.get("metrics", pd.DataFrame())
-if not metric_source.empty and {"metric", "value"}.issubset(set([str(c).lower() for c in metric_source.columns])):
-    ms = metric_source.copy()
-    ms.columns = [str(c).lower() for c in ms.columns]
-    metric_lookup = dict(zip(ms["metric"].astype(str), pd.to_numeric(ms["value"], errors="coerce")))
-    r2_value = metric_lookup.get("R2", metric_lookup.get("r2", metrics.get("r2", np.nan)))
-    rmse_value = metric_lookup.get("RMSE", metric_lookup.get("rmse", metrics.get("rmse", np.nan)))
-    mae_value = metric_lookup.get("MAE", metric_lookup.get("mae", metrics.get("mae", np.nan)))
-else:
-    r2_value = metrics.get("r2", np.nan)
-    rmse_value = metrics.get("rmse", np.nan)
-    mae_value = metrics.get("mae", np.nan)
+low_demand_games = np.nan
+low_demand_share = np.nan
+if not view.empty and "low_demand_risk_flag" in view.columns:
+    low_flag = pd.to_numeric(view["low_demand_risk_flag"], errors="coerce").fillna(0)
+    low_demand_games = float(low_flag.sum())
+    low_demand_share = 100 * (low_demand_games / max(len(view), 1))
+
+base_recovery_revenue = np.nan
+if not revenue.empty and {"scenario", "seasonal_recovered_revenue"}.issubset(set(revenue.columns)):
+    rev = revenue.copy()
+    rev["scenario"] = rev["scenario"].astype(str).str.lower()
+    rev["seasonal_recovered_revenue"] = pd.to_numeric(rev["seasonal_recovered_revenue"], errors="coerce")
+    base_row = rev.loc[rev["scenario"].eq("base"), "seasonal_recovered_revenue"]
+    if not base_row.empty:
+        base_recovery_revenue = float(base_row.iloc[0])
 
 weekday_weekend_diff = np.nan
 if not view.empty and {"day_of_week", "actual_attendance"}.issubset(set(view.columns)):
@@ -84,10 +87,10 @@ if not view.empty and {"day_of_week", "actual_attendance"}.issubset(set(view.col
 
 k1, k2, k3, k4, k5 = st.columns(5)
 k1.metric("Avg Actual Attendance", format_int(view["actual_attendance"].mean()) if not view.empty else "N/A")
-k2.metric("Model R²", format_float(r2_value, 3))
-k3.metric("RMSE", format_float(rmse_value, 1))
-k4.metric("MAE", format_float(mae_value, 1))
-k5.metric("Weekend - Weekday", format_int(weekday_weekend_diff))
+k2.metric("Low-Demand Games", format_int(low_demand_games))
+k3.metric("Low-Demand Share", f"{low_demand_share:.1f}%" if pd.notna(low_demand_share) else "N/A")
+k4.metric("Weekend Premium", format_int(weekday_weekend_diff))
+k5.metric("Base Recovery Revenue", f"${base_recovery_revenue:,.0f}" if pd.notna(base_recovery_revenue) else "N/A")
 
 st.markdown("### Attendance and Model Behavior")
 
