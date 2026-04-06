@@ -96,18 +96,22 @@ with c1:
 
         monthly["ym_label"] = monthly["year_month"].dt.strftime("%Y-%m")
         monthly["monthly_label"] = monthly["actual_attendance"].map(lambda v: f"{v:,.0f}")
+        monthly["is_anomaly"] = monthly["actual_attendance"] < lower_fence
+        overall_monthly_avg = monthly["actual_attendance"].mean()
 
         tick_step = max(1, int(np.ceil(len(monthly) / 16)))
         tick_values = monthly["ym_label"].iloc[::tick_step].tolist()
 
         fig = go.Figure()
         fig.add_trace(
-            go.Bar(
+            go.Scatter(
                 x=monthly["ym_label"],
                 y=monthly["actual_attendance"],
+                mode="lines+markers",
                 name="Monthly Avg",
-                marker_color="#60a5fa",
-                opacity=0.45,
+                line=dict(color="#60a5fa", width=2),
+                marker=dict(size=5, color="#60a5fa"),
+                opacity=0.65,
                 hovertemplate="Month=%{x}<br>Avg Attendance=%{y:,.0f}<extra></extra>",
             )
         )
@@ -121,12 +125,36 @@ with c1:
                 hovertemplate="Month=%{x}<br>3-Month Trend=%{y:,.0f}<extra></extra>",
             )
         )
+        fig.add_trace(
+            go.Scatter(
+                x=monthly["ym_label"],
+                y=[overall_monthly_avg] * len(monthly),
+                mode="lines",
+                name="Overall Monthly Avg",
+                line=dict(color="#e5e7eb", width=1.5, dash="dash"),
+                hovertemplate="Overall Avg=%{y:,.0f}<extra></extra>",
+            )
+        )
+
+        anomaly_months = monthly[monthly["is_anomaly"]]
+        if not anomaly_months.empty:
+            fig.add_trace(
+                go.Scatter(
+                    x=anomaly_months["ym_label"],
+                    y=anomaly_months["actual_attendance"],
+                    mode="markers",
+                    name="Anomaly Month",
+                    marker=dict(color="#ef4444", size=9, symbol="diamond"),
+                    hovertemplate="Month=%{x}<br>Anomaly Attendance=%{y:,.0f}<extra></extra>",
+                )
+            )
+
         fig.update_layout(
-            title="Actual Attendance Over Time",
+            title="Actual Attendance Over Time<br><sup>Cyan line = 3-month trend | Dashed line = overall average | Red points = anomaly months</sup>",
             xaxis_title="Observed Game Months",
             yaxis_title="Actual Attendance",
             legend_title="Series",
-            hovermode="x",
+            hovermode="x unified",
             margin=dict(l=20, r=20, t=50, b=20),
             xaxis=dict(type="category", tickangle=-45, tickmode="array", tickvals=tick_values),
         )
