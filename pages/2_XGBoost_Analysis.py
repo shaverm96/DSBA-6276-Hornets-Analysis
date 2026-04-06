@@ -132,6 +132,11 @@ with c2:
             color="demand_tier" if "demand_tier" in view.columns else None,
             title="Actual vs Predicted Attendance",
             opacity=0.75,
+            labels={
+                "actual_attendance": "Actual Attendance",
+                "predicted_attendance": "Predicted Attendance",
+                "demand_tier": "Demand Tier",
+            },
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
@@ -211,6 +216,7 @@ else:
         factor_counts = split_factors[split_factors.ne("")].value_counts().reset_index()
         factor_counts.columns = ["factor", "count"]
         fig = px.bar(factor_counts.head(10), x="factor", y="count", title="Most Common Risk Factors (Artifact Output)")
+        fig.update_layout(xaxis_title="Risk Factor", yaxis_title="Frequency")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Feature/risk importance view unavailable.")
@@ -224,6 +230,7 @@ with w1:
         wm["precip_bin"] = pd.cut(wm["precipitation"].fillna(0), bins=[-0.001, 0, 0.1, 0.5, 100], labels=["0", "0-0.1", "0.1-0.5", ">0.5"])
         wp = wm.groupby("precip_bin", as_index=False)["actual_attendance"].mean()
         fig = px.bar(wp, x="precip_bin", y="actual_attendance", title="Attendance by Precipitation Bucket")
+        fig.update_layout(xaxis_title="Precipitation Bucket", yaxis_title="Average Actual Attendance")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Weather impact chart unavailable.")
@@ -236,8 +243,13 @@ with w2:
             y="seasonal_recovered_revenue",
             text="seasonal_recovered_revenue",
             title="Projected Seasonal Recovered Revenue",
+            labels={
+                "scenario": "Scenario",
+                "seasonal_recovered_revenue": "Seasonal Recovered Revenue ($)",
+            },
         )
         fig.update_traces(texttemplate="$%{text:,.0f}", textposition="outside")
+        fig.update_layout(xaxis_title="Scenario", yaxis_title="Seasonal Recovered Revenue ($)")
         st.plotly_chart(fig, use_container_width=True)
         st.dataframe(revenue, use_container_width=True)
     else:
