@@ -363,26 +363,103 @@ with r2:
 
 st.markdown("### Representative Reviews")
 
+
+def format_review_samples_table(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+
+    out_df = df.copy()
+    out_df.columns = [str(c).strip().lower() for c in out_df.columns]
+
+    text_col = next((c for c in ["review_text_raw", "review", "clean_text"] if c in out_df.columns), None)
+    if text_col is not None:
+        out_df[text_col] = (
+            out_df[text_col]
+            .fillna("")
+            .astype(str)
+            .str.replace(r"\s+", " ", regex=True)
+            .str.strip()
+            .str.slice(0, 220)
+        )
+
+    if "rating" in out_df.columns:
+        out_df["rating"] = pd.to_numeric(out_df["rating"], errors="coerce").map(
+            lambda v: f"{int(v)}★" if pd.notna(v) else "N/A"
+        )
+
+    if "sentiment_score" in out_df.columns:
+        out_df["sentiment_score"] = pd.to_numeric(out_df["sentiment_score"], errors="coerce").map(
+            lambda v: f"{v:+.3f}" if pd.notna(v) else "N/A"
+        )
+
+    keep_cols = [
+        c
+        for c in ["reviewer", "reviewer_name", "rating", "sentiment_score", text_col]
+        if c is not None and c in out_df.columns
+    ]
+    if keep_cols:
+        out_df = out_df[keep_cols].copy()
+
+    out_df = out_df.rename(
+        columns={
+            "reviewer": "Reviewer",
+            "reviewer_name": "Reviewer",
+            "rating": "Rating",
+            "sentiment_score": "Sentiment Score",
+            "review_text_raw": "Review Excerpt",
+            "review": "Review Excerpt",
+            "clean_text": "Review Excerpt",
+        }
+    )
+    return out_df
+
 rr1, rr2 = st.columns(2)
 with rr1:
     st.subheader("Most Positive Examples")
     if not rep_pos.empty:
-        st.dataframe(rep_pos.head(10), use_container_width=True, height=320)
+        pos_tbl = format_review_samples_table(rep_pos.head(10))
+        st.dataframe(pos_tbl, use_container_width=True, height=320, hide_index=True)
     else:
         fallback = view.sort_values("sentiment_score", ascending=False).head(10)[["rating", "sentiment_score", "review_text_raw"]] if not view.empty else pd.DataFrame()
-        st.dataframe(fallback, use_container_width=True, height=320)
+        fallback_tbl = format_review_samples_table(fallback)
+        st.dataframe(fallback_tbl, use_container_width=True, height=320, hide_index=True)
 
 with rr2:
     st.subheader("Most Negative Examples")
     if not rep_neg.empty:
-        st.dataframe(rep_neg.head(10), use_container_width=True, height=320)
+        neg_tbl = format_review_samples_table(rep_neg.head(10))
+        st.dataframe(neg_tbl, use_container_width=True, height=320, hide_index=True)
     else:
         fallback = view.sort_values("sentiment_score", ascending=True).head(10)[["rating", "sentiment_score", "review_text_raw"]] if not view.empty else pd.DataFrame()
-        st.dataframe(fallback, use_container_width=True, height=320)
+        fallback_tbl = format_review_samples_table(fallback)
+        st.dataframe(fallback_tbl, use_container_width=True, height=320, hide_index=True)
 
 if not mismatch.empty:
     with st.expander("Sentiment-Rating Mismatch Samples"):
-        st.dataframe(mismatch.head(30), use_container_width=True)
+        mismatch_tbl = mismatch.copy()
+        mismatch_tbl.columns = [str(c).strip().lower() for c in mismatch_tbl.columns]
+
+        mismatch_text_col = next((c for c in ["review_text_raw", "review", "clean_text"] if c in mismatch_tbl.columns), None)
+        mismatch_keep = [
+            c
+            for c in ["reviewer", "reviewer_name", "rating", "sentiment_score", "date", "review_date", mismatch_text_col]
+            if c is not None and c in mismatch_tbl.columns
+        ]
+        if mismatch_keep:
+            mismatch_tbl = mismatch_tbl[mismatch_keep].copy()
+
+        mismatch_tbl = format_review_samples_table(mismatch_tbl)
+        if "Date" not in mismatch_tbl.columns:
+            if "date" in mismatch.columns:
+                mismatch_tbl["Date"] = pd.to_datetime(mismatch["date"], errors="coerce").dt.strftime("%Y-%m-%d")
+            elif "review_date" in mismatch.columns:
+                mismatch_tbl["Date"] = pd.to_datetime(mismatch["review_date"], errors="coerce").dt.strftime("%Y-%m-%d")
+
+        display_cols = [c for c in ["Reviewer", "Rating", "Sentiment Score", "Date", "Review Excerpt"] if c in mismatch_tbl.columns]
+        if display_cols:
+            mismatch_tbl = mismatch_tbl[display_cols]
+
+        st.dataframe(mismatch_tbl.head(30), use_container_width=True, hide_index=True)
 
 if not topic_samples.empty:
     with st.expander("Topic Sample Reviews"):
