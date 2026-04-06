@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 import plotly.express as px
+import plotly.graph_objects as go
 
 from utils import (
     build_hornets_frame,
@@ -78,8 +79,50 @@ st.markdown("### Attendance and Model Behavior")
 c1, c2 = st.columns(2)
 with c1:
     if not view.empty and {"game_date", "actual_attendance"}.issubset(set(view.columns)):
-        trend = view.groupby("game_date", as_index=False)["actual_attendance"].mean().sort_values("game_date")
-        fig = px.line(trend, x="game_date", y="actual_attendance", markers=True, title="Actual Attendance Over Time")
+        trend = view.dropna(subset=["game_date", "actual_attendance"]).copy()
+        trend = trend.sort_values("game_date")
+
+        # Monthly aggregation gives a cleaner business trend than plotting every single game as a connected line.
+        trend["year_month"] = trend["game_date"].dt.to_period("M").dt.to_timestamp()
+        monthly = trend.groupby("year_month", as_index=False)["actual_attendance"].mean()
+        monthly["rolling_3m"] = monthly["actual_attendance"].rolling(3, min_periods=1).mean()
+
+        fig = go.Figure()
+        fig.add_trace(
+            go.Bar(
+                x=monthly["year_month"],
+                y=monthly["actual_attendance"],
+                name="Monthly Avg",
+                marker_color="#60a5fa",
+                opacity=0.45,
+            )
+        )
+        fig.add_trace(
+            go.Scatter(
+                x=monthly["year_month"],
+                y=monthly["rolling_3m"],
+                mode="lines",
+                name="3-Month Trend",
+                line=dict(color="#22d3ee", width=3),
+            )
+        )
+        fig.add_trace(
+            go.Scatter(
+                x=trend["game_date"],
+                y=trend["actual_attendance"],
+                mode="markers",
+                name="Game-Level",
+                marker=dict(size=5, color="#93c5fd", opacity=0.35),
+            )
+        )
+        fig.update_layout(
+            title="Actual Attendance Over Time",
+            xaxis_title="Game Date",
+            yaxis_title="Actual Attendance",
+            legend_title="Series",
+            hovermode="x unified",
+            margin=dict(l=20, r=20, t=50, b=20),
+        )
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Attendance trend unavailable for current filter.")
