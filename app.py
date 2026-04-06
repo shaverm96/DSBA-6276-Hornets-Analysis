@@ -131,10 +131,17 @@ xgb_page = st.Page("pages/2_XGBoost_Analysis.py", title="XGBoost Analysis", icon
 reviews_page = st.Page("pages/3_Reviews_Text_Analysis.py", title="Reviews Text Analysis", icon="💬")
 
 logo_sidebar_path = Path(__file__).resolve().parent / "charlotte-hornets-logo-transparent.png"
-# Inject custom CSS to set logo height to 100px
+# Inject custom CSS to resize the logo and its container
 st.markdown(
     """
     <style>
+        /* Increase the height of the container holding the logo */
+        [data-testid="stSidebarHeader"] {
+            height: 140px; /* Adjust based on your logo's aspect ratio */
+            padding-top: 2rem;
+        }
+
+        /* Set the logo height and ensure it isn't cropped */
         [data-testid="stSidebarHeader"] img {
             height: 100px !important;
             width: auto;
@@ -145,7 +152,6 @@ st.markdown(
 )
 
 if logo_sidebar_path.exists():
-    # Keep size="large" as the base, CSS will override the 32px cap
     st.logo(str(logo_sidebar_path), size="large")
 
 navigation = st.navigation(
