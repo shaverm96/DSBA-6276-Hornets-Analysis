@@ -159,7 +159,7 @@ with c3:
         )
         fig.add_hline(y=0, line_dash="dash", line_color="white")
         fig.update_traces(textposition="outside")
-        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Day of Week")
+        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Day of Week", showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Day-of-week chart unavailable.")
@@ -188,7 +188,7 @@ with c4:
         )
         fig.add_hline(y=0, line_dash="dash", line_color="white")
         fig.update_traces(textposition="outside")
-        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Opponent")
+        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Opponent", showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Opponent chart unavailable.")
