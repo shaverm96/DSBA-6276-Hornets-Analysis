@@ -131,8 +131,21 @@ xgb_page = st.Page("pages/2_XGBoost_Analysis.py", title="XGBoost Analysis", icon
 reviews_page = st.Page("pages/3_Reviews_Text_Analysis.py", title="Reviews Text Analysis", icon="💬")
 
 logo_sidebar_path = Path(__file__).resolve().parent / "charlotte-hornets-logo-transparent.png"
+# Inject custom CSS to set logo height to 100px
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebarHeader"] img {
+            height: 100px !important;
+            width: auto;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 if logo_sidebar_path.exists():
-    # App logo renders above sidebar navigation groups.
+    # Keep size="large" as the base, CSS will override the 32px cap
     st.logo(str(logo_sidebar_path), size="large")
 
 navigation = st.navigation(
