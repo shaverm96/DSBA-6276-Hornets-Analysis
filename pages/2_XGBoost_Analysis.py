@@ -324,9 +324,28 @@ else:
         s3.metric("Top 3 Factor Concentration", f"{top3_share:.1f}%" if pd.notna(top3_share) else "N/A")
 
         details = factor_counts.copy()
-        details["share_pct"] = details["share_pct"].map(lambda v: round(float(v), 2))
-        details = details.rename(columns={"factor": "Risk Factor", "count": "Frequency", "share_pct": "Share (%)", "rank": "Rank"})
-        st.dataframe(details.head(10), use_container_width=True, hide_index=True)
+        details = details[[c for c in ["rank", "factor", "count", "share_pct"] if c in details.columns]].copy()
+        if "share_pct" in details.columns:
+            details["share_pct"] = details["share_pct"].map(lambda v: f"{float(v):.1f}%" if pd.notna(v) else "N/A")
+        details = details.rename(
+            columns={
+                "rank": "Rank",
+                "factor": "Risk Factor",
+                "count": "Frequency",
+                "share_pct": "Share of Signals",
+            }
+        )
+        st.dataframe(
+            details.head(10),
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Rank": st.column_config.NumberColumn(width="small"),
+                "Risk Factor": st.column_config.TextColumn(width="medium"),
+                "Frequency": st.column_config.NumberColumn(width="small"),
+                "Share of Signals": st.column_config.TextColumn(width="small"),
+            },
+        )
     else:
         st.info("Feature/risk importance view unavailable.")
 
