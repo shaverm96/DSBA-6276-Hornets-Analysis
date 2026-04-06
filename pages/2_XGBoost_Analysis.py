@@ -416,7 +416,7 @@ with w2:
 
         rv1, rv2, rv3 = st.columns(3)
         rv1.metric("Base Scenario Revenue", f"${base_rev:,.0f}" if pd.notna(base_rev) else "N/A")
-        rv2.metric("Best Scenario", f"{best_row['scenario']} (${best_row['seasonal_recovered_revenue']:,.0f})")
+        rv2.metric("Best Scenario", f"{str(best_row['scenario']).title()} (${best_row['seasonal_recovered_revenue']:,.0f})")
         rv3.metric("Scenario Spread", f"${spread_value:,.0f}")
 
         table_cols = [
@@ -432,9 +432,44 @@ with w2:
             if c in rev.columns
         ]
         table_view = rev[table_cols].copy()
-        if "pct_vs_base" in table_view.columns:
-            table_view["pct_vs_base"] = table_view["pct_vs_base"].map(lambda v: round(float(v), 2))
-        st.dataframe(table_view, use_container_width=True, hide_index=True)
+        if not table_view.empty:
+            # Business-friendly headers and formatted values for presentation readability.
+            display_table = table_view.copy()
+
+            if "scenario" in display_table.columns:
+                display_table["scenario"] = display_table["scenario"].astype(str).str.title()
+            if "seasonal_recovered_revenue" in display_table.columns:
+                display_table["seasonal_recovered_revenue"] = pd.to_numeric(display_table["seasonal_recovered_revenue"], errors="coerce").map(
+                    lambda v: f"${v:,.0f}" if pd.notna(v) else "N/A"
+                )
+            if "pct_vs_base" in display_table.columns:
+                display_table["pct_vs_base"] = pd.to_numeric(display_table["pct_vs_base"], errors="coerce").map(
+                    lambda v: f"{v:+.1f}%" if pd.notna(v) else "N/A"
+                )
+            if "flagged_low_demand_games" in display_table.columns:
+                display_table["flagged_low_demand_games"] = pd.to_numeric(display_table["flagged_low_demand_games"], errors="coerce").map(
+                    lambda v: f"{int(v):,}" if pd.notna(v) else "N/A"
+                )
+            if "avg_recovered_attendees_per_game" in display_table.columns:
+                display_table["avg_recovered_attendees_per_game"] = pd.to_numeric(display_table["avg_recovered_attendees_per_game"], errors="coerce").map(
+                    lambda v: f"{v:,.0f}" if pd.notna(v) else "N/A"
+                )
+            if "avg_recovered_revenue_per_game" in display_table.columns:
+                display_table["avg_recovered_revenue_per_game"] = pd.to_numeric(display_table["avg_recovered_revenue_per_game"], errors="coerce").map(
+                    lambda v: f"${v:,.0f}" if pd.notna(v) else "N/A"
+                )
+
+            display_table = display_table.rename(
+                columns={
+                    "scenario": "Scenario",
+                    "seasonal_recovered_revenue": "Seasonal Recovered Revenue",
+                    "pct_vs_base": "Change vs Base",
+                    "flagged_low_demand_games": "Flagged Low-Demand Games",
+                    "avg_recovered_attendees_per_game": "Avg Recovered Attendees per Game",
+                    "avg_recovered_revenue_per_game": "Avg Recovered Revenue per Game",
+                }
+            )
+            st.dataframe(display_table, use_container_width=True, hide_index=True)
     else:
         st.info("Revenue scenario artifact not found.")
 
