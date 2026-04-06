@@ -346,6 +346,8 @@ if not shap_df.empty and not shap_work.empty:
     shap_work["mean_abs_shap"] = pd.to_numeric(shap_work["mean_abs_shap"], errors="coerce")
     shap_work = shap_work[~shap_work["feature"].astype(str).str.lower().str.contains("season", na=False)].copy()
     shap_work = shap_work.dropna(subset=["feature", "mean_abs_shap"]).sort_values("mean_abs_shap", ascending=False)
+    shap_work = shap_work.reset_index(drop=True)
+    shap_work["rank"] = shap_work.index + 1
 
     if shap_work.empty:
         st.info("Season-related SHAP features were removed and no other SHAP rows remain.")
