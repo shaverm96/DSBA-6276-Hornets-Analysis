@@ -476,7 +476,53 @@ if not mismatch.empty:
 
 if not topic_samples.empty:
     with st.expander("Topic Sample Reviews"):
-        st.dataframe(topic_samples, use_container_width=True)
+        topic_tbl = topic_samples.copy()
+        topic_tbl.columns = [str(c).strip().lower() for c in topic_tbl.columns]
+
+        if "topic_id" in topic_tbl.columns:
+            topic_tbl["topic_id"] = pd.to_numeric(topic_tbl["topic_id"], errors="coerce").map(
+                lambda v: f"Topic {int(v)}" if pd.notna(v) else "N/A"
+            )
+
+        if "rating" in topic_tbl.columns:
+            topic_tbl["rating"] = pd.to_numeric(topic_tbl["rating"], errors="coerce").map(
+                lambda v: f"{int(v)}★" if pd.notna(v) else "N/A"
+            )
+
+        if "sentiment_label" in topic_tbl.columns:
+            topic_tbl["sentiment_label"] = topic_tbl["sentiment_label"].astype(str).str.title()
+
+        text_col = next((c for c in ["review_text_raw", "review", "clean_text"] if c in topic_tbl.columns), None)
+        if text_col is not None:
+            topic_tbl[text_col] = (
+                topic_tbl[text_col]
+                .fillna("")
+                .astype(str)
+                .str.replace(r"\s+", " ", regex=True)
+                .str.strip()
+                .str.slice(0, 220)
+            )
+
+        keep_cols = [
+            c
+            for c in ["topic_id", "rating", "sentiment_label", text_col]
+            if c is not None and c in topic_tbl.columns
+        ]
+        if keep_cols:
+            topic_tbl = topic_tbl[keep_cols].copy()
+
+        topic_tbl = topic_tbl.rename(
+            columns={
+                "topic_id": "Topic",
+                "rating": "Rating",
+                "sentiment_label": "Sentiment",
+                "review_text_raw": "Review Excerpt",
+                "review": "Review Excerpt",
+                "clean_text": "Review Excerpt",
+            }
+        )
+
+        st.dataframe(topic_tbl, use_container_width=True, hide_index=True)
 
 if not exec_summary.empty:
     st.markdown("### Executive Summary Table")
