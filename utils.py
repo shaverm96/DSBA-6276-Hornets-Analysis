@@ -130,6 +130,7 @@ def extract_tables_from_notebook(ipynb_path: Optional[Path]) -> Dict[str, pd.Dat
     out: Dict[str, pd.DataFrame] = {
         "metrics": pd.DataFrame(),
         "feature_importance": pd.DataFrame(),
+        "shap_callouts": pd.DataFrame(),
         "presentation_numbers": pd.DataFrame(),
         "insight_table": pd.DataFrame(),
     }
@@ -171,6 +172,10 @@ def extract_tables_from_notebook(ipynb_path: Optional[Path]) -> Dict[str, pd.Dat
                 elif {"feature", "importance"}.issubset(set(cols)):
                     if out["feature_importance"].empty or len(t) > len(out["feature_importance"]):
                         out["feature_importance"] = t.copy()
+                elif {"feature", "mean_abs_shap"}.issubset(set(cols)):
+                    out["shap_callouts"] = t.copy()
+                elif {"rank", "feature", "mean_abs_shap"}.issubset(set(cols)):
+                    out["shap_callouts"] = t.copy()
                 elif {"item", "value"}.issubset(set(cols)):
                     out["presentation_numbers"] = t.copy()
                 elif {"metric", "value"}.issubset(set(cols)) and "business insight extraction" in cell_source.lower():

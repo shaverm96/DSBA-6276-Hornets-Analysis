@@ -325,6 +325,65 @@ else:
     else:
         st.info("Feature/risk importance view unavailable.")
 
+st.markdown("### SHAP Explainability (Notebook Output)")
+st.caption("SHAP quantifies each feature's average contribution magnitude to model predictions on the holdout sample.")
+
+shap_df = nb_tables.get("shap_callouts", pd.DataFrame())
+if not shap_df.empty:
+    shap_work = shap_df.copy()
+    shap_work.columns = [str(c).lower() for c in shap_work.columns]
+
+    if not {"feature", "mean_abs_shap"}.issubset(set(shap_work.columns)):
+        shap_work = pd.DataFrame()
+
+if not shap_df.empty and not shap_work.empty:
+
+    if "rank" not in shap_work.columns:
+        shap_work = shap_work.sort_values("mean_abs_shap", ascending=False).reset_index(drop=True)
+        shap_work["rank"] = shap_work.index + 1
+
+    shap_work["mean_abs_shap"] = pd.to_numeric(shap_work["mean_abs_shap"], errors="coerce")
+    shap_work = shap_work.dropna(subset=["feature", "mean_abs_shap"]).sort_values("mean_abs_shap", ascending=False)
+    shap_top = shap_work.head(12).copy()
+
+    fig = px.bar(
+        shap_top.sort_values("mean_abs_shap"),
+        x="mean_abs_shap",
+        y="feature",
+        orientation="h",
+        title="Top SHAP Drivers (Mean Absolute SHAP)",
+        color="mean_abs_shap",
+        color_continuous_scale="Blues",
+        labels={"mean_abs_shap": "Mean |SHAP| Impact", "feature": "Feature"},
+    )
+    fig.update_layout(coloraxis_showscale=False)
+    st.plotly_chart(fig, use_container_width=True)
+
+    sd1, sd2 = st.columns(2)
+    total_shap = float(shap_top["mean_abs_shap"].sum()) if not shap_top.empty else np.nan
+    top3_shap = float(shap_top.head(3)["mean_abs_shap"].sum()) if not shap_top.empty else np.nan
+    top3_concentration = (100 * top3_shap / total_shap) if pd.notna(total_shap) and total_shap > 0 else np.nan
+
+    sd1.metric("Top SHAP Driver", str(shap_top.iloc[0]["feature"]) if not shap_top.empty else "N/A")
+    sd2.metric(
+        "Top 3 Driver Concentration",
+        f"{top3_concentration:.1f}%" if pd.notna(top3_concentration) else "N/A",
+    )
+
+    shap_display = shap_top[[c for c in ["rank", "feature", "mean_abs_shap"] if c in shap_top.columns]].copy()
+    shap_display = shap_display.rename(
+        columns={"rank": "Rank", "feature": "Feature", "mean_abs_shap": "Mean |SHAP| Impact"}
+    )
+    if "Mean |SHAP| Impact" in shap_display.columns:
+        shap_display["Mean |SHAP| Impact"] = shap_display["Mean |SHAP| Impact"].map(
+            lambda v: f"{v:,.4f}" if pd.notna(v) else "N/A"
+        )
+    st.dataframe(shap_display, use_container_width=True, hide_index=True)
+else:
+    st.info(
+        "SHAP outputs were not found in notebook artifacts yet. Run the SHAP cells in hornets_attendance_xgboost.ipynb and refresh this page."
+    )
+
 st.markdown("### Weather and Revenue Opportunity")
 st.caption("Weather sensitivity and recoverable revenue are shown with scenario context for budget and operations planning.")
 
