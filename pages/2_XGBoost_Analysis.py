@@ -249,6 +249,7 @@ with c4:
         st.info("Opponent chart unavailable.")
 
 st.markdown("### Feature Importance and Risk Signals")
+st.caption("Frequency and concentration of demand-risk drivers identified in low-demand game diagnostics.")
 
 fi_df = nb_tables.get("feature_importance", pd.DataFrame())
 if not fi_df.empty and {"feature", "importance"}.issubset(set([str(c).lower() for c in fi_df.columns])):
@@ -265,9 +266,48 @@ else:
         )
         factor_counts = split_factors[split_factors.ne("")].value_counts().reset_index()
         factor_counts.columns = ["factor", "count"]
-        fig = px.bar(factor_counts.head(10), x="factor", y="count", title="Most Common Risk Factors (Artifact Output)")
-        fig.update_layout(xaxis_title="Risk Factor", yaxis_title="Frequency")
+        factor_counts["share_pct"] = (factor_counts["count"] / factor_counts["count"].sum()) * 100
+        factor_counts["rank"] = np.arange(1, len(factor_counts) + 1)
+        factor_counts["bar_label"] = factor_counts["share_pct"].map(lambda v: f"{v:.1f}%")
+
+        top_factors = factor_counts.head(10).copy()
+        fig = px.bar(
+            top_factors,
+            x="factor",
+            y="count",
+            title="Most Common Risk Factors (Artifact Output)",
+            text="bar_label",
+            color="share_pct",
+            color_continuous_scale="Blues",
+        )
+        fig.update_traces(
+            textposition="outside",
+            hovertemplate=(
+                "Risk Factor=%{x}<br>Frequency=%{y}<br>Share of All Signals=%{customdata[0]:.1f}%<br>"
+                "Rank=%{customdata[1]}<extra></extra>"
+            ),
+            customdata=top_factors[["share_pct", "rank"]].to_numpy(),
+        )
+        fig.update_layout(
+            xaxis_title="Risk Factor",
+            yaxis_title="Frequency",
+            coloraxis_colorbar_title="Share %",
+        )
         st.plotly_chart(fig, use_container_width=True)
+
+        total_signals = float(factor_counts["count"].sum())
+        top1_share = float(factor_counts.iloc[0]["share_pct"]) if not factor_counts.empty else np.nan
+        top3_share = float(factor_counts.head(3)["share_pct"].sum()) if not factor_counts.empty else np.nan
+
+        s1, s2, s3 = st.columns(3)
+        s1.metric("Total Risk Signals", format_int(total_signals))
+        s2.metric("Top Risk Factor Share", f"{top1_share:.1f}%" if pd.notna(top1_share) else "N/A")
+        s3.metric("Top 3 Factor Concentration", f"{top3_share:.1f}%" if pd.notna(top3_share) else "N/A")
+
+        details = factor_counts.copy()
+        details["share_pct"] = details["share_pct"].map(lambda v: round(float(v), 2))
+        details = details.rename(columns={"factor": "Risk Factor", "count": "Frequency", "share_pct": "Share (%)", "rank": "Rank"})
+        st.dataframe(details.head(10), use_container_width=True, hide_index=True)
     else:
         st.info("Feature/risk importance view unavailable.")
 
