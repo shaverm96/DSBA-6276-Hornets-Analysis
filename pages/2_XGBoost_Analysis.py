@@ -33,21 +33,14 @@ with st.sidebar:
 
     year_filter = st.multiselect("Season Year", options=years, default=years)
 
-    opponent_options = sorted(high_risk["opponent"].dropna().astype(str).unique().tolist()) if "opponent" in high_risk.columns else []
-    chosen_opponents = st.multiselect("Opponent", options=opponent_options, default=[])
-
-    st.divider()
-    st.subheader("Gemini 2.5 Flash")
-    key_input = st.text_input("Gemini API Key", type="password", placeholder="Paste key for live insights")
-    api_key = get_api_key_from_sources(key_input)
+# API key is sourced from st.secrets or environment (no sidebar input).
+api_key = get_api_key_from_sources("")
 
 # Filtered frame
 view = high_risk.copy()
 if not view.empty:
     if year_filter and "game_date" in view.columns:
         view = view[view["game_date"].dt.year.isin(year_filter)].copy()
-    if chosen_opponents and "opponent" in view.columns:
-        view = view[view["opponent"].isin(chosen_opponents)].copy()
 
 st.markdown("### Model and Demand KPIs")
 
@@ -133,33 +126,23 @@ with c3:
         st.info("Day-of-week chart unavailable.")
 
 with c4:
-    if not view.empty and {"opponent", "actual_attendance"}.issubset(set(view.columns)):
-        overall_avg = view["actual_attendance"].mean()
-        by_opp = view.groupby("opponent", as_index=False)["actual_attendance"].mean()
-        by_opp["pct_from_avg"] = ((by_opp["actual_attendance"] - overall_avg) / overall_avg) * 100
-        by_opp["direction"] = np.where(by_opp["pct_from_avg"] >= 0, "Above Avg", "Below Avg")
-        by_opp["label"] = by_opp["pct_from_avg"].map(lambda v: f"{v:+.1f}%")
-
-        top5 = by_opp.nlargest(5, "pct_from_avg")
-        bottom5 = by_opp.nsmallest(5, "pct_from_avg")
-        top_bottom = pd.concat([top5, bottom5], ignore_index=True).drop_duplicates(subset=["opponent"]) 
-        top_bottom = top_bottom.sort_values("pct_from_avg", ascending=False)
-
+    if not view.empty and {"actual_attendance", "demand_tier"}.issubset(set(view.columns)):
+        tier = view.groupby("demand_tier", as_index=False)["actual_attendance"].mean()
+        tier_order = ["Low", "Medium", "High"]
+        tier["demand_tier"] = pd.Categorical(tier["demand_tier"], categories=tier_order, ordered=True)
+        tier = tier.sort_values("demand_tier")
         fig = px.bar(
-            top_bottom,
-            x="opponent",
-            y="pct_from_avg",
-            color="direction",
-            color_discrete_map={"Above Avg": "#22c55e", "Below Avg": "#ef4444"},
-            title="Top 5 and Bottom 5 Opponents vs Overall Average (0% Baseline)",
-            text="label",
+            tier,
+            x="demand_tier",
+            y="actual_attendance",
+            title="Average Attendance by Demand Tier",
+            color="demand_tier",
+            color_discrete_map={"Low": "#ef4444", "Medium": "#f59e0b", "High": "#22c55e"},
         )
-        fig.add_hline(y=0, line_dash="dash", line_color="white")
-        fig.update_traces(textposition="outside")
-        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Opponent")
+        fig.update_layout(yaxis_title="Average Actual Attendance", xaxis_title="Demand Tier", showlegend=False)
         st.plotly_chart(fig, use_container_width=True)
     else:
-        st.info("Opponent chart unavailable.")
+        st.info("Demand-tier chart unavailable.")
 
 st.markdown("### Feature Importance and Risk Signals")
 
@@ -224,7 +207,6 @@ if st.button("Generate Executive Insight Summary", type="primary"):
     context_payload = {
         "filters": {
             "years": year_filter,
-            "opponents": chosen_opponents[:10],
         },
         "kpis": {
             "avg_actual_attendance": metrics.get("avg_actual_attendance", np.nan),
