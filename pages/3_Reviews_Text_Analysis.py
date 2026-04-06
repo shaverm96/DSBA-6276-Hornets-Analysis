@@ -392,11 +392,23 @@ def format_review_samples_table(df: pd.DataFrame) -> pd.DataFrame:
             lambda v: f"{v:+.3f}" if pd.notna(v) else "N/A"
         )
 
+    # Consolidate reviewer identifiers into a single field to avoid duplicate display columns.
+    if "reviewer" in out_df.columns and "reviewer_name" in out_df.columns:
+        out_df["reviewer"] = (
+            out_df["reviewer"]
+            .fillna("")
+            .astype(str)
+            .str.strip()
+            .where(lambda s: s.ne(""), out_df["reviewer_name"].fillna("").astype(str).str.strip())
+        )
+        out_df = out_df.drop(columns=["reviewer_name"])
+
     keep_cols = [
         c
         for c in ["reviewer", "reviewer_name", "rating", "sentiment_score", text_col]
         if c is not None and c in out_df.columns
     ]
+    keep_cols = list(dict.fromkeys(keep_cols))
     if keep_cols:
         out_df = out_df[keep_cols].copy()
 
@@ -411,6 +423,7 @@ def format_review_samples_table(df: pd.DataFrame) -> pd.DataFrame:
             "clean_text": "Review Excerpt",
         }
     )
+    out_df = out_df.loc[:, ~out_df.columns.duplicated()].copy()
     return out_df
 
 rr1, rr2 = st.columns(2)
