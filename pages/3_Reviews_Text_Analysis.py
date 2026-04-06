@@ -35,7 +35,20 @@ with st.sidebar:
     st.header("Page Controls")
 
     sentiment_options = ["positive", "neutral", "negative"]
-    selected_sentiment = st.multiselect("Sentiment Labels", options=sentiment_options, default=sentiment_options)
+    sentiment_scope = st.selectbox(
+        "Sentiment Labels",
+        options=["All Sentiment", "Custom Selection"],
+        index=0,
+        help="Use All Sentiment for full coverage, or switch to Custom Selection to pick specific labels.",
+    )
+    if sentiment_scope == "Custom Selection":
+        selected_sentiment = st.multiselect(
+            "Choose Sentiment Labels",
+            options=sentiment_options,
+            default=sentiment_options,
+        )
+    else:
+        selected_sentiment = sentiment_options
 
 # API key is sourced from st.secrets or environment (no sidebar input).
 api_key = get_api_key_from_sources("")
@@ -242,7 +255,7 @@ if st.button("Generate Review Executive Summary", type="primary"):
 
     payload = {
         "filters": {
-            "sentiment": selected_sentiment,
+            "sentiment": "All Sentiment" if sentiment_scope == "All Sentiment" else selected_sentiment,
         },
         "kpis": {
             "review_count": len(view),

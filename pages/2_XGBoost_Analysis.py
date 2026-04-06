@@ -32,7 +32,21 @@ with st.sidebar:
     else:
         years = []
 
-    year_filter = st.multiselect("Season Year", options=years, default=years)
+    year_scope = st.selectbox(
+        "Season Year",
+        options=["All Seasons", "Custom Selection"],
+        index=0,
+        help="Use All Seasons for a full view, or switch to Custom Selection to pick specific years.",
+    )
+
+    if year_scope == "Custom Selection":
+        year_filter = st.multiselect(
+            "Choose Years",
+            options=years,
+            default=years,
+        )
+    else:
+        year_filter = years
 
 # API key is sourced from st.secrets or environment (no sidebar input).
 api_key = get_api_key_from_sources("")
@@ -485,7 +499,7 @@ st.markdown("### LLM Business Insights (Gemini 2.5 Flash)")
 if st.button("Generate Executive Insight Summary", type="primary"):
     context_payload = {
         "filters": {
-            "years": year_filter,
+            "years": "All Seasons" if year_scope == "All Seasons" else year_filter,
         },
         "kpis": {
             "avg_actual_attendance": metrics.get("avg_actual_attendance", np.nan),
