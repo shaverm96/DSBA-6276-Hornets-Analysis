@@ -132,19 +132,22 @@ reviews_page = st.Page("pages/3_Reviews_Text_Analysis.py", title="Reviews Text A
 
 logo_sidebar_path = Path(__file__).resolve().parent / "charlotte-hornets-logo-transparent.png"
 # Inject custom CSS to resize the logo and its container
+# CSS to set height to 100px and center the logo
 st.markdown(
     """
     <style>
-        /* Increase the height of the container holding the logo */
         [data-testid="stSidebarHeader"] {
-            height: 140px; /* Adjust based on your logo's aspect ratio */
-            padding-top: 2rem;
+            height: 140px;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center;     /* Center vertically */
+            padding-top: 1rem;
         }
 
-        /* Set the logo height and ensure it isn't cropped */
         [data-testid="stSidebarHeader"] img {
             height: 100px !important;
             width: auto;
+            margin: 0 auto;         /* Fallback centering */
         }
     </style>
     """,
