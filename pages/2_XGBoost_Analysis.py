@@ -85,9 +85,20 @@ with c1:
         # Monthly aggregation with observed-month categorical axis avoids large offseason timeline gaps.
         trend["year_month"] = trend["game_date"].dt.to_period("M").dt.to_timestamp()
         monthly = trend.groupby("year_month", as_index=False)["actual_attendance"].mean()
-        monthly["rolling_3m"] = monthly["actual_attendance"].rolling(3, min_periods=1).mean()
+
+        # Build a robust 3-month trend that is less sensitive to extreme outlier months.
+        q1 = monthly["actual_attendance"].quantile(0.25)
+        q3 = monthly["actual_attendance"].quantile(0.75)
+        iqr = q3 - q1
+        lower_fence = q1 - (1.5 * iqr)
+        trend_source = monthly["actual_attendance"].where(monthly["actual_attendance"] >= lower_fence)
+        monthly["rolling_3m"] = trend_source.rolling(3, min_periods=1).mean().bfill()
+
         monthly["ym_label"] = monthly["year_month"].dt.strftime("%Y-%m")
         monthly["monthly_label"] = monthly["actual_attendance"].map(lambda v: f"{v:,.0f}")
+
+        tick_step = max(1, int(np.ceil(len(monthly) / 16)))
+        tick_values = monthly["ym_label"].iloc[::tick_step].tolist()
 
         fig = go.Figure()
         fig.add_trace(
@@ -117,7 +128,7 @@ with c1:
             legend_title="Series",
             hovermode="x",
             margin=dict(l=20, r=20, t=50, b=20),
-            xaxis=dict(type="category", tickangle=-45),
+            xaxis=dict(type="category", tickangle=-45, tickmode="array", tickvals=tick_values),
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
