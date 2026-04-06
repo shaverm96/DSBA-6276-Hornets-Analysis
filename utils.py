@@ -441,7 +441,7 @@ def generate_gemini_insight(api_key: str, prompt: str) -> str:
 
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel("gemini-2.5-flash")
+        model = genai.GenerativeModel("gemini-3.1-flash-lite-preview")
         response = model.generate_content(prompt)
         text = getattr(response, "text", "") or "No response text returned by Gemini."
         return text
