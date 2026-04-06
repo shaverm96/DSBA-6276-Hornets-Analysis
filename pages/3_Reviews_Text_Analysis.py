@@ -157,7 +157,7 @@ with c3:
             title="Sentiment Score by Star Rating",
             category_orders={"star_label": ["1★", "2★", "3★", "4★", "5★"]},
         )
-        fig.update_traces(points=False, quartilemethod="inclusive")
+        fig.update_traces(boxpoints=False)
         fig.update_layout(
             xaxis_title="Star Rating",
             yaxis_title="Sentiment Score",
@@ -182,7 +182,7 @@ with c4:
             title="Review Length by Rating",
             category_orders={"star_label": ["1★", "2★", "3★", "4★", "5★"]},
         )
-        fig.update_traces(points=False, quartilemethod="inclusive")
+        fig.update_traces(boxpoints=False)
         fig.update_layout(
             xaxis_title="Star Rating",
             yaxis_title="Review Length (Words)",
