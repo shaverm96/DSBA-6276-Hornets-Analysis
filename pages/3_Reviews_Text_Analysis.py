@@ -286,16 +286,78 @@ if not view.empty and "clean_text" in view.columns:
 
 st.markdown("### Theme and Recommendation Outputs (Notebook Artifacts)")
 
+
+def pretty_label(text: str) -> str:
+    return str(text).replace("_", " ").strip().title()
+
 r1, r2 = st.columns(2)
 with r1:
     if not theme_summary.empty:
-        st.dataframe(theme_summary.sort_values("overall_mention_rate", ascending=False), use_container_width=True)
+        theme_tbl = theme_summary.copy()
+        theme_tbl.columns = [str(c).strip().lower() for c in theme_tbl.columns]
+
+        if "theme" in theme_tbl.columns:
+            theme_tbl["theme"] = theme_tbl["theme"].map(pretty_label)
+
+        for rate_col in ["overall_mention_rate", "low_rating_mention_rate", "high_rating_mention_rate", "low_minus_high_gap"]:
+            if rate_col in theme_tbl.columns:
+                theme_tbl[rate_col] = pd.to_numeric(theme_tbl[rate_col], errors="coerce")
+
+        if "overall_mention_rate" in theme_tbl.columns:
+            theme_tbl = theme_tbl.sort_values("overall_mention_rate", ascending=False)
+
+        for rate_col in ["overall_mention_rate", "low_rating_mention_rate", "high_rating_mention_rate", "low_minus_high_gap"]:
+            if rate_col in theme_tbl.columns:
+                theme_tbl[rate_col] = theme_tbl[rate_col].map(lambda v: f"{(100 * v):.1f}%" if pd.notna(v) else "N/A")
+
+        theme_tbl = theme_tbl.rename(
+            columns={
+                "theme": "Theme",
+                "overall_mention_rate": "Overall Mention Rate",
+                "low_rating_mention_rate": "Low-Rating Mention Rate",
+                "high_rating_mention_rate": "High-Rating Mention Rate",
+                "low_minus_high_gap": "Low-High Mention Gap",
+            }
+        )
+
+        st.dataframe(theme_tbl, use_container_width=True, hide_index=True)
     else:
         st.info("Theme summary artifact not found.")
 
 with r2:
     if not recommendations.empty:
-        st.dataframe(recommendations, use_container_width=True)
+        rec_tbl = recommendations.copy()
+        rec_tbl.columns = [str(c).strip().lower() for c in rec_tbl.columns]
+
+        if "focus_area" in rec_tbl.columns:
+            rec_tbl["focus_area"] = rec_tbl["focus_area"].map(pretty_label)
+
+        if "priority" in rec_tbl.columns:
+            priority_order = pd.CategoricalDtype(categories=["High", "Medium", "Low"], ordered=True)
+            rec_tbl["priority"] = rec_tbl["priority"].astype(str).str.title().astype(priority_order)
+            rec_tbl = rec_tbl.sort_values(["priority", "focus_area"] if "focus_area" in rec_tbl.columns else ["priority"])
+            rec_tbl["priority"] = rec_tbl["priority"].astype(str)
+
+        rec_tbl = rec_tbl.rename(
+            columns={
+                "priority": "Priority",
+                "focus_area": "Focus Area",
+                "evidence": "Evidence",
+                "recommended_action": "Recommended Action",
+            }
+        )
+
+        st.dataframe(
+            rec_tbl,
+            use_container_width=True,
+            hide_index=True,
+            column_config={
+                "Priority": st.column_config.TextColumn(width="small"),
+                "Focus Area": st.column_config.TextColumn(width="medium"),
+                "Evidence": st.column_config.TextColumn(width="medium"),
+                "Recommended Action": st.column_config.TextColumn(width="large"),
+            },
+        )
     else:
         st.info("Recommendations artifact not found.")
 
