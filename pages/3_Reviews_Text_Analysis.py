@@ -133,12 +133,11 @@ with c2:
             values="count",
             names="sentiment_label",
             title="Sentiment Distribution",
-            hole=0.55,
             color="sentiment_label",
             color_discrete_map={"Positive": "#7ec0ee", "Neutral": "#2d7dd2", "Negative": "#f2a3a3"},
         )
         fig.update_traces(textposition="inside", textinfo="percent")
-        fig.update_layout(showlegend=False)
+        fig.update_layout(legend_title_text="Sentiment Label", showlegend=True)
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Sentiment distribution unavailable.")
@@ -146,16 +145,49 @@ with c2:
 c3, c4 = st.columns(2)
 with c3:
     if not view.empty and {"rating", "sentiment_score"}.issubset(set(view.columns)):
-        fig = px.box(view, x="rating", y="sentiment_score", title="Sentiment Score by Star Rating")
-        fig.update_layout(xaxis_title="Star Rating", yaxis_title="Sentiment Score")
+        score_view = view.copy()
+        score_view["rating"] = pd.to_numeric(score_view["rating"], errors="coerce").round().clip(1, 5)
+        score_view = score_view.dropna(subset=["rating", "sentiment_score"]).copy()
+        score_view["star_label"] = score_view["rating"].astype(int).astype(str) + "★"
+
+        fig = px.box(
+            score_view,
+            x="star_label",
+            y="sentiment_score",
+            title="Sentiment Score by Star Rating",
+            category_orders={"star_label": ["1★", "2★", "3★", "4★", "5★"]},
+        )
+        fig.update_traces(points=False, quartilemethod="inclusive")
+        fig.update_layout(
+            xaxis_title="Star Rating",
+            yaxis_title="Sentiment Score",
+            showlegend=False,
+        )
+        fig.add_hline(y=0, line_dash="dot", line_color="#94a3b8")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Sentiment vs rating chart unavailable.")
 
 with c4:
     if not view.empty and "word_count" in view.columns:
-        fig = px.box(view, x="rating", y="word_count", title="Review Length by Rating")
-        fig.update_layout(xaxis_title="Star Rating", yaxis_title="Review Length (Words)")
+        length_view = view.copy()
+        length_view["rating"] = pd.to_numeric(length_view["rating"], errors="coerce").round().clip(1, 5)
+        length_view = length_view.dropna(subset=["rating", "word_count"]).copy()
+        length_view["star_label"] = length_view["rating"].astype(int).astype(str) + "★"
+
+        fig = px.box(
+            length_view,
+            x="star_label",
+            y="word_count",
+            title="Review Length by Rating",
+            category_orders={"star_label": ["1★", "2★", "3★", "4★", "5★"]},
+        )
+        fig.update_traces(points=False, quartilemethod="inclusive")
+        fig.update_layout(
+            xaxis_title="Star Rating",
+            yaxis_title="Review Length (Words)",
+            showlegend=False,
+        )
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Review length chart unavailable.")
@@ -184,6 +216,7 @@ cc1, cc2 = st.columns(2)
 with cc1:
     if not terms_all.empty:
         top_terms_plot = terms_all.head(15).copy()
+        top_terms_plot = top_terms_plot.sort_values("count", ascending=False)
         term_order = top_terms_plot["term"].tolist()
         fig = px.bar(
             top_terms_plot,
@@ -194,39 +227,46 @@ with cc1:
             category_orders={"term": term_order},
         )
         fig.update_layout(xaxis_title="Mention Count", yaxis_title="Term")
-        fig.update_yaxes(autorange="reversed")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Top terms unavailable.")
 
 with cc2:
-    compare = pd.concat([
-        top_terms(pos, (1, 1), 12).assign(group="Positive"),
-        top_terms(neg, (1, 1), 12).assign(group="Negative"),
-    ])
-    if not compare.empty:
-        term_order = (
-            compare.groupby("term", as_index=False)["count"]
-            .max()
-            .sort_values("count", ascending=False)["term"]
-            .tolist()
+    pos_terms = top_terms(pos, (1, 1), 20).rename(columns={"count": "positive_count"})
+    neg_terms = top_terms(neg, (1, 1), 20).rename(columns={"count": "negative_count"})
+    compare_wide = pos_terms.merge(neg_terms, on="term", how="outer").fillna(0)
+    compare_wide["positive_count"] = pd.to_numeric(compare_wide["positive_count"], errors="coerce").fillna(0)
+    compare_wide["negative_count"] = pd.to_numeric(compare_wide["negative_count"], errors="coerce").fillna(0)
+    compare_wide["total_count"] = compare_wide["positive_count"] + compare_wide["negative_count"]
+    compare_wide = compare_wide.sort_values("total_count", ascending=False).head(12)
+
+    if not compare_wide.empty:
+        term_order = compare_wide["term"].tolist()
+        compare = compare_wide[["term", "positive_count", "negative_count"]].melt(
+            id_vars="term",
+            value_vars=["positive_count", "negative_count"],
+            var_name="group",
+            value_name="count",
+        )
+        compare["group"] = compare["group"].replace(
+            {"positive_count": "Positive", "negative_count": "Negative"}
         )
         fig = px.bar(
             compare,
             x="count",
             y="term",
             color="group",
-            barmode="group",
+            barmode="stack",
             orientation="h",
-            title="Positive vs Negative Terms",
+            title="Positive vs Negative Terms (Stacked)",
             category_orders={"term": term_order},
+            color_discrete_map={"Positive": "#8ec9f3", "Negative": "#2d7dd2"},
         )
         fig.update_layout(
             xaxis_title="Mention Count",
             yaxis_title="Term",
             legend_title_text="Review Segment",
         )
-        fig.update_yaxes(autorange="reversed")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Comparison terms unavailable.")
