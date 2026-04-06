@@ -219,12 +219,26 @@ if st.button("Generate Review Executive Summary", type="primary"):
     }
 
     prompt = (
-        "You are an executive advisor summarizing customer voice analytics.\n"
-        "Using only the provided data, produce:\n"
-        "1) top 3 strengths,\n"
-        "2) top 3 pain points,\n"
-        "3) 3 prioritized actions for leadership.\n"
-        "Keep it concise and presentation-ready. Do not invent values.\n\n"
+        "You are a senior customer-insights advisor preparing executive commentary for a presentation.\n"
+        "Use ONLY the provided data context. Do not invent values, themes, or recommendations.\n"
+        "Translate NLP outputs into concrete business implications.\n\n"
+        "Return EXACTLY these sections:\n"
+        "1) Executive Summary (3 bullets):\n"
+        "   - Overall customer sentiment and experience story in this filtered view.\n"
+        "2) What Customers Love (3 bullets):\n"
+        "   - Must reference terms/themes in the provided context.\n"
+        "3) What Frustrates Customers (3 bullets):\n"
+        "   - Must reference terms/themes in the provided context.\n"
+        "4) Quantified Findings (3-5 bullets):\n"
+        "   - Each bullet should include at least one metric or frequency from the data context.\n"
+        "5) Priority Actions (3 bullets):\n"
+        "   - Specific operational actions tied to the findings.\n"
+        "6) 60-Second Slide Script (max 100 words):\n"
+        "   - A concise script for the presenter.\n\n"
+        "Style rules:\n"
+        "- Be concise, concrete, and decision-oriented.\n"
+        "- If data is missing, say 'not available in current view'.\n"
+        "- Avoid generic advice not supported by context.\n\n"
         f"Data context:\n{payload}"
     )
 

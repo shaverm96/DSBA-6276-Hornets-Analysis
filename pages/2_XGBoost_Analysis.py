@@ -270,10 +270,24 @@ if st.button("Generate Executive Insight Summary", type="primary"):
     }
 
     prompt = (
-        "You are an executive sports analytics advisor.\n"
-        "Use the provided dashboard data to produce a concise, presentation-ready summary.\n"
-        "Return: (1) top 3 insights, (2) top 3 actions, (3) one risk to monitor.\n"
-        "Ground every statement in the provided numbers. Do not invent values.\n\n"
+        "You are a senior sports analytics strategy advisor preparing talking points for executives.\n"
+        "Use ONLY the provided dashboard data. Do not invent values, teams, or outcomes.\n"
+        "Write in clear business language suitable for a live presentation.\n\n"
+        "Return EXACTLY these sections:\n"
+        "1) Executive Summary (3 bullets):\n"
+        "   - The most important demand, risk, and revenue story from this view.\n"
+        "2) Quantified Insights (3-5 bullets):\n"
+        "   - Each bullet must reference at least one number from the data context.\n"
+        "3) Priority Actions (3 bullets):\n"
+        "   - What leadership should do next, tied directly to the quantified findings.\n"
+        "4) Risks and Caveats (2 bullets):\n"
+        "   - Mention data/model limitations visible in this context.\n"
+        "5) Slide Script (max 90 words):\n"
+        "   - A concise narrative the presenter can read aloud.\n\n"
+        "Style rules:\n"
+        "- Be specific, numeric, and decision-oriented.\n"
+        "- If a value is missing, say 'not available in current view' instead of guessing.\n"
+        "- Keep total response concise and presentation-ready.\n\n"
         f"Data context:\n{context_payload}"
     )
 
