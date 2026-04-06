@@ -1,0 +1,9 @@
+priority,focus_area,evidence,recommended_action
+High,quality_consistency,Low-vs-high mention gap: 0.241,Investigate root causes in quality_consistency and implement an operations improvement plan with weekly monitoring.
+High,speed_wait_time,Low-vs-high mention gap: 0.197,Investigate root causes in speed_wait_time and implement an operations improvement plan with weekly monitoring.
+High,customer_service,Low-vs-high mention gap: 0.122,Investigate root causes in customer_service and implement an operations improvement plan with weekly monitoring.
+High,pricing_value,Low-vs-high mention gap: 0.110,Investigate root causes in pricing_value and implement an operations improvement plan with weekly monitoring.
+High,food_beverage,Low-vs-high mention gap: 0.072,Investigate root causes in food_beverage and implement an operations improvement plan with weekly monitoring.
+Medium,experience_atmosphere,High-rating mention rate: 0.365,Preserve and promote experience_atmosphere in marketing and staff training playbooks.
+Medium,customer_service,High-rating mention rate: 0.273,Preserve and promote customer_service in marketing and staff training playbooks.
+Medium,access_parking,High-rating mention rate: 0.250,Preserve and promote access_parking in marketing and staff training playbooks.
