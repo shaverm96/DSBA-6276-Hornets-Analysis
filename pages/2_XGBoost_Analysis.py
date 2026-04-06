@@ -126,23 +126,33 @@ with c3:
         st.info("Day-of-week chart unavailable.")
 
 with c4:
-    if not view.empty and {"actual_attendance", "demand_tier"}.issubset(set(view.columns)):
-        tier = view.groupby("demand_tier", as_index=False)["actual_attendance"].mean()
-        tier_order = ["Low", "Medium", "High"]
-        tier["demand_tier"] = pd.Categorical(tier["demand_tier"], categories=tier_order, ordered=True)
-        tier = tier.sort_values("demand_tier")
+    if not view.empty and {"opponent", "actual_attendance"}.issubset(set(view.columns)):
+        overall_avg = view["actual_attendance"].mean()
+        by_opp = view.groupby("opponent", as_index=False)["actual_attendance"].mean()
+        by_opp["pct_from_avg"] = ((by_opp["actual_attendance"] - overall_avg) / overall_avg) * 100
+        by_opp["direction"] = np.where(by_opp["pct_from_avg"] >= 0, "Above Avg", "Below Avg")
+        by_opp["label"] = by_opp["pct_from_avg"].map(lambda v: f"{v:+.1f}%")
+
+        top5 = by_opp.nlargest(5, "pct_from_avg")
+        bottom5 = by_opp.nsmallest(5, "pct_from_avg")
+        top_bottom = pd.concat([top5, bottom5], ignore_index=True).drop_duplicates(subset=["opponent"])
+        top_bottom = top_bottom.sort_values("pct_from_avg", ascending=False)
+
         fig = px.bar(
-            tier,
-            x="demand_tier",
-            y="actual_attendance",
-            title="Average Attendance by Demand Tier",
-            color="demand_tier",
-            color_discrete_map={"Low": "#ef4444", "Medium": "#f59e0b", "High": "#22c55e"},
+            top_bottom,
+            x="opponent",
+            y="pct_from_avg",
+            color="direction",
+            color_discrete_map={"Above Avg": "#22c55e", "Below Avg": "#ef4444"},
+            title="Top 5 and Bottom 5 Opponents vs Overall Average (0% Baseline)",
+            text="label",
         )
-        fig.update_layout(yaxis_title="Average Actual Attendance", xaxis_title="Demand Tier", showlegend=False)
+        fig.add_hline(y=0, line_dash="dash", line_color="white")
+        fig.update_traces(textposition="outside")
+        fig.update_layout(yaxis_title="% from Overall Average", xaxis_title="Opponent")
         st.plotly_chart(fig, use_container_width=True)
     else:
-        st.info("Demand-tier chart unavailable.")
+        st.info("Opponent chart unavailable.")
 
 st.markdown("### Feature Importance and Risk Signals")
 
