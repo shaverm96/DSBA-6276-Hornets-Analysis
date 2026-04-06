@@ -82,46 +82,42 @@ with c1:
         trend = view.dropna(subset=["game_date", "actual_attendance"]).copy()
         trend = trend.sort_values("game_date")
 
-        # Monthly aggregation gives a cleaner business trend than plotting every single game as a connected line.
+        # Monthly aggregation with observed-month categorical axis avoids large offseason timeline gaps.
         trend["year_month"] = trend["game_date"].dt.to_period("M").dt.to_timestamp()
         monthly = trend.groupby("year_month", as_index=False)["actual_attendance"].mean()
         monthly["rolling_3m"] = monthly["actual_attendance"].rolling(3, min_periods=1).mean()
+        monthly["ym_label"] = monthly["year_month"].dt.strftime("%Y-%m")
+        monthly["monthly_label"] = monthly["actual_attendance"].map(lambda v: f"{v:,.0f}")
 
         fig = go.Figure()
         fig.add_trace(
             go.Bar(
-                x=monthly["year_month"],
+                x=monthly["ym_label"],
                 y=monthly["actual_attendance"],
                 name="Monthly Avg",
                 marker_color="#60a5fa",
                 opacity=0.45,
+                hovertemplate="Month=%{x}<br>Avg Attendance=%{y:,.0f}<extra></extra>",
             )
         )
         fig.add_trace(
             go.Scatter(
-                x=monthly["year_month"],
+                x=monthly["ym_label"],
                 y=monthly["rolling_3m"],
                 mode="lines",
                 name="3-Month Trend",
                 line=dict(color="#22d3ee", width=3),
-            )
-        )
-        fig.add_trace(
-            go.Scatter(
-                x=trend["game_date"],
-                y=trend["actual_attendance"],
-                mode="markers",
-                name="Game-Level",
-                marker=dict(size=5, color="#93c5fd", opacity=0.35),
+                hovertemplate="Month=%{x}<br>3-Month Trend=%{y:,.0f}<extra></extra>",
             )
         )
         fig.update_layout(
             title="Actual Attendance Over Time",
-            xaxis_title="Game Date",
+            xaxis_title="Observed Game Months",
             yaxis_title="Actual Attendance",
             legend_title="Series",
-            hovermode="x unified",
+            hovermode="x",
             margin=dict(l=20, r=20, t=50, b=20),
+            xaxis=dict(type="category", tickangle=-45),
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
