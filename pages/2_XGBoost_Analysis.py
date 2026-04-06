@@ -393,18 +393,28 @@ with w1:
         wm = weather_merged.copy()
         wm["precip_bin"] = pd.cut(wm["precipitation"].fillna(0), bins=[-0.001, 0, 0.1, 0.5, 100], labels=["0", "0-0.1", "0.1-0.5", ">0.5"])
         wp = wm.groupby("precip_bin", as_index=False)["actual_attendance"].mean()
+        wp["precip_bin"] = wp["precip_bin"].astype(str)
+        wp["precip_bin_label"] = wp["precip_bin"].replace(
+            {
+                "0": "0.0 in",
+                "0-0.1": "0.0-0.1 in",
+                "0.1-0.5": "0.1-0.5 in",
+                ">0.5": ">0.5 in",
+            }
+        )
         overall_weather_avg = float(wm["actual_attendance"].mean())
         wp["pct_vs_overall"] = ((wp["actual_attendance"] - overall_weather_avg) / overall_weather_avg) * 100
         wp["label"] = wp["pct_vs_overall"].map(lambda v: f"{v:+.1f}%")
 
         fig = px.bar(
             wp,
-            x="precip_bin",
+            x="precip_bin_label",
             y="actual_attendance",
-            title="Attendance by Precipitation Bucket",
+            title="Attendance by Precipitation Bucket (0.1 in Threshold Highlighted)",
             color="pct_vs_overall",
             color_continuous_scale="RdYlGn",
             text="label",
+            category_orders={"precip_bin_label": ["0.0 in", "0.0-0.1 in", "0.1-0.5 in", ">0.5 in"]},
         )
         fig.add_hline(y=overall_weather_avg, line_dash="dash", line_color="white", annotation_text="Overall Avg", annotation_position="top left")
         fig.update_traces(
@@ -414,6 +424,16 @@ with w1:
                 "vs Overall=%{customdata[0]:+.1f}%<extra></extra>"
             ),
             customdata=wp[["pct_vs_overall"]].to_numpy(),
+        )
+        fig.add_annotation(
+            x=1,
+            y=1.08,
+            xref="paper",
+            yref="paper",
+            text="0.1 in is the cutoff between light rain and moderate+ precipitation buckets.",
+            showarrow=False,
+            font=dict(size=12, color="#cbd5e1"),
+            align="right",
         )
         fig.update_layout(
             xaxis_title="Precipitation Bucket (inches)",
@@ -428,11 +448,11 @@ with w1:
         ww1.metric("Overall Weather Avg", format_int(overall_weather_avg))
         ww2.metric(
             "Highest Attendance Bucket",
-            f"{driest['precip_bin']} ({driest['pct_vs_overall']:+.1f}%)" if driest is not None else "N/A",
+            f"{driest['precip_bin_label']} ({driest['pct_vs_overall']:+.1f}%)" if driest is not None else "N/A",
         )
         ww3.metric(
             "Lowest Attendance Bucket",
-            f"{wettest['precip_bin']} ({wettest['pct_vs_overall']:+.1f}%)" if wettest is not None else "N/A",
+            f"{wettest['precip_bin_label']} ({wettest['pct_vs_overall']:+.1f}%)" if wettest is not None else "N/A",
         )
     else:
         st.info("Weather impact chart unavailable.")
