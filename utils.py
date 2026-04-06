@@ -1,6 +1,7 @@
 import json
 import os
 import re
+from io import StringIO
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -99,6 +100,56 @@ def _safe_to_datetime(series: pd.Series) -> pd.Series:
     return parsed
 
 
+def _parse_shap_table_from_text(text_data: str) -> pd.DataFrame:
+    """Parse SHAP callout table from text/plain notebook output as a fallback path."""
+    if not text_data:
+        return pd.DataFrame()
+
+    lines = [ln.rstrip("\n") for ln in str(text_data).splitlines() if ln.strip()]
+    if not lines:
+        return pd.DataFrame()
+
+    header_idx = None
+    for i, ln in enumerate(lines):
+        l = ln.lower()
+        if "rank" in l and "feature" in l and "mean_abs_shap" in l:
+            header_idx = i
+            break
+
+    if header_idx is None:
+        return pd.DataFrame()
+
+    block = [lines[header_idx]]
+    for ln in lines[header_idx + 1 :]:
+        if re.match(r"^\s*\d+\s+\d+\s+", ln):
+            block.append(ln)
+        else:
+            break
+
+    if len(block) <= 1:
+        return pd.DataFrame()
+
+    try:
+        parsed = pd.read_fwf(StringIO("\n".join(block)))
+    except Exception:
+        return pd.DataFrame()
+
+    parsed.columns = [str(c).strip().lower() for c in parsed.columns]
+    if "mean_abs_shap" not in parsed.columns or "feature" not in parsed.columns:
+        return pd.DataFrame()
+
+    parsed["mean_abs_shap"] = pd.to_numeric(
+        parsed["mean_abs_shap"].astype(str).str.replace(",", "", regex=False),
+        errors="coerce",
+    )
+
+    if "rank" not in parsed.columns:
+        parsed = parsed.reset_index(drop=True)
+        parsed["rank"] = parsed.index + 1
+
+    return parsed[[c for c in ["rank", "feature", "mean_abs_shap"] if c in parsed.columns]].dropna(subset=["feature", "mean_abs_shap"])
+
+
 def calc_regression_metrics(actual: pd.Series, pred: pd.Series) -> Dict[str, float]:
     from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
@@ -157,13 +208,12 @@ def extract_tables_from_notebook(ipynb_path: Optional[Path]) -> Dict[str, pd.Dat
                 html_data = data["text/html"]
                 html = "".join(html_data) if isinstance(html_data, list) else str(html_data)
 
-            if not html:
-                continue
-
-            try:
-                tables = pd.read_html(html)
-            except Exception:
-                continue
+            tables = []
+            if html:
+                try:
+                    tables = pd.read_html(html)
+                except Exception:
+                    tables = []
 
             for t in tables:
                 cols = [str(c).lower() for c in t.columns]
@@ -180,6 +230,14 @@ def extract_tables_from_notebook(ipynb_path: Optional[Path]) -> Dict[str, pd.Dat
                     out["presentation_numbers"] = t.copy()
                 elif {"metric", "value"}.issubset(set(cols)) and "business insight extraction" in cell_source.lower():
                     out["insight_table"] = t.copy()
+
+            # Fallback: parse SHAP callout table from text/plain when HTML parsing is unavailable.
+            if out["shap_callouts"].empty and "text/plain" in data:
+                text_data = data["text/plain"]
+                text_blob = "".join(text_data) if isinstance(text_data, list) else str(text_data)
+                parsed_shap = _parse_shap_table_from_text(text_blob)
+                if not parsed_shap.empty:
+                    out["shap_callouts"] = parsed_shap.copy()
 
     return out
 
