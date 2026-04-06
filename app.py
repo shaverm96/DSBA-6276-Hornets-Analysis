@@ -132,8 +132,8 @@ reviews_page = st.Page("pages/3_Reviews_Text_Analysis.py", title="Reviews Text A
 
 logo_sidebar_path = Path(__file__).resolve().parent / "charlotte-hornets-logo-transparent.png"
 if logo_sidebar_path.exists():
-    st.sidebar.image(str(logo_sidebar_path), width=120)
-    st.sidebar.caption("Charlotte Hornets Analytics")
+    # App logo renders above sidebar navigation groups.
+    st.logo(str(logo_sidebar_path))
 
 navigation = st.navigation(
     {
