@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
+import re
 
 from utils import (
     build_hornets_frame,
@@ -662,6 +663,39 @@ else:
 
 st.markdown("### LLM Business Insights")
 
+
+def render_executive_sections(raw_text: str) -> None:
+    """Render model output as clean, presentation-friendly sections."""
+    if not raw_text or not isinstance(raw_text, str):
+        st.write(raw_text)
+        return
+
+    text = raw_text.replace("\r\n", "\n").strip()
+    text = re.sub(r"([)\]])([A-Za-z])", r"\1 \2", text)
+    text = re.sub(r"([A-Za-z0-9])\(", r"\1 (", text)
+
+    section_pattern = re.compile(r"^\s*(\d)\)\s+([^\n]+)", re.MULTILINE)
+    matches = list(section_pattern.finditer(text))
+
+    if not matches:
+        st.markdown(text)
+        return
+
+    sections = []
+    for i, m in enumerate(matches):
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        sec_num = m.group(1)
+        sec_title = m.group(2).strip()
+        sec_body = text[start:end].strip()
+        sections.append((sec_num, sec_title, sec_body))
+
+    st.markdown("#### Executive Briefing")
+    for sec_num, sec_title, sec_body in sections:
+        with st.container(border=True):
+            st.markdown(f"**{sec_num}) {sec_title}**")
+            st.markdown(sec_body if sec_body else "No content generated for this section.")
+
 if st.button("Generate Executive Insight Summary", type="primary"):
     context_payload = {
         "filters": {
@@ -705,7 +739,7 @@ if st.button("Generate Executive Insight Summary", type="primary"):
 
     with st.spinner("Calling Gemini..."):
         text = generate_gemini_insight(api_key, prompt)
-    st.write(text)
+    render_executive_sections(text)
 
 with st.expander("Methodology Notes"):
     st.write(
