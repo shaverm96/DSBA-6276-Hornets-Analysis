@@ -130,6 +130,11 @@ home_page = st.Page(render_home, title="Home", icon="🏠", default=True)
 xgb_page = st.Page("pages/2_XGBoost_Analysis.py", title="XGBoost Analysis", icon="📈")
 reviews_page = st.Page("pages/3_Reviews_Text_Analysis.py", title="Reviews Text Analysis", icon="💬")
 
+logo_sidebar_path = Path(__file__).resolve().parent / "charlotte-hornets-logo-transparent.png"
+if logo_sidebar_path.exists():
+    st.sidebar.image(str(logo_sidebar_path), width=120)
+    st.sidebar.caption("Charlotte Hornets Analytics")
+
 navigation = st.navigation(
     {
         "Dashboard": [home_page],
