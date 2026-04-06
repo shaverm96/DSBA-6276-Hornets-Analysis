@@ -98,9 +98,20 @@ with c1:
         monthly["monthly_label"] = monthly["actual_attendance"].map(lambda v: f"{v:,.0f}")
         monthly["is_anomaly"] = monthly["actual_attendance"] < lower_fence
         overall_monthly_avg = monthly["actual_attendance"].mean()
+        monthly["year"] = monthly["year_month"].dt.year
+        monthly["month"] = monthly["year_month"].dt.month
 
-        tick_step = max(1, int(np.ceil(len(monthly) / 16)))
-        tick_values = monthly["ym_label"].iloc[::tick_step].tolist()
+        # Prefer NBA season anchors (October) for cleaner x-axis reading.
+        season_anchor = monthly[monthly["month"] == 10][["ym_label", "year"]].copy()
+        if not season_anchor.empty:
+            tick_values = season_anchor["ym_label"].tolist()
+            tick_text = [f"{int(y)}-{str((int(y) + 1) % 100).zfill(2)}" for y in season_anchor["year"]]
+            xaxis_title = "Season"
+        else:
+            yearly_anchor = monthly.groupby("year", as_index=False).first()[["ym_label", "year"]]
+            tick_values = yearly_anchor["ym_label"].tolist()
+            tick_text = yearly_anchor["year"].astype(str).tolist()
+            xaxis_title = "Year"
 
         fig = go.Figure()
         fig.add_trace(
@@ -151,12 +162,12 @@ with c1:
 
         fig.update_layout(
             title="Actual Attendance Over Time<br><sup>Cyan line = 3-month trend | Dashed line = overall average | Red points = anomaly months</sup>",
-            xaxis_title="Observed Game Months",
+            xaxis_title=xaxis_title,
             yaxis_title="Actual Attendance",
             legend_title="Series",
             hovermode="x unified",
             margin=dict(l=20, r=20, t=50, b=20),
-            xaxis=dict(type="category", tickangle=-45, tickmode="array", tickvals=tick_values),
+            xaxis=dict(type="category", tickangle=0, tickmode="array", tickvals=tick_values, ticktext=tick_text),
         )
         st.plotly_chart(fig, use_container_width=True)
     else:
