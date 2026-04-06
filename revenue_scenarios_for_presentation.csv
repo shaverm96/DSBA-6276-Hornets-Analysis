@@ -1,4 +1,4 @@
 scenario,flagged_low_demand_games,avg_predicted_attendance_flagged,avg_recovered_attendees_per_game,avg_recovered_revenue_per_game,seasonal_recovered_attendees,seasonal_recovered_revenue
-Conservative,143,11236.424,561.82117,53373.016,80340.43,7632341.0
-Base,143,11236.424,898.91394,85396.82,128544.695,12211745.0
-Optimistic,143,11236.424,1348.3707,128095.22,192817.02,18317616.0
+Conservative,143,12705.622,635.2811,60351.707,90845.2,8630294.0
+Base,143,12705.622,1016.44977,96562.73,145352.31,13808470.0
+Optimistic,143,12705.622,1524.6747,144844.1,218028.48,20712706.0
