@@ -72,6 +72,7 @@ c1, c2 = st.columns(2)
 with c1:
     if not view.empty and "rating" in view.columns:
         fig = px.histogram(view, x="rating", nbins=5, title="Rating Distribution")
+        fig.update_layout(xaxis_title="Star Rating", yaxis_title="Number of Reviews")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Rating distribution unavailable.")
@@ -80,7 +81,9 @@ with c2:
     if not view.empty and "sentiment_label" in view.columns:
         sent = view["sentiment_label"].value_counts().reset_index()
         sent.columns = ["sentiment_label", "count"]
+        sent["sentiment_label"] = sent["sentiment_label"].astype(str).str.title()
         fig = px.pie(sent, values="count", names="sentiment_label", title="Sentiment Distribution")
+        fig.update_layout(legend_title_text="Sentiment Label")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Sentiment distribution unavailable.")
@@ -89,6 +92,7 @@ c3, c4 = st.columns(2)
 with c3:
     if not view.empty and {"rating", "sentiment_score"}.issubset(set(view.columns)):
         fig = px.box(view, x="rating", y="sentiment_score", title="Sentiment Score by Star Rating")
+        fig.update_layout(xaxis_title="Star Rating", yaxis_title="Sentiment Score")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Sentiment vs rating chart unavailable.")
@@ -96,6 +100,7 @@ with c3:
 with c4:
     if not view.empty and "word_count" in view.columns:
         fig = px.box(view, x="rating", y="word_count", title="Review Length by Rating")
+        fig.update_layout(xaxis_title="Star Rating", yaxis_title="Review Length (Words)")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Review length chart unavailable.")
@@ -133,6 +138,7 @@ with cc1:
             title="Top Terms (Filtered View)",
             category_orders={"term": term_order},
         )
+        fig.update_layout(xaxis_title="Mention Count", yaxis_title="Term")
         fig.update_yaxes(autorange="reversed")
         st.plotly_chart(fig, use_container_width=True)
     else:
@@ -159,6 +165,11 @@ with cc2:
             orientation="h",
             title="Positive vs Negative Terms",
             category_orders={"term": term_order},
+        )
+        fig.update_layout(
+            xaxis_title="Mention Count",
+            yaxis_title="Term",
+            legend_title_text="Review Segment",
         )
         fig.update_yaxes(autorange="reversed")
         st.plotly_chart(fig, use_container_width=True)
