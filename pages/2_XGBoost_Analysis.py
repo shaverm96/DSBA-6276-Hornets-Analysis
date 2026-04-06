@@ -312,6 +312,7 @@ else:
         st.info("Feature/risk importance view unavailable.")
 
 st.markdown("### Weather and Revenue Opportunity")
+st.caption("Weather sensitivity and recoverable revenue are shown with scenario context for budget and operations planning.")
 
 w1, w2 = st.columns(2)
 with w1:
@@ -319,16 +320,69 @@ with w1:
         wm = weather_merged.copy()
         wm["precip_bin"] = pd.cut(wm["precipitation"].fillna(0), bins=[-0.001, 0, 0.1, 0.5, 100], labels=["0", "0-0.1", "0.1-0.5", ">0.5"])
         wp = wm.groupby("precip_bin", as_index=False)["actual_attendance"].mean()
-        fig = px.bar(wp, x="precip_bin", y="actual_attendance", title="Attendance by Precipitation Bucket")
-        fig.update_layout(xaxis_title="Precipitation Bucket", yaxis_title="Average Actual Attendance")
+        overall_weather_avg = float(wm["actual_attendance"].mean())
+        wp["pct_vs_overall"] = ((wp["actual_attendance"] - overall_weather_avg) / overall_weather_avg) * 100
+        wp["label"] = wp["pct_vs_overall"].map(lambda v: f"{v:+.1f}%")
+
+        fig = px.bar(
+            wp,
+            x="precip_bin",
+            y="actual_attendance",
+            title="Attendance by Precipitation Bucket",
+            color="pct_vs_overall",
+            color_continuous_scale="RdYlGn",
+            text="label",
+        )
+        fig.add_hline(y=overall_weather_avg, line_dash="dash", line_color="white", annotation_text="Overall Avg", annotation_position="top left")
+        fig.update_traces(
+            textposition="outside",
+            hovertemplate=(
+                "Precipitation Bucket=%{x}<br>Average Attendance=%{y:,.0f}<br>"
+                "vs Overall=%{customdata[0]:+.1f}%<extra></extra>"
+            ),
+            customdata=wp[["pct_vs_overall"]].to_numpy(),
+        )
+        fig.update_layout(
+            xaxis_title="Precipitation Bucket (inches)",
+            yaxis_title="Average Actual Attendance",
+            coloraxis_colorbar_title="% vs Overall",
+        )
         st.plotly_chart(fig, use_container_width=True)
+
+        wettest = wp.loc[wp["actual_attendance"].idxmin()] if not wp.empty else None
+        driest = wp.loc[wp["actual_attendance"].idxmax()] if not wp.empty else None
+        ww1, ww2, ww3 = st.columns(3)
+        ww1.metric("Overall Weather Avg", format_int(overall_weather_avg))
+        ww2.metric(
+            "Highest Attendance Bucket",
+            f"{driest['precip_bin']} ({driest['pct_vs_overall']:+.1f}%)" if driest is not None else "N/A",
+        )
+        ww3.metric(
+            "Lowest Attendance Bucket",
+            f"{wettest['precip_bin']} ({wettest['pct_vs_overall']:+.1f}%)" if wettest is not None else "N/A",
+        )
     else:
         st.info("Weather impact chart unavailable.")
 
 with w2:
     if not revenue.empty:
+        rev = revenue.copy()
+        rev["scenario"] = rev["scenario"].astype(str)
+        base_value = pd.to_numeric(
+            rev.loc[rev["scenario"].str.lower().eq("base"), "seasonal_recovered_revenue"],
+            errors="coerce",
+        )
+        if base_value.empty:
+            base_rev = float(pd.to_numeric(rev["seasonal_recovered_revenue"], errors="coerce").median())
+        else:
+            base_rev = float(base_value.iloc[0])
+
+        rev["seasonal_recovered_revenue"] = pd.to_numeric(rev["seasonal_recovered_revenue"], errors="coerce")
+        rev["pct_vs_base"] = ((rev["seasonal_recovered_revenue"] - base_rev) / base_rev) * 100
+        rev["label"] = rev["pct_vs_base"].map(lambda v: f"{v:+.1f}% vs Base")
+
         fig = px.bar(
-            revenue,
+            rev,
             x="scenario",
             y="seasonal_recovered_revenue",
             text="seasonal_recovered_revenue",
@@ -337,11 +391,50 @@ with w2:
                 "scenario": "Scenario",
                 "seasonal_recovered_revenue": "Seasonal Recovered Revenue ($)",
             },
+            color="pct_vs_base",
+            color_continuous_scale="Blues",
         )
-        fig.update_traces(texttemplate="$%{text:,.0f}", textposition="outside")
-        fig.update_layout(xaxis_title="Scenario", yaxis_title="Seasonal Recovered Revenue ($)")
+        fig.update_traces(
+            texttemplate="$%{text:,.0f}",
+            textposition="outside",
+            hovertemplate=(
+                "Scenario=%{x}<br>Recovered Revenue=$%{y:,.0f}<br>"
+                "Change vs Base=%{customdata[0]:+.1f}%<extra></extra>"
+            ),
+            customdata=rev[["pct_vs_base"]].to_numpy(),
+        )
+        fig.update_layout(
+            xaxis_title="Scenario",
+            yaxis_title="Seasonal Recovered Revenue ($)",
+            coloraxis_colorbar_title="% vs Base",
+        )
         st.plotly_chart(fig, use_container_width=True)
-        st.dataframe(revenue, use_container_width=True)
+
+        best_row = rev.sort_values("seasonal_recovered_revenue", ascending=False).iloc[0]
+        worst_row = rev.sort_values("seasonal_recovered_revenue", ascending=True).iloc[0]
+        spread_value = float(best_row["seasonal_recovered_revenue"] - worst_row["seasonal_recovered_revenue"])
+
+        rv1, rv2, rv3 = st.columns(3)
+        rv1.metric("Base Scenario Revenue", f"${base_rev:,.0f}" if pd.notna(base_rev) else "N/A")
+        rv2.metric("Best Scenario", f"{best_row['scenario']} (${best_row['seasonal_recovered_revenue']:,.0f})")
+        rv3.metric("Scenario Spread", f"${spread_value:,.0f}")
+
+        table_cols = [
+            c
+            for c in [
+                "scenario",
+                "seasonal_recovered_revenue",
+                "pct_vs_base",
+                "flagged_low_demand_games",
+                "avg_recovered_attendees_per_game",
+                "avg_recovered_revenue_per_game",
+            ]
+            if c in rev.columns
+        ]
+        table_view = rev[table_cols].copy()
+        if "pct_vs_base" in table_view.columns:
+            table_view["pct_vs_base"] = table_view["pct_vs_base"].map(lambda v: round(float(v), 2))
+        st.dataframe(table_view, use_container_width=True, hide_index=True)
     else:
         st.info("Revenue scenario artifact not found.")
 
