@@ -669,9 +669,6 @@ if st.button("Generate Executive Insight Summary", type="primary"):
         },
         "kpis": {
             "avg_actual_attendance": metrics.get("avg_actual_attendance", np.nan),
-            "r2": r2_value,
-            "rmse": rmse_value,
-            "mae": mae_value,
             "low_demand_games": metrics.get("low_demand_games", np.nan),
             "weekday_weekend_diff": weekday_weekend_diff,
         },
@@ -684,6 +681,7 @@ if st.button("Generate Executive Insight Summary", type="primary"):
         "Use ONLY the provided dashboard data. Do not invent values, teams, or outcomes.\n"
         "Write in clear business language suitable for a live presentation.\n"
         "Pull details directly from the page context (filters, KPIs, revenue scenarios, and top risk rows).\n\n"
+        "Do NOT focus on model-performance commentary; focus on business impact, operational risk, and revenue implications.\n\n"
         "Return EXACTLY these sections:\n"
         "1) Executive Summary (3 bullets):\n"
         "   - The most important demand, risk, and revenue story from this view.\n"

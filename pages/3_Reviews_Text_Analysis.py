@@ -273,6 +273,7 @@ if st.button("Generate Review Executive Summary", type="primary"):
         "Use ONLY the provided data context. Do not invent values, themes, or recommendations.\n"
         "Translate NLP outputs into concrete business implications.\n"
         "Pull specific evidence from KPIs, sentiment split, top terms, themes, and recommendations shown on the page.\n\n"
+        "Do NOT discuss model quality, NLP accuracy, or technical performance; focus on customer and business impacts.\n\n"
         "Return EXACTLY these sections:\n"
         "1) Executive Summary (3 bullets):\n"
         "   - Overall customer sentiment and experience story in this filtered view.\n"
