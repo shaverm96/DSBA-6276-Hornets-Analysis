@@ -123,7 +123,17 @@ bigrams_neg = top_terms(neg, (2, 2), 12)
 cc1, cc2 = st.columns(2)
 with cc1:
     if not terms_all.empty:
-        fig = px.bar(terms_all.head(15), x="count", y="term", orientation="h", title="Top Terms (Filtered View)")
+        top_terms_plot = terms_all.head(15).copy()
+        term_order = top_terms_plot["term"].tolist()
+        fig = px.bar(
+            top_terms_plot,
+            x="count",
+            y="term",
+            orientation="h",
+            title="Top Terms (Filtered View)",
+            category_orders={"term": term_order},
+        )
+        fig.update_yaxes(autorange="reversed")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Top terms unavailable.")
@@ -134,7 +144,23 @@ with cc2:
         top_terms(neg, (1, 1), 12).assign(group="Negative"),
     ])
     if not compare.empty:
-        fig = px.bar(compare, x="count", y="term", color="group", barmode="group", orientation="h", title="Positive vs Negative Terms")
+        term_order = (
+            compare.groupby("term", as_index=False)["count"]
+            .max()
+            .sort_values("count", ascending=False)["term"]
+            .tolist()
+        )
+        fig = px.bar(
+            compare,
+            x="count",
+            y="term",
+            color="group",
+            barmode="group",
+            orientation="h",
+            title="Positive vs Negative Terms",
+            category_orders={"term": term_order},
+        )
+        fig.update_yaxes(autorange="reversed")
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Comparison terms unavailable.")
