@@ -374,40 +374,6 @@ if not marquee_weather_source.empty and year_filter and "game_date" in marquee_w
 
 marquee_weather_avg = build_marquee_weather_attendance(marquee_weather_source)
 if not marquee_weather_avg.empty:
-    theme_base = (st.get_option("theme.base") or "").lower()
-    theme_text_color = (st.get_option("theme.textColor") or "").strip()
-    theme_bg_color = (st.get_option("theme.backgroundColor") or st.get_option("theme.secondaryBackgroundColor") or "").strip()
-
-    def _is_light_hex(color: str) -> bool:
-        if not isinstance(color, str) or not color.startswith("#"):
-            return False
-        hex_color = color.lstrip("#")
-        if len(hex_color) == 3:
-            hex_color = "".join(ch * 2 for ch in hex_color)
-        if len(hex_color) != 6:
-            return False
-        try:
-            r = int(hex_color[0:2], 16)
-            g = int(hex_color[2:4], 16)
-            b = int(hex_color[4:6], 16)
-        except ValueError:
-            return False
-        # WCAG relative luminance approximation threshold for light backgrounds.
-        luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255
-        return luminance > 0.6
-
-    if theme_text_color:
-        contrast_text_color = theme_text_color
-    elif _is_light_hex(theme_bg_color):
-        contrast_text_color = "#111827"
-    elif theme_base == "light":
-        contrast_text_color = "#111827"
-    elif theme_base == "dark":
-        contrast_text_color = "#e5e7eb"
-    else:
-        # Prefer dark default so labels remain readable when theme metadata is missing.
-        contrast_text_color = "#111827"
-
     marquee_weather_avg = marquee_weather_avg.copy()
     marquee_weather_avg["avg_attendance"] = pd.to_numeric(marquee_weather_avg["avg_attendance"], errors="coerce")
     marquee_weather_avg["avg_label"] = marquee_weather_avg["avg_attendance"].map(
@@ -442,27 +408,16 @@ if not marquee_weather_avg.empty:
     fig.update_traces(
         textposition="outside",
         cliponaxis=False,
-        textfont=dict(color=contrast_text_color, size=12),
+        textfont=dict(size=12),
         hovertemplate=(
             "Game Type=%{x}<br>Weather=%{fullData.name}<br>Average Attendance=%{y:,.0f}<extra></extra>"
         )
     )
     fig.update_layout(
-        font=dict(color=contrast_text_color),
         xaxis_title="Game Type",
         yaxis_title="Average Attendance",
-        xaxis=dict(
-            title=dict(text="Game Type", font=dict(color=contrast_text_color)),
-            tickfont=dict(color=contrast_text_color),
-        ),
         yaxis=dict(
             range=[y_floor, y_ceiling],
-            title=dict(text="Average Attendance", font=dict(color=contrast_text_color)),
-            tickfont=dict(color=contrast_text_color),
-        ),
-        legend=dict(
-            title=dict(text="", font=dict(color=contrast_text_color)),
-            font=dict(color=contrast_text_color),
         ),
         legend_title="",
         margin=dict(l=20, r=20, t=20, b=20),
