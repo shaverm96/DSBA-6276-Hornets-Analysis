@@ -374,7 +374,8 @@ if not marquee_weather_source.empty and year_filter and "game_date" in marquee_w
 
 marquee_weather_avg = build_marquee_weather_attendance(marquee_weather_source)
 if not marquee_weather_avg.empty:
-    dark_text_color = "#111827"
+    theme_base = (st.get_option("theme.base") or "").lower()
+    contrast_text_color = "#111827" if theme_base == "light" else "#e5e7eb"
 
     marquee_weather_avg = marquee_weather_avg.copy()
     marquee_weather_avg["avg_attendance"] = pd.to_numeric(marquee_weather_avg["avg_attendance"], errors="coerce")
@@ -410,27 +411,27 @@ if not marquee_weather_avg.empty:
     fig.update_traces(
         textposition="outside",
         cliponaxis=False,
-        textfont=dict(color=dark_text_color, size=12),
+        textfont=dict(color=contrast_text_color, size=12),
         hovertemplate=(
             "Game Type=%{x}<br>Weather=%{fullData.name}<br>Average Attendance=%{y:,.0f}<extra></extra>"
         )
     )
     fig.update_layout(
-        font=dict(color=dark_text_color),
+        font=dict(color=contrast_text_color),
         xaxis_title="Game Type",
         yaxis_title="Average Attendance",
         xaxis=dict(
-            title=dict(text="Game Type", font=dict(color=dark_text_color)),
-            tickfont=dict(color=dark_text_color),
+            title=dict(text="Game Type", font=dict(color=contrast_text_color)),
+            tickfont=dict(color=contrast_text_color),
         ),
         yaxis=dict(
             range=[y_floor, y_ceiling],
-            title=dict(text="Average Attendance", font=dict(color=dark_text_color)),
-            tickfont=dict(color=dark_text_color),
+            title=dict(text="Average Attendance", font=dict(color=contrast_text_color)),
+            tickfont=dict(color=contrast_text_color),
         ),
         legend=dict(
-            title=dict(text="", font=dict(color=dark_text_color)),
-            font=dict(color=dark_text_color),
+            title=dict(text="", font=dict(color=contrast_text_color)),
+            font=dict(color=contrast_text_color),
         ),
         legend_title="",
         margin=dict(l=20, r=20, t=20, b=20),
