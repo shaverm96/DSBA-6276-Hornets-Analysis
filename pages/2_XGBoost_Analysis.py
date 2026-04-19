@@ -373,65 +373,38 @@ if not marquee_weather_source.empty and year_filter and "game_date" in marquee_w
     marquee_weather_source = marquee_weather_source[marquee_weather_source["game_date"].dt.year.isin(year_filter)].copy()
 
 marquee_weather_avg = build_marquee_weather_attendance(marquee_weather_source)
-with st.container(border=True):
-    if not marquee_weather_avg.empty:
-        fig = go.Figure()
-        color_map = {"Good Weather": "#4A76C2", "Bad Weather": "#EC7C31"}
-
-        for weather_type in ["Good Weather", "Bad Weather"]:
-            series = marquee_weather_avg[marquee_weather_avg["weather_type"] == weather_type]
-            fig.add_trace(
-                go.Bar(
-                    x=series["game_type"],
-                    y=series["avg_attendance"],
-                    name=weather_type,
-                    marker_color=color_map[weather_type],
-                    hovertemplate=(
-                        "Game Type=%{x}<br>Weather=%{fullData.name}<br>Average Attendance=%{y:,.0f}<extra></extra>"
-                    ),
-                )
-            )
-
-        min_y = float(marquee_weather_avg["avg_attendance"].min(skipna=True)) if marquee_weather_avg["avg_attendance"].notna().any() else 0
-        max_y = float(marquee_weather_avg["avg_attendance"].max(skipna=True)) if marquee_weather_avg["avg_attendance"].notna().any() else 1
-        y_floor = max(min_y - 1200, 0)
-        y_ceiling = max_y + 1200
-
-        fig.update_layout(
-            barmode="group",
-            height=460,
-            margin=dict(l=18, r=18, t=26, b=18),
-            paper_bgcolor="rgba(17, 8, 68, 0.98)",
-            plot_bgcolor="rgba(17, 8, 68, 0.98)",
-            xaxis=dict(
-                categoryorder="array",
-                categoryarray=["Marquee Game", "Non-Marquee Game"],
-                tickfont=dict(size=15, color="#e5e7eb"),
-                showline=True,
-                linecolor="#a3a3a3",
-                gridcolor="rgba(255,255,255,0)",
-            ),
-            yaxis=dict(
-                title=dict(text="Average Attendance", font=dict(size=13, color="#e5e7eb")),
-                tickfont=dict(size=12, color="#e5e7eb"),
-                range=[y_floor, y_ceiling],
-                gridcolor="rgba(148, 163, 184, 0.28)",
-                zeroline=False,
-            ),
-            legend=dict(
-                orientation="v",
-                yanchor="middle",
-                y=0.5,
-                xanchor="left",
-                x=1.02,
-                font=dict(size=13, color="#e5e7eb"),
-                bgcolor="rgba(0,0,0,0)",
-            ),
+if not marquee_weather_avg.empty:
+    fig = px.bar(
+        marquee_weather_avg,
+        x="game_type",
+        y="avg_attendance",
+        color="weather_type",
+        barmode="group",
+        color_discrete_map={"Good Weather": "#4A76C2", "Bad Weather": "#EC7C31"},
+        category_orders={
+            "game_type": ["Marquee Game", "Non-Marquee Game"],
+            "weather_type": ["Good Weather", "Bad Weather"],
+        },
+        labels={
+            "game_type": "Game Type",
+            "avg_attendance": "Average Attendance",
+            "weather_type": "Weather",
+        },
+    )
+    fig.update_traces(
+        hovertemplate=(
+            "Game Type=%{x}<br>Weather=%{fullData.name}<br>Average Attendance=%{y:,.0f}<extra></extra>"
         )
-
-        st.plotly_chart(fig, use_container_width=True)
-    else:
-        st.info("Marquee vs weather attendance view unavailable for current filter.")
+    )
+    fig.update_layout(
+        xaxis_title="Game Type",
+        yaxis_title="Average Attendance",
+        legend_title="",
+        margin=dict(l=20, r=20, t=20, b=20),
+    )
+    st.plotly_chart(fig, use_container_width=True)
+else:
+    st.info("Marquee vs weather attendance view unavailable for current filter.")
 
 st.markdown("### Feature Importance and Risk Signals")
 st.caption("Frequency and concentration of demand-risk drivers identified in low-demand game diagnostics.")
