@@ -58,6 +58,105 @@ if not view.empty:
     if year_filter and "game_date" in view.columns:
         view = view[view["game_date"].dt.year.isin(year_filter)].copy()
 
+
+def build_marquee_weather_attendance(df: pd.DataFrame) -> pd.DataFrame:
+    """Create grouped averages for marquee/non-marquee by weather quality."""
+    if df.empty or "actual_attendance" not in df.columns:
+        return pd.DataFrame()
+
+    work = df.copy()
+    work["actual_attendance"] = pd.to_numeric(work["actual_attendance"], errors="coerce")
+    work = work.dropna(subset=["actual_attendance"]).copy()
+    if work.empty:
+        return pd.DataFrame()
+
+    marquee_col_candidates = [
+        "is_marquee_game",
+        "marquee_game",
+        "marquee_flag",
+        "premium_opponent_flag",
+        "high_profile_matchup",
+    ]
+    marquee_col = next((c for c in marquee_col_candidates if c in work.columns), None)
+
+    if marquee_col is not None:
+        marquee_raw = work[marquee_col]
+        if pd.api.types.is_numeric_dtype(marquee_raw) or pd.api.types.is_bool_dtype(marquee_raw):
+            marquee_mask = pd.to_numeric(marquee_raw, errors="coerce").fillna(0).astype(float).gt(0)
+        else:
+            marquee_mask = marquee_raw.astype(str).str.strip().str.lower().isin(["1", "true", "yes", "y", "marquee"])
+    elif "opponent_all_stars_count" in work.columns:
+        marquee_mask = pd.to_numeric(work["opponent_all_stars_count"], errors="coerce").fillna(0).ge(1)
+    elif "key_explanatory_factors" in work.columns:
+        # Existing notebook artifact uses "Weak Opponent" as the non-marquee signal.
+        weak_mask = work["key_explanatory_factors"].fillna("").astype(str).str.contains("Weak Opponent", case=False, regex=False)
+        marquee_mask = ~weak_mask
+    else:
+        marquee_mask = pd.Series(False, index=work.index)
+
+    work["game_type"] = np.where(marquee_mask, "Marquee Game", "Non-Marquee Game")
+
+    weather_col_candidates = [
+        "weather_category",
+        "weather_bucket",
+        "weather_flag",
+        "is_bad_weather",
+        "bad_weather_flag",
+    ]
+    weather_col = next((c for c in weather_col_candidates if c in work.columns), None)
+
+    if weather_col is not None:
+        weather_raw = work[weather_col]
+        if pd.api.types.is_numeric_dtype(weather_raw) or pd.api.types.is_bool_dtype(weather_raw):
+            bad_weather_mask = pd.to_numeric(weather_raw, errors="coerce").fillna(0).astype(float).gt(0)
+        else:
+            bad_weather_mask = weather_raw.astype(str).str.strip().str.lower().isin(
+                ["1", "true", "yes", "y", "bad", "bad weather", "unfavorable"]
+            )
+    elif "key_explanatory_factors" in work.columns:
+        # Prefer existing model weather categorization when present in risk factors.
+        bad_weather_mask = work["key_explanatory_factors"].fillna("").astype(str).str.contains("Bad Weather", case=False, regex=False)
+    else:
+        bad_weather_mask = pd.Series(False, index=work.index)
+
+    unresolved_weather = ~bad_weather_mask
+    if "precipitation" in work.columns:
+        unresolved_weather = unresolved_weather & work["precipitation"].notna()
+
+    if unresolved_weather.any():
+        precip_mask = pd.Series(False, index=work.index)
+        wind_mask = pd.Series(False, index=work.index)
+        descr_mask = pd.Series(False, index=work.index)
+
+        if "precipitation" in work.columns:
+            precip_mask = pd.to_numeric(work["precipitation"], errors="coerce").fillna(0).ge(0.1)
+        if "windy" in work.columns:
+            wind_mask = pd.to_numeric(work["windy"], errors="coerce").fillna(0).gt(0)
+        elif "wind_speed" in work.columns:
+            wind_mask = pd.to_numeric(work["wind_speed"], errors="coerce").fillna(0).ge(15)
+        if "weather_description" in work.columns:
+            descr_mask = work["weather_description"].fillna("").astype(str).str.contains(
+                r"rain|drizzle|storm|thunder|snow|sleet|ice|fog", case=False, regex=True
+            )
+
+        weather_from_meteo = precip_mask | wind_mask | descr_mask
+        bad_weather_mask = bad_weather_mask | (unresolved_weather & weather_from_meteo)
+
+    work["weather_type"] = np.where(bad_weather_mask, "Bad Weather", "Good Weather")
+
+    grouped = (
+        work.groupby(["game_type", "weather_type"], as_index=False)["actual_attendance"]
+        .mean()
+        .rename(columns={"actual_attendance": "avg_attendance"})
+    )
+
+    expected = pd.MultiIndex.from_product(
+        [["Marquee Game", "Non-Marquee Game"], ["Good Weather", "Bad Weather"]],
+        names=["game_type", "weather_type"],
+    )
+    grouped = grouped.set_index(["game_type", "weather_type"]).reindex(expected).reset_index()
+    return grouped
+
 st.markdown("### Business and Demand KPIs")
 
 low_demand_games = np.nan
@@ -265,6 +364,77 @@ with c4:
         st.plotly_chart(fig, use_container_width=True)
     else:
         st.info("Opponent chart unavailable.")
+
+st.markdown("### Marquee vs Weather Attendance")
+st.caption("Average attendance split by game profile (marquee vs non-marquee) and game-day weather quality.")
+
+marquee_weather_source = weather_merged.copy()
+if not marquee_weather_source.empty and year_filter and "game_date" in marquee_weather_source.columns:
+    marquee_weather_source = marquee_weather_source[marquee_weather_source["game_date"].dt.year.isin(year_filter)].copy()
+
+marquee_weather_avg = build_marquee_weather_attendance(marquee_weather_source)
+with st.container(border=True):
+    if not marquee_weather_avg.empty:
+        fig = go.Figure()
+        color_map = {"Good Weather": "#4A76C2", "Bad Weather": "#EC7C31"}
+
+        for weather_type in ["Good Weather", "Bad Weather"]:
+            series = marquee_weather_avg[marquee_weather_avg["weather_type"] == weather_type]
+            fig.add_trace(
+                go.Bar(
+                    x=series["game_type"],
+                    y=series["avg_attendance"],
+                    name=weather_type,
+                    marker_color=color_map[weather_type],
+                    hovertemplate=(
+                        "Game Type=%{x}<br>Weather=%{fullData.name}<br>Average Attendance=%{y:,.0f}<extra></extra>"
+                    ),
+                )
+            )
+
+        min_y = float(marquee_weather_avg["avg_attendance"].min(skipna=True)) if marquee_weather_avg["avg_attendance"].notna().any() else 0
+        max_y = float(marquee_weather_avg["avg_attendance"].max(skipna=True)) if marquee_weather_avg["avg_attendance"].notna().any() else 1
+        y_floor = max(min_y - 1200, 0)
+        y_ceiling = max_y + 1200
+
+        fig.update_layout(
+            barmode="group",
+            height=460,
+            margin=dict(l=18, r=18, t=26, b=18),
+            paper_bgcolor="rgba(17, 8, 68, 0.98)",
+            plot_bgcolor="rgba(17, 8, 68, 0.98)",
+            xaxis=dict(
+                title="",
+                categoryorder="array",
+                categoryarray=["Marquee Game", "Non-Marquee Game"],
+                tickfont=dict(size=15, color="#e5e7eb"),
+                showline=True,
+                linecolor="#a3a3a3",
+                gridcolor="rgba(255,255,255,0)",
+            ),
+            yaxis=dict(
+                title="Average Attendance",
+                tickfont=dict(size=12, color="#e5e7eb"),
+                titlefont=dict(size=13, color="#e5e7eb"),
+                range=[y_floor, y_ceiling],
+                gridcolor="rgba(148, 163, 184, 0.28)",
+                zeroline=False,
+            ),
+            legend=dict(
+                title="",
+                orientation="v",
+                yanchor="middle",
+                y=0.5,
+                xanchor="left",
+                x=1.02,
+                font=dict(size=13, color="#e5e7eb"),
+                bgcolor="rgba(0,0,0,0)",
+            ),
+        )
+
+        st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.info("Marquee vs weather attendance view unavailable for current filter.")
 
 st.markdown("### Feature Importance and Risk Signals")
 st.caption("Frequency and concentration of demand-risk drivers identified in low-demand game diagnostics.")
