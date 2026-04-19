@@ -1,477 +1,477 @@
 game_date,opponent,day_of_week,predicted_attendance,actual_attendance,demand_tier,low_demand_risk_flag,key_explanatory_factors
-2021-02-15,San Antonio Spurs,Monday,4214.1484,0,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2021-02-13,Minnesota Timberwolves,Saturday,4759.9175,0,Low,1,"Weak Opponent, Bad Weather"
-2021-04-14,Los Angeles Lakers,Wednesday,5009.528,3676,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2020-12-27,Oklahoma City Thunder,Sunday,5181.191,0,Low,1,Weak Opponent
-2021-05-09,New Orleans Pelicans,Sunday,5225.4927,4196,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
-2021-04-14,Cleveland Cavaliers,Wednesday,5236.4033,2955,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2021-01-31,Milwaukee Bucks,Sunday,5470.7954,0,Low,1,"Bad Weather, Dense Schedule"
-2021-04-27,Milwaukee Bucks,Tuesday,5574.6943,3240,Low,1,"Weekday, Dense Schedule"
-2021-01-30,Indiana Pacers,Saturday,6023.148,0,Low,1,"Weak Opponent, Dense Schedule"
-2021-01-28,Indiana Pacers,Thursday,6052.7666,0,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2021-02-04,Philadelphia 76ers,Thursday,6153.6587,0,Low,1,Weekday
-2021-05-03,Miami Heat,Monday,6185.7646,4095,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2026-03-21,Memphis Grizzlies,Saturday,6355.9097,19487,Low,1,"Weak Opponent, Dense Schedule"
-2021-01-10,Atlanta Hawks,Sunday,6620.52,0,Low,1,Weak Opponent
-2021-02-21,Golden State Warriors,Sunday,6625.319,0,Low,1,No major risk signal
-2025-01-25,Portland Trail Blazers,Saturday,7770.001,16228,Low,1,Weak Opponent
-2026-04-03,Indiana Pacers,Friday,7891.8315,19579,Low,1,Dense Schedule
-2024-12-04,Philadelphia 76ers,Wednesday,8739.611,14956,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2021-03-12,Detroit Pistons,Friday,9448.514,0,Low,1,Weak Opponent
-2021-05-06,Chicago Bulls,Thursday,9529.441,3769,Low,1,"Weekday, Weak Opponent"
-2021-03-14,Toronto Raptors,Sunday,9987.481,2861,Low,1,"Weak Opponent, Dense Schedule"
-2021-05-01,Detroit Pistons,Saturday,10027.3955,3766,Low,1,Weak Opponent
-2021-03-27,Miami Heat,Saturday,10176.19,4215,Low,1,Bad Weather
-2021-02-06,Utah Jazz,Saturday,10322.915,0,Low,1,"Bad Weather, Dense Schedule"
-2026-03-04,Dallas Mavericks,Wednesday,10374.663,19519,Low,1,"Weekday, Weak Opponent"
-2021-05-11,Denver Nuggets,Tuesday,10493.641,3997,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2021-03-28,Phoenix Suns,Sunday,10683.076,3850,Low,1,"Bad Weather, Dense Schedule"
-2021-04-11,Atlanta Hawks,Sunday,10853.55,4148,Low,1,"Weak Opponent, Bad Weather"
-2026-01-31,San Antonio Spurs,Saturday,10860.067,19533,Low,1,Bad Weather
-2021-05-08,Orlando Magic,Saturday,10882.493,3751,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
-2021-04-25,Boston Celtics,Sunday,11057.191,4493,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
-2024-10-30,Toronto Raptors,Wednesday,11399.129,13113,Low,1,"Weekday, Weak Opponent"
-2021-02-07,Washington Wizards,Sunday,11466.104,0,Low,1,"Bad Weather, Dense Schedule"
-2021-04-18,Portland Trail Blazers,Sunday,11641.833,3880,Low,1,No major risk signal
-2021-01-12,New York Knicks,Tuesday,11664.321,0,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2019-10-25,Minnesota Timberwolves,Friday,12241.796,14879,Low,1,"Weak Opponent, Dense Schedule"
-2026-04-02,Phoenix Suns,Thursday,12262.715,19594,Low,1,Weekday
-2021-01-14,Dallas Mavericks,Thursday,12486.158,0,Low,1,"Weekday, Dense Schedule"
-2021-03-15,Sacramento Kings,Monday,12588.719,2861,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2022-04-07,Orlando Magic,Thursday,12743.069,16427,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2018-01-18,Washington Wizards,Thursday,12767.32,11528,Low,1,"Weekday, Weak Opponent"
-2018-01-25,New Orleans Pelicans,Thursday,12772.462,14588,Low,1,"Weekday, Dense Schedule"
-2026-02-02,New Orleans Pelicans,Monday,12791.684,17263,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2023-10-27,Detroit Pistons,Friday,12817.257,15855,Low,1,"Weak Opponent, Dense Schedule"
-2017-10-20,Atlanta Hawks,Friday,12818.037,18417,Low,1,Weak Opponent
-2025-12-30,Milwaukee Bucks,Tuesday,12836.206,19562,Low,1,Weekday
-2022-10-31,Sacramento Kings,Monday,12904.909,12020,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2022-03-06,San Antonio Spurs,Sunday,12928.564,18941,Low,1,"Weak Opponent, Bad Weather"
-2018-11-29,Atlanta Hawks,Thursday,13129.263,12971,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2017-12-09,Chicago Bulls,Saturday,13132.725,14077,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
-2021-01-23,Chicago Bulls,Saturday,13292.317,0,Low,1,Weak Opponent
-2021-04-24,Cleveland Cavaliers,Saturday,13356.069,4060,Low,1,"Weak Opponent, Bad Weather"
-2026-03-26,New York Knicks,Thursday,13409.093,19625,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2022-03-19,Dallas Mavericks,Saturday,13480.951,19279,Low,1,Bad Weather
-2015-11-19,Brooklyn Nets,Thursday,13505.75,14040,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2017-03-13,Chicago Bulls,Monday,13509.889,16489,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2026-03-17,Miami Heat,Tuesday,13578.716,19478,Low,1,Weekday
-2026-03-07,Miami Heat,Saturday,13636.61,19653,Low,1,Bad Weather
-2022-11-17,Indiana Pacers,Thursday,13649.422,14756,Low,1,"Weekday, Weak Opponent"
-2025-12-31,Golden State Warriors,Wednesday,13657.268,19685,Low,1,"Weekday, Dense Schedule"
-2021-02-09,Houston Rockets,Tuesday,13657.283,0,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2019-12-03,Phoenix Suns,Tuesday,13742.175,11221,Low,1,"Weekday, Weak Opponent"
-2019-11-14,Memphis Grizzlies,Thursday,13810.099,13155,Low,1,"Weekday, Weak Opponent"
-2018-11-07,Atlanta Hawks,Wednesday,13812.693,13955,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2018-12-08,Denver Nuggets,Saturday,13857.456,13755,Low,1,Bad Weather
-2019-12-11,Washington Wizards,Wednesday,13878.658,10626,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2021-12-11,Sacramento Kings,Saturday,13902.988,16335,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
-2023-03-20,Indiana Pacers,Monday,13949.076,12449,Low,1,"Weekday, Weak Opponent"
-2016-02-09,Chicago Bulls,Tuesday,14004.066,15886,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2015-03-11,Sacramento Kings,Wednesday,14055.53,15885,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2015-04-01,Detroit Pistons,Wednesday,14057.95,15372,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2018-11-27,Milwaukee Bucks,Tuesday,14067.024,13805,Low,1,"Weekday, Bad Weather"
-2015-01-15,San Antonio Spurs,Thursday,14106.7295,17309,Low,1,Weekday
-2019-04-11,Orlando Magic,Thursday,14116.726,17719,Low,1,"Weekday, Weak Opponent"
-2019-12-18,Sacramento Kings,Wednesday,14136.014,13229,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2018-03-09,Brooklyn Nets,Friday,14140.377,14173,Low,1,"Weak Opponent, Dense Schedule"
-2020-12-28,Brooklyn Nets,Monday,14161.899,0,Low,1,"Weekday, Dense Schedule"
-2025-02-04,Washington Wizards,Tuesday,14201.831,14129,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2022-12-15,Detroit Pistons,Thursday,14230.205,14303,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2019-03-07,Miami Heat,Thursday,14231.08,18137,Low,1,"Weekday, Weak Opponent"
-2024-02-08,Toronto Raptors,Thursday,14244.56,11720,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2022-01-11,Milwaukee Bucks,Tuesday,14259.615,14253,Low,1,"Weekday, Dense Schedule"
-2022-03-21,New Orleans Pelicans,Monday,14264.277,13351,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2024-11-30,Atlanta Hawks,Saturday,14265.95,17969,Low,1,"Weak Opponent, Dense Schedule"
-2022-11-08,Washington Wizards,Tuesday,14325.168,13712,Low,1,"Weekday, Weak Opponent"
-2023-02-16,San Antonio Spurs,Thursday,14345.196,14155,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2017-10-25,Denver Nuggets,Wednesday,14362.395,14253,Low,1,"Weekday, Weak Opponent"
-2017-02-14,Philadelphia 76ers,Tuesday,14368.326,15775,Low,1,"Weekday, Weak Opponent"
-2018-01-23,Sacramento Kings,Tuesday,14379.566,11806,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2019-11-28,Detroit Pistons,Thursday,14384.534,15535,Low,1,"Weekday, Weak Opponent"
-2024-12-17,Philadelphia 76ers,Tuesday,14411.158,14677,Low,1,"Weekday, Weak Opponent"
-2018-03-26,New York Knicks,Monday,14425.705,14487,Low,1,"Weekday, Weak Opponent"
-2019-03-21,Minnesota Timberwolves,Thursday,14433.315,15576,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2024-04-03,Portland Trail Blazers,Wednesday,14438.52,14209,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2021-12-28,Houston Rockets,Tuesday,14438.722,19349,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2015-04-13,Houston Rockets,Monday,14447.842,15797,Low,1,Weekday
-2020-03-04,San Antonio Spurs,Wednesday,14452.5205,12008,Low,1,"Weekday, Weak Opponent"
-2018-12-20,Cleveland Cavaliers,Thursday,14453.6045,15179,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2015-02-11,Detroit Pistons,Wednesday,14456.837,15876,Low,1,"Weekday, Weak Opponent"
-2023-10-30,Brooklyn Nets,Monday,14467.599,14491,Low,1,"Weekday, Weak Opponent"
-2018-12-31,Orlando Magic,Monday,14478.978,14694,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2017-12-16,Miami Heat,Saturday,14480.475,15565,Low,1,Weak Opponent
-2024-12-24,Houston Rockets,Tuesday,14481.678,19134,Low,1,"Weekday, Weak Opponent"
-2023-11-09,Washington Wizards,Thursday,14504.222,14267,Low,1,"Weekday, Weak Opponent"
-2018-12-01,Utah Jazz,Saturday,14537.363,15812,Low,1,"Bad Weather, Dense Schedule"
-2014-12-23,Denver Nuggets,Tuesday,14537.402,16913,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2022-02-28,Detroit Pistons,Monday,14542.063,15348,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2023-02-28,Detroit Pistons,Tuesday,14542.112,14184,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2018-10-30,Miami Heat,Tuesday,14543.124,14117,Low,1,"Weekday, Weak Opponent"
-2022-01-15,Orlando Magic,Saturday,14553.238,16011,Low,1,Weak Opponent
-2025-11-29,Chicago Bulls,Saturday,14556.738,19453,Low,1,"Weak Opponent, Dense Schedule"
-2017-03-26,Phoenix Suns,Sunday,14577.668,17292,Low,1,"Weak Opponent, Dense Schedule"
-2026-02-12,Atlanta Hawks,Thursday,14585.775,18710,Low,1,"Weekday, Dense Schedule"
-2015-03-25,Brooklyn Nets,Wednesday,14589.009,15091,Low,1,"Weekday, Weak Opponent"
-2023-12-12,Miami Heat,Tuesday,14594.66,15543,Low,1,"Weekday, Weak Opponent"
-2025-11-29,Toronto Raptors,Saturday,14661.68,17060,Low,1,Dense Schedule
-2023-03-14,Cleveland Cavaliers,Tuesday,14662.64,14690,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2026-03-24,Sacramento Kings,Tuesday,14702.536,19450,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2021-12-09,Philadelphia 76ers,Thursday,14711.201,15709,Low,1,"Weekday, Dense Schedule"
-2023-04-04,Toronto Raptors,Tuesday,14713.416,14965,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2024-02-01,Chicago Bulls,Thursday,14721.459,13712,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2020-01-29,New York Knicks,Wednesday,14725.113,14342,Low,1,"Weekday, Weak Opponent"
-2016-02-07,Washington Wizards,Sunday,14726.062,18450,Low,1,"Weak Opponent, Dense Schedule"
-2018-02-28,Chicago Bulls,Wednesday,14726.077,14521,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2014-12-11,Boston Celtics,Thursday,14733.588,15276,Low,1,"Weekday, Weak Opponent"
-2025-12-24,Washington Wizards,Wednesday,14752.62,18679,Low,1,"Weekday, Weak Opponent"
-2019-12-05,Golden State Warriors,Thursday,14762.284,14355,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2020-03-01,Milwaukee Bucks,Sunday,14767.349,19149,Low,1,No major risk signal
-2024-03-27,Cleveland Cavaliers,Wednesday,14768.885,15303,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2017-11-21,Minnesota Timberwolves,Tuesday,14801.2,15978,Low,1,"Weekday, Bad Weather, Dense Schedule"
-2020-02-04,Orlando Magic,Tuesday,14828.931,12337,Low,1,"Weekday, Weak Opponent"
-2025-01-30,Brooklyn Nets,Thursday,14832.588,14307,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2017-03-12,New Orleans Pelicans,Sunday,14840.967,18196,Low,1,"Bad Weather, Dense Schedule"
-2016-03-10,New Orleans Pelicans,Thursday,14893.924,16335,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2022-03-09,Brooklyn Nets,Wednesday,14895.522,17230,Low,1,"Weekday, Bad Weather"
-2017-01-19,Portland Trail Blazers,Thursday,14899.589,15451,Low,1,"Weekday, Weak Opponent"
-2015-03-30,Boston Celtics,Monday,14907.554,15140,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2016-02-06,Miami Heat,Saturday,14915.648,19147,Low,1,"Weak Opponent, Dense Schedule"
-2025-03-18,Atlanta Hawks,Tuesday,14933.898,15341,Low,1,"Weekday, Weak Opponent"
-2019-11-06,Indiana Pacers,Wednesday,14959.11,13341,Low,1,"Weekday, Weak Opponent"
-2015-01-08,New Orleans Pelicans,Thursday,14982.18,15171,Low,1,"Weekday, Bad Weather"
-2025-03-25,Orlando Magic,Tuesday,14984.451,14639,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2016-03-08,Minnesota Timberwolves,Tuesday,14988.128,15912,Low,1,"Weekday, Weak Opponent"
-2020-02-27,New York Knicks,Thursday,14995.516,13152,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2014-12-30,Milwaukee Bucks,Tuesday,14999.032,17430,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2016-01-17,Milwaukee Bucks,Sunday,15005.629,18288,Low,1,"Weak Opponent, Bad Weather"
-2024-01-30,New York Knicks,Tuesday,15017.978,15546,Low,1,"Weekday, Dense Schedule"
-2026-01-26,Philadelphia 76ers,Monday,15026.28,16361,Low,1,"Weekday, Dense Schedule"
-2018-02-23,Brooklyn Nets,Friday,15078.164,14112,Low,1,Weak Opponent
-2017-11-23,Washington Wizards,Thursday,15082.44,16041,Low,1,"Weekday, Weak Opponent, Dense Schedule"
-2016-11-08,Indiana Pacers,Tuesday,15088.404,16880,Low,1,"Weekday, Weak Opponent"
-2024-11-07,Detroit Pistons,Thursday,15088.708,13247,Low,1,"Weekday, Bad Weather"
-2024-11-09,Indiana Pacers,Saturday,15115.254,17024,Low,1,Dense Schedule
-2021-05-13,LA Clippers,Thursday,15135.012,4442,Low,1,"Weekday, Dense Schedule"
-2022-02-08,Toronto Raptors,Tuesday,15140.346,14102,Low,1,"Weekday, Dense Schedule"
-2024-02-15,Atlanta Hawks,Thursday,15140.802,14336,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2025-10-22,Brooklyn Nets,Wednesday,15147.432,19516,Low,1,"Weekday, Weak Opponent, Bad Weather"
-2015-11-24,Sacramento Kings,Tuesday,15149.349,14163,Medium,0,Weekday
-2022-03-23,New York Knicks,Wednesday,15172.078,16290,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2016-03-16,Orlando Magic,Wednesday,15183.195,16148,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2017-03-11,Orlando Magic,Saturday,15194.273,17444,Medium,0,Weak Opponent
-2021-10-20,Indiana Pacers,Wednesday,15201.713,15521,Medium,0,"Weekday, Weak Opponent"
-2016-01-18,Utah Jazz,Monday,15205.311,17459,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2018-11-01,Oklahoma City Thunder,Thursday,15218.474,14583,Medium,0,"Weekday, Bad Weather, Dense Schedule"
-2015-01-19,Minnesota Timberwolves,Monday,15250.179,17989,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2017-01-24,Washington Wizards,Tuesday,15258.428,15285,Medium,0,"Weekday, Dense Schedule"
-2015-01-22,Miami Heat,Thursday,15274.152,16914,Medium,0,"Weekday, Weak Opponent"
-2017-12-19,New York Knicks,Tuesday,15274.564,15386,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2019-03-19,Philadelphia 76ers,Tuesday,15280.859,16411,Medium,0,Weekday
-2017-02-08,Brooklyn Nets,Wednesday,15288.731,15322,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2022-03-16,Atlanta Hawks,Wednesday,15291.386,16648,Medium,0,"Weekday, Bad Weather"
-2019-02-23,Washington Wizards,Saturday,15298.393,15572,Medium,0,"Weak Opponent, Bad Weather"
-2016-11-02,Philadelphia 76ers,Wednesday,15306.416,15275,Medium,0,"Weekday, Weak Opponent"
-2023-11-23,Washington Wizards,Thursday,15306.897,16432,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2019-01-29,New York Knicks,Tuesday,15342.869,13963,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2024-01-09,Chicago Bulls,Tuesday,15348.002,14418,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2022-01-06,Detroit Pistons,Thursday,15363.766,14427,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2015-11-29,Milwaukee Bucks,Sunday,15370.273,14224,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2025-01-20,Dallas Mavericks,Monday,15370.985,19314,Medium,0,"Weekday, Weak Opponent"
-2014-11-18,Dallas Mavericks,Tuesday,15375.653,15345,Medium,0,"Weekday, Weak Opponent"
-2021-01-02,Memphis Grizzlies,Saturday,15378.478,0,Medium,0,"Weak Opponent, Bad Weather"
-2015-04-08,Toronto Raptors,Wednesday,15407.836,15593,Medium,0,"Weekday, Weak Opponent"
-2015-11-04,Chicago Bulls,Wednesday,15411.779,15136,Medium,0,"Weekday, Weak Opponent"
-2025-11-13,Milwaukee Bucks,Thursday,15411.973,17142,Medium,0,"Weekday, Dense Schedule"
-2017-01-05,Oklahoma City Thunder,Thursday,15416.732,18418,Medium,0,Weekday
-2017-12-05,Orlando Magic,Tuesday,15418.517,14419,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2015-11-12,New York Knicks,Thursday,15439.377,16643,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2018-01-11,Dallas Mavericks,Thursday,15441.684,14462,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2019-03-26,San Antonio Spurs,Tuesday,15445.52,14227,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2018-03-22,Memphis Grizzlies,Thursday,15454.1875,15033,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2025-01-08,Phoenix Suns,Wednesday,15456.5205,16647,Medium,0,"Weekday, Weak Opponent"
-2023-10-25,Atlanta Hawks,Wednesday,15484.336,16129,Medium,0,"Weekday, Weak Opponent"
-2018-12-13,Detroit Pistons,Thursday,15495.414,13997,Medium,0,Weekday
-2024-03-01,Milwaukee Bucks,Friday,15505.161,18463,Medium,0,Bad Weather
-2020-01-09,Toronto Raptors,Thursday,15514.788,13965,Medium,0,"Weekday, Dense Schedule"
-2016-12-04,Minnesota Timberwolves,Sunday,15534.102,16982,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2024-04-09,Dallas Mavericks,Tuesday,15558.883,17425,Medium,0,"Weekday, Bad Weather, Dense Schedule"
-2026-01-22,Cleveland Cavaliers,Thursday,15564.138,17619,Medium,0,Weekday
-2023-01-27,Chicago Bulls,Friday,15577.852,17697,Medium,0,Weak Opponent
-2015-03-09,Washington Wizards,Monday,15580.129,15119,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2016-03-14,Dallas Mavericks,Monday,15589.107,15686,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2018-01-27,Atlanta Hawks,Saturday,15593.492,15479,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2018-12-15,New York Knicks,Saturday,15596.877,17622,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2025-10-30,Orlando Magic,Thursday,15602.854,18478,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2017-02-10,Houston Rockets,Friday,15604.97,16270,Medium,0,"Bad Weather, Dense Schedule"
-2024-11-26,Orlando Magic,Tuesday,15617.954,14898,Medium,0,"Weekday, Weak Opponent"
-2024-12-31,Chicago Bulls,Tuesday,15629.697,19197,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2018-10-26,Chicago Bulls,Friday,15635.395,15220,Medium,0,"Weak Opponent, Bad Weather"
-2016-12-10,Orlando Magic,Saturday,15643.379,15707,Medium,0,"Weak Opponent, Dense Schedule"
-2018-11-22,Indiana Pacers,Thursday,15658.876,15913,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2019-03-09,Washington Wizards,Saturday,15666.759,18144,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2019-10-23,Chicago Bulls,Wednesday,15669.348,15424,Medium,0,"Weekday, Weak Opponent"
-2018-02-03,Indiana Pacers,Saturday,15690.348,17135,Medium,0,No major risk signal
-2017-03-20,Atlanta Hawks,Monday,15692.398,14278,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2014-11-08,Atlanta Hawks,Saturday,15699.12,15891,Medium,0,"Weak Opponent, Dense Schedule"
-2019-02-06,LA Clippers,Wednesday,15733.91,14300,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2022-03-10,Boston Celtics,Thursday,15744.591,18086,Medium,0,"Weekday, Dense Schedule"
-2016-03-02,Phoenix Suns,Wednesday,15745.114,16849,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2016-01-24,New York Knicks,Sunday,15745.287,17768,Medium,0,Weak Opponent
-2019-02-02,Memphis Grizzlies,Saturday,15751.856,15387,Medium,0,Weak Opponent
-2024-11-22,Detroit Pistons,Friday,15755.535,14671,Medium,0,Bad Weather
-2016-12-08,Detroit Pistons,Thursday,15764.718,15141,Medium,0,"Weekday, Weak Opponent"
-2019-02-28,Houston Rockets,Thursday,15764.723,17903,Medium,0,"Weekday, Bad Weather, Dense Schedule"
-2018-12-29,Brooklyn Nets,Saturday,15783.951,19411,Medium,0,Weak Opponent
-2021-12-07,Philadelphia 76ers,Tuesday,15784.2295,14462,Medium,0,"Weekday, Bad Weather"
-2019-12-08,Atlanta Hawks,Sunday,15794.206,15489,Medium,0,"Weak Opponent, Dense Schedule"
-2025-12-07,Denver Nuggets,Sunday,15794.717,18416,Medium,0,No major risk signal
-2024-03-06,Orlando Magic,Wednesday,15801.011,15928,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2015-12-08,Detroit Pistons,Tuesday,15810.05,15481,Medium,0,Weekday
-2021-11-18,Washington Wizards,Thursday,15829.89,14402,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2018-11-20,Boston Celtics,Tuesday,15830.498,18040,Medium,0,"Weekday, Dense Schedule"
-2015-02-06,Washington Wizards,Friday,15844.458,17019,Medium,0,Weak Opponent
-2016-04-14,Orlando Magic,Thursday,15847.94,17372,Medium,0,"Weekday, Weak Opponent"
-2018-03-10,Phoenix Suns,Saturday,15852.603,19336,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2017-12-21,Toronto Raptors,Thursday,15868.845,15023,Medium,0,"Weekday, Dense Schedule"
-2019-11-16,Detroit Pistons,Saturday,15871.001,16778,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2026-01-09,Indiana Pacers,Friday,15874.164,17342,Medium,0,"Bad Weather, Dense Schedule"
-2024-11-16,Milwaukee Bucks,Saturday,15876.02,19145,Medium,0,No major risk signal
-2023-12-09,Toronto Raptors,Saturday,15877.055,11526,Medium,0,Weak Opponent
-2025-11-02,Utah Jazz,Sunday,15881.458,17123,Medium,0,"Weak Opponent, Dense Schedule"
-2017-03-28,Milwaukee Bucks,Tuesday,15888.682,16505,Medium,0,"Weekday, Bad Weather, Dense Schedule"
-2017-11-01,Milwaukee Bucks,Wednesday,15902.605,15655,Medium,0,Weekday
-2023-02-14,Atlanta Hawks,Tuesday,15912.269,14078,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2016-12-02,Dallas Mavericks,Friday,15926.587,14471,Medium,0,"Weak Opponent, Dense Schedule"
-2017-01-29,Sacramento Kings,Sunday,15929.86,18597,Medium,0,"Weak Opponent, Bad Weather"
-2022-04-10,Washington Wizards,Sunday,15929.937,18465,Medium,0,Weak Opponent
-2017-03-07,Indiana Pacers,Tuesday,15930.78,16387,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2016-11-22,Memphis Grizzlies,Tuesday,15932.456,14181,Medium,0,"Weekday, Weak Opponent"
-2020-02-23,Brooklyn Nets,Sunday,15934.194,19079,Medium,0,Weak Opponent
-2014-12-18,Phoenix Suns,Thursday,15934.824,15459,Medium,0,"Weekday, Weak Opponent"
-2024-10-26,Miami Heat,Saturday,15934.83,19102,Medium,0,"Weak Opponent, Bad Weather"
-2019-02-26,Golden State Warriors,Tuesday,15944.414,19419,Medium,0,"Weekday, Dense Schedule"
-2026-02-28,Portland Trail Blazers,Saturday,15949.554,19634,Medium,0,No major risk signal
-2017-04-05,Miami Heat,Wednesday,15952.919,17758,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2022-12-06,LA Clippers,Tuesday,15989.223,13945,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2020-01-20,Orlando Magic,Monday,15990.562,16133,Medium,0,"Weekday, Weak Opponent"
-2025-03-31,Utah Jazz,Monday,16000.786,14410,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2019-01-03,Dallas Mavericks,Thursday,16034.173,16955,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2020-01-07,Indiana Pacers,Tuesday,16034.851,13009,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2024-11-28,Miami Heat,Thursday,16036.892,17710,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2022-02-10,Chicago Bulls,Thursday,16041.645,19099,Medium,0,"Weekday, Bad Weather, Dense Schedule"
-2018-04-01,Philadelphia 76ers,Sunday,16043.685,17005,Medium,0,No major risk signal
-2025-03-20,New York Knicks,Thursday,16061.04,18557,Medium,0,"Weekday, Bad Weather, Dense Schedule"
-2022-10-29,Golden State Warriors,Saturday,16068.987,19079,Medium,0,No major risk signal
-2025-04-08,Memphis Grizzlies,Tuesday,16070.983,17125,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2021-11-01,Cleveland Cavaliers,Monday,16071.312,13889,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2026-01-08,Toronto Raptors,Thursday,16073.185,17337,Medium,0,Weekday
-2019-12-21,Utah Jazz,Saturday,16088.909,16187,Medium,0,No major risk signal
-2024-03-31,LA Clippers,Sunday,16090.829,15941,Medium,0,Dense Schedule
-2026-03-19,Orlando Magic,Thursday,16099.672,19565,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2023-03-31,Chicago Bulls,Friday,16100.02,18768,Medium,0,"Weak Opponent, Bad Weather"
-2026-02-20,Houston Rockets,Friday,16110.033,19622,Medium,0,Bad Weather
-2018-03-28,Cleveland Cavaliers,Wednesday,16110.153,19474,Medium,0,"Weekday, Bad Weather, Dense Schedule"
-2017-03-31,Denver Nuggets,Friday,16118.333,18353,Medium,0,"Weak Opponent, Bad Weather"
-2018-03-07,Philadelphia 76ers,Wednesday,16126.442,15600,Medium,0,"Weekday, Bad Weather"
-2023-11-18,New York Knicks,Saturday,16147.357,19171,Medium,0,Dense Schedule
-2022-02-06,Miami Heat,Sunday,16182.206,19420,Medium,0,"Weak Opponent, Dense Schedule"
-2022-02-13,Memphis Grizzlies,Sunday,16187.673,19454,Medium,0,No major risk signal
-2016-01-14,Atlanta Hawks,Thursday,16193.147,15334,Medium,0,"Weekday, Weak Opponent"
-2024-01-27,Houston Rockets,Saturday,16193.493,16164,Medium,0,"Weak Opponent, Bad Weather"
-2022-01-30,LA Clippers,Sunday,16194.127,18674,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2017-11-16,Cleveland Cavaliers,Thursday,16194.481,19427,Medium,0,Weekday
-2015-03-04,Los Angeles Lakers,Wednesday,16202.146,16947,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2025-02-08,San Antonio Spurs,Saturday,16204.448,19290,Medium,0,"Weak Opponent, Dense Schedule"
-2023-01-05,Memphis Grizzlies,Thursday,16208.392,19249,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2022-03-28,Denver Nuggets,Monday,16212.404,17614,Medium,0,"Weekday, Bad Weather"
-2014-11-06,Miami Heat,Thursday,16237.15,15874,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2021-11-20,Indiana Pacers,Saturday,16243.095,16787,Medium,0,"Weak Opponent, Dense Schedule"
-2022-01-24,Atlanta Hawks,Monday,16244.156,15822,Medium,0,"Weekday, Dense Schedule"
-2015-11-15,Portland Trail Blazers,Sunday,16275.37,15317,Medium,0,No major risk signal
-2014-12-28,Orlando Magic,Sunday,16282.279,19085,Medium,0,"Weak Opponent, Bad Weather"
-2025-11-11,Los Angeles Lakers,Tuesday,16287.679,19537,Medium,0,"Weekday, Bad Weather"
-2024-01-11,Sacramento Kings,Thursday,16308.53,14173,Medium,0,"Weekday, Dense Schedule"
-2022-02-05,Cleveland Cavaliers,Saturday,16348.499,17733,Medium,0,"Weak Opponent, Bad Weather"
-2019-11-24,Chicago Bulls,Sunday,16353.703,17891,Medium,0,Weak Opponent
-2014-11-25,LA Clippers,Tuesday,16361.79,17180,Medium,0,"Weekday, Bad Weather"
-2022-01-22,Oklahoma City Thunder,Saturday,16365.692,15835,Medium,0,"Weak Opponent, Bad Weather"
-2023-11-18,Milwaukee Bucks,Saturday,16366.849,19258,Medium,0,No major risk signal
-2016-12-30,Miami Heat,Friday,16386.857,19471,Medium,0,"Weak Opponent, Bad Weather"
-2018-12-22,Detroit Pistons,Saturday,16387.11,15812,Medium,0,Dense Schedule
-2026-01-24,Washington Wizards,Saturday,16406.0,15698,Medium,0,"Weak Opponent, Dense Schedule"
-2014-12-21,Utah Jazz,Sunday,16412.797,17384,Medium,0,Weak Opponent
-2025-02-06,Milwaukee Bucks,Thursday,16420.93,14385,Medium,0,"Weekday, Dense Schedule"
-2023-11-15,Miami Heat,Wednesday,16427.121,15673,Medium,0,"Weekday, Weak Opponent"
-2015-11-26,Washington Wizards,Thursday,16428.97,17064,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2019-01-18,Sacramento Kings,Friday,16465.053,15431,Medium,0,Weak Opponent
-2016-11-30,Detroit Pistons,Wednesday,16475.367,14266,Medium,0,"Weekday, Weak Opponent, Bad Weather"
-2017-12-17,Portland Trail Blazers,Sunday,16478.045,16687,Medium,0,Dense Schedule
-2019-04-05,Toronto Raptors,Friday,16483.86,18684,Medium,0,Bad Weather
-2024-02-06,Los Angeles Lakers,Tuesday,16489.281,19375,Medium,0,"Weekday, Dense Schedule"
-2025-04-04,Sacramento Kings,Friday,16494.553,15896,Medium,0,Weak Opponent
-2016-04-08,Brooklyn Nets,Friday,16512.518,18337,Medium,0,Weak Opponent
-2016-11-10,Utah Jazz,Thursday,16552.406,15712,Medium,0,"Weekday, Dense Schedule"
-2025-11-27,New York Knicks,Thursday,16555.889,19588,Medium,0,Weekday
-2015-12-10,Miami Heat,Thursday,16569.205,17404,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
-2016-02-04,Cleveland Cavaliers,Thursday,16572.85,19189,Medium,0,"Weekday, Bad Weather"
-2014-10-29,Milwaukee Bucks,Wednesday,16583.2,19439,Medium,0,"Weekday, Weak Opponent"
-2022-12-03,Washington Wizards,Saturday,16590.021,15231,Medium,0,"Weak Opponent, Bad Weather"
-2015-02-08,Indiana Pacers,Sunday,16596.982,16991,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2019-12-07,Brooklyn Nets,Saturday,16610.281,15075,High,0,"Weak Opponent, Dense Schedule"
-2021-11-27,Minnesota Timberwolves,Saturday,16610.705,19314,High,0,No major risk signal
-2018-12-02,New Orleans Pelicans,Sunday,16620.059,15336,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2019-03-03,Portland Trail Blazers,Sunday,16634.176,18355,High,0,Bad Weather
-2023-02-12,Denver Nuggets,Sunday,16636.156,19256,High,0,Bad Weather
-2023-03-12,Utah Jazz,Sunday,16637.773,17221,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2025-03-06,Minnesota Timberwolves,Thursday,16640.145,17578,High,0,"Weekday, Bad Weather, Dense Schedule"
-2021-11-13,New York Knicks,Saturday,16663.984,19257,High,0,Weak Opponent
-2014-11-27,Portland Trail Blazers,Thursday,16665.736,16972,High,0,"Weekday, Dense Schedule"
-2017-01-21,Toronto Raptors,Saturday,16672.732,18378,High,0,"Bad Weather, Dense Schedule"
-2026-02-21,Cleveland Cavaliers,Saturday,16675.174,19691,High,0,"Bad Weather, Dense Schedule"
-2022-02-26,Toronto Raptors,Saturday,16693.336,17577,High,0,No major risk signal
-2019-01-19,Phoenix Suns,Saturday,16710.389,19278,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2018-02-25,Detroit Pistons,Sunday,16736.041,17894,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2024-11-02,Boston Celtics,Saturday,16751.592,19253,High,0,Dense Schedule
-2024-02-13,Indiana Pacers,Tuesday,16752.816,12112,High,0,"Weekday, Bad Weather, Dense Schedule"
-2025-01-26,New Orleans Pelicans,Sunday,16773.793,18461,High,0,"Weak Opponent, Dense Schedule"
-2015-04-04,Philadelphia 76ers,Saturday,16777.62,17286,High,0,"Weak Opponent, Bad Weather"
-2018-11-03,Cleveland Cavaliers,Saturday,16788.277,16221,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2019-02-03,Chicago Bulls,Sunday,16806.13,19114,High,0,"Weak Opponent, Dense Schedule"
-2015-01-18,Indiana Pacers,Sunday,16854.61,19285,High,0,"Weak Opponent, Bad Weather"
-2015-11-21,Philadelphia 76ers,Saturday,16866.986,17926,High,0,"Weak Opponent, Dense Schedule"
-2024-01-21,Philadelphia 76ers,Sunday,16874.734,18261,High,0,"Weak Opponent, Dense Schedule"
-2019-11-10,New Orleans Pelicans,Sunday,16895.242,18513,High,0,"Weak Opponent, Dense Schedule"
-2023-03-02,Phoenix Suns,Thursday,16925.785,19137,High,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2017-11-19,LA Clippers,Sunday,16925.822,17640,High,0,"Weak Opponent, Bad Weather"
-2015-01-25,New York Knicks,Sunday,16932.682,19117,High,0,Weak Opponent
-2014-12-04,Chicago Bulls,Thursday,16937.674,16887,High,0,Weekday
-2015-12-24,Boston Celtics,Thursday,16938.09,19082,High,0,"Weekday, Weak Opponent, Bad Weather"
-2018-01-13,Utah Jazz,Saturday,16948.787,14848,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2017-01-22,Brooklyn Nets,Sunday,16950.75,18583,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2016-03-05,Indiana Pacers,Saturday,16965.219,19099,High,0,No major risk signal
-2021-11-15,Golden State Warriors,Monday,16974.545,19559,High,0,"Weekday, Dense Schedule"
-2022-01-09,Milwaukee Bucks,Sunday,16979.443,19139,High,0,Bad Weather
-2016-10-29,Boston Celtics,Saturday,16984.527,18708,High,0,No major risk signal
-2022-11-24,Philadelphia 76ers,Thursday,17003.146,16910,High,0,Weekday
-2016-03-12,Detroit Pistons,Saturday,17008.377,18189,High,0,Dense Schedule
-2017-12-28,Boston Celtics,Thursday,17008.629,19611,High,0,"Weekday, Weak Opponent"
-2017-03-24,Cleveland Cavaliers,Friday,17011.209,19511,High,0,No major risk signal
-2023-02-05,Orlando Magic,Sunday,17013.33,18510,High,0,Weak Opponent
-2015-03-13,Chicago Bulls,Friday,17022.871,19183,High,0,"Bad Weather, Dense Schedule"
-2019-02-24,Brooklyn Nets,Sunday,17042.88,19158,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2025-03-04,Golden State Warriors,Tuesday,17049.031,19223,High,0,"Weekday, Bad Weather"
-2026-02-10,Detroit Pistons,Tuesday,17058.396,19476,High,0,"Weekday, Bad Weather"
-2017-12-24,Milwaukee Bucks,Sunday,17058.922,18363,High,0,No major risk signal
-2024-02-11,Memphis Grizzlies,Sunday,17062.668,17259,High,0,"Weak Opponent, Bad Weather"
-2022-01-03,Phoenix Suns,Monday,17062.682,19088,High,0,"Weekday, Bad Weather"
-2020-03-06,Denver Nuggets,Friday,17066.297,13311,High,0,"Bad Weather, Dense Schedule"
-2021-10-25,Boston Celtics,Monday,17086.844,17238,High,0,"Weekday, Bad Weather"
-2024-11-29,New York Knicks,Friday,17100.074,19313,High,0,Dense Schedule
-2025-12-19,Atlanta Hawks,Friday,17113.422,16124,High,0,Bad Weather
-2022-11-10,Portland Trail Blazers,Thursday,17129.27,14774,High,0,"Weekday, Bad Weather, Dense Schedule"
-2024-11-01,Boston Celtics,Friday,17135.969,18557,High,0,Dense Schedule
-2021-10-31,Portland Trail Blazers,Sunday,17144.58,14960,High,0,Weak Opponent
-2023-03-26,Dallas Mavericks,Sunday,17181.35,19264,High,0,Bad Weather
-2022-12-30,Oklahoma City Thunder,Friday,17191.648,19425,High,0,Bad Weather
-2026-03-28,Philadelphia 76ers,Saturday,17201.822,19616,High,0,"Bad Weather, Dense Schedule"
-2025-01-28,Los Angeles Lakers,Tuesday,17213.186,19483,High,0,"Weekday, Dense Schedule"
-2024-12-07,Cleveland Cavaliers,Saturday,17221.836,18832,High,0,No major risk signal
-2023-04-07,Houston Rockets,Friday,17227.744,19102,High,0,"Weak Opponent, Bad Weather"
-2020-03-07,Houston Rockets,Saturday,17236.084,19159,High,0,"Bad Weather, Dense Schedule"
-2022-03-25,Utah Jazz,Friday,17242.111,19162,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2023-01-15,Boston Celtics,Sunday,17243.256,19608,High,0,No major risk signal
-2014-11-22,Orlando Magic,Saturday,17250.719,18126,High,0,Weak Opponent
-2018-04-08,Indiana Pacers,Sunday,17251.738,16629,High,0,Bad Weather
-2015-02-22,Oklahoma City Thunder,Sunday,17258.887,19303,High,0,Bad Weather
-2016-03-19,Denver Nuggets,Saturday,17268.162,19271,High,0,"Weak Opponent, Bad Weather"
-2017-12-07,Golden State Warriors,Thursday,17297.799,19334,High,0,"Weekday, Dense Schedule"
-2023-04-02,Toronto Raptors,Sunday,17299.18,16052,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2014-12-14,Brooklyn Nets,Sunday,17300.865,17113,High,0,Weak Opponent
-2018-11-18,Philadelphia 76ers,Sunday,17306.355,19426,High,0,No major risk signal
-2023-01-03,Los Angeles Lakers,Tuesday,17307.36,19210,High,0,"Weekday, Bad Weather, Dense Schedule"
-2017-12-10,Los Angeles Lakers,Sunday,17318.268,19320,High,0,"Weak Opponent, Dense Schedule"
-2017-10-29,Orlando Magic,Sunday,17319.1,15531,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2022-02-18,Miami Heat,Friday,17328.66,17029,High,0,"Weak Opponent, Bad Weather"
-2017-01-26,Golden State Warriors,Thursday,17340.607,19639,High,0,"Weekday, Bad Weather, Dense Schedule"
-2025-03-08,Brooklyn Nets,Saturday,17344.158,18652,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2023-03-04,Orlando Magic,Saturday,17354.15,16683,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2017-02-11,LA Clippers,Saturday,17358.746,19483,High,0,"Bad Weather, Dense Schedule"
-2024-02-04,Indiana Pacers,Sunday,17372.117,15687,High,0,No major risk signal
-2018-01-21,Miami Heat,Sunday,17395.727,18687,High,0,Weak Opponent
-2017-11-26,San Antonio Spurs,Sunday,17396.463,18597,High,0,No major risk signal
-2025-04-06,Chicago Bulls,Sunday,17402.16,18499,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2025-11-01,Minnesota Timberwolves,Saturday,17415.121,19444,High,0,Dense Schedule
-2023-03-12,Cleveland Cavaliers,Sunday,17418.738,17342,High,0,Bad Weather
-2015-12-31,LA Clippers,Thursday,17439.547,19145,High,0,"Weekday, Bad Weather, Dense Schedule"
-2016-03-13,Houston Rockets,Sunday,17450.756,19303,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2023-12-02,Minnesota Timberwolves,Saturday,17453.088,17731,High,0,No major risk signal
-2018-01-13,Oklahoma City Thunder,Saturday,17464.867,19624,High,0,"Bad Weather, Dense Schedule"
-2017-10-27,Houston Rockets,Friday,17469.816,17339,High,0,Dense Schedule
-2019-03-23,Boston Celtics,Saturday,17501.445,19438,High,0,Dense Schedule
-2023-12-17,Philadelphia 76ers,Sunday,17505.064,17829,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2025-11-22,LA Clippers,Saturday,17509.088,18721,High,0,Bad Weather
-2017-03-18,Washington Wizards,Saturday,17519.092,19361,High,0,Bad Weather
-2018-02-11,Toronto Raptors,Sunday,17522.496,18320,High,0,Bad Weather
-2019-12-31,Boston Celtics,Tuesday,17525.2,19216,High,0,Weekday
-2019-12-28,Oklahoma City Thunder,Saturday,17537.326,18418,High,0,No major risk signal
-2016-12-21,Los Angeles Lakers,Wednesday,17539.219,19093,High,0,"Weekday, Weak Opponent"
-2026-03-29,Boston Celtics,Sunday,17547.836,19642,High,0,Dense Schedule
-2024-04-01,Boston Celtics,Monday,17550.45,19238,High,0,"Weekday, Dense Schedule"
-2025-12-13,Chicago Bulls,Saturday,17579.875,16205,High,0,Weak Opponent
-2015-03-28,Atlanta Hawks,Saturday,17593.393,19122,High,0,Weak Opponent
-2014-12-06,New York Knicks,Saturday,17606.219,19102,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2016-03-21,San Antonio Spurs,Monday,17611.682,18260,High,0,"Weekday, Dense Schedule"
-2014-11-01,Memphis Grizzlies,Saturday,17617.229,18133,High,0,Bad Weather
-2015-03-07,Toronto Raptors,Saturday,17673.158,19080,High,0,Weak Opponent
-2018-12-16,Los Angeles Lakers,Sunday,17680.957,19641,High,0,Dense Schedule
-2016-01-03,Oklahoma City Thunder,Sunday,17699.484,19387,High,0,No major risk signal
-2022-12-17,Atlanta Hawks,Saturday,17715.416,17772,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2025-02-02,Denver Nuggets,Sunday,17796.72,19106,High,0,Dense Schedule
-2016-04-01,Philadelphia 76ers,Friday,17809.201,19244,High,0,"Weak Opponent, Bad Weather"
-2022-11-05,Brooklyn Nets,Saturday,17818.883,19398,High,0,"Weak Opponent, Bad Weather"
-2022-10-21,New Orleans Pelicans,Friday,17839.818,19287,High,0,Weak Opponent
-2017-04-08,Boston Celtics,Saturday,17845.115,19407,High,0,No major risk signal
-2020-02-09,Dallas Mavericks,Sunday,17851.164,19370,High,0,No major risk signal
-2024-03-10,Brooklyn Nets,Sunday,17864.613,19090,High,0,"Weak Opponent, Bad Weather"
-2025-02-01,LA Clippers,Saturday,17968.158,15342,High,0,"Bad Weather, Dense Schedule"
-2016-11-24,San Antonio Spurs,Thursday,18010.412,18515,High,0,"Weekday, Bad Weather, Dense Schedule"
-2015-12-13,Boston Celtics,Sunday,18045.295,18490,High,0,Weak Opponent
-2023-12-16,New Orleans Pelicans,Saturday,18079.047,16080,High,0,Weak Opponent
-2015-12-27,Memphis Grizzlies,Sunday,18097.613,19091,High,0,Weak Opponent
-2023-01-29,Miami Heat,Sunday,18127.764,19254,High,0,"Bad Weather, Dense Schedule"
-2024-03-15,Phoenix Suns,Friday,18148.438,18613,High,0,Bad Weather
-2025-03-01,Washington Wizards,Saturday,18149.9,17904,High,0,"Weak Opponent, Bad Weather"
-2016-11-12,Toronto Raptors,Saturday,18154.662,18107,High,0,Dense Schedule
-2020-01-24,Milwaukee Bucks,Friday,18161.988,15758,High,0,Bad Weather
-2023-11-21,Boston Celtics,Tuesday,18189.363,19134,High,0,"Weekday, Bad Weather"
-2015-12-18,Toronto Raptors,Friday,18203.94,15817,High,0,Bad Weather
-2017-01-01,Cleveland Cavaliers,Sunday,18213.92,19519,High,0,"Bad Weather, Dense Schedule"
-2023-01-01,Brooklyn Nets,Sunday,18217.984,19386,High,0,"Weak Opponent, Dense Schedule"
-2022-12-03,Milwaukee Bucks,Saturday,18230.361,18128,High,0,"Bad Weather, Dense Schedule"
-2023-01-16,Boston Celtics,Monday,18230.666,19227,High,0,"Weekday, Dense Schedule"
-2024-01-20,San Antonio Spurs,Saturday,18232.262,19093,High,0,"Weak Opponent, Bad Weather"
-2024-04-07,Oklahoma City Thunder,Sunday,18256.125,16556,High,0,Dense Schedule
-2022-12-10,New York Knicks,Saturday,18267.076,17696,High,0,No major risk signal
-2025-11-16,Oklahoma City Thunder,Sunday,18280.98,19469,High,0,Bad Weather
-2018-10-17,Milwaukee Bucks,Wednesday,18319.607,17889,High,0,Weekday
-2024-03-29,Golden State Warriors,Friday,18349.479,19487,High,0,"Bad Weather, Dense Schedule"
-2024-01-28,Utah Jazz,Sunday,18378.334,17633,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2022-11-25,Minnesota Timberwolves,Friday,18406.443,17924,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2019-11-08,Boston Celtics,Friday,18429.99,18487,High,0,"Bad Weather, Dense Schedule"
-2024-04-05,Orlando Magic,Friday,18476.041,16374,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
-2016-11-19,Atlanta Hawks,Saturday,18482.303,17989,High,0,"Weak Opponent, Bad Weather"
-2023-12-24,Denver Nuggets,Sunday,18514.21,19165,High,0,No major risk signal
-2016-11-27,New York Knicks,Sunday,18524.27,19195,High,0,Weak Opponent
-2023-03-17,Philadelphia 76ers,Friday,18634.824,19096,High,0,Bad Weather
-2015-12-03,Golden State Warriors,Thursday,18635.785,19542,High,0,Weekday
-2014-11-29,Golden State Warriors,Saturday,18666.861,19381,High,0,Dense Schedule
-2016-12-24,Chicago Bulls,Saturday,18670.531,19249,High,0,Bad Weather
-2023-02-26,Miami Heat,Sunday,18700.275,19109,High,0,No major risk signal
-2015-12-29,Los Angeles Lakers,Tuesday,18726.059,19632,High,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
-2015-11-01,Atlanta Hawks,Sunday,18828.857,18691,High,0,"Weak Opponent, Bad Weather"
-2015-01-03,Cleveland Cavaliers,Saturday,18845.023,19307,High,0,Bad Weather
-2025-03-08,Cleveland Cavaliers,Saturday,18881.74,19296,High,0,"Bad Weather, Dense Schedule"
-2022-01-29,Los Angeles Lakers,Saturday,18882.707,19469,High,0,Bad Weather
-2015-11-28,Cleveland Cavaliers,Saturday,19083.707,19093,High,0,Dense Schedule
-2024-12-28,Oklahoma City Thunder,Saturday,19202.477,19325,High,0,Bad Weather
+2021-02-15,San Antonio Spurs,Monday,-130.18405,0,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2021-02-13,Minnesota Timberwolves,Saturday,-33.10614,0,Low,1,"Weak Opponent, Bad Weather"
+2021-01-31,Milwaukee Bucks,Sunday,76.33636,0,Low,1,"Bad Weather, Dense Schedule"
+2021-01-30,Indiana Pacers,Saturday,506.4254,0,Low,1,"Weak Opponent, Dense Schedule"
+2021-02-06,Utah Jazz,Saturday,556.2813,0,Low,1,"Bad Weather, Dense Schedule"
+2021-01-10,Atlanta Hawks,Sunday,657.9133,0,Low,1,Weak Opponent
+2021-02-04,Philadelphia 76ers,Thursday,700.51636,0,Low,1,Weekday
+2021-01-28,Indiana Pacers,Thursday,834.49457,0,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2021-02-21,Golden State Warriors,Sunday,996.72473,0,Low,1,No major risk signal
+2021-01-14,Dallas Mavericks,Thursday,1034.1595,0,Low,1,"Weekday, Dense Schedule"
+2021-02-07,Washington Wizards,Sunday,1294.6257,0,Low,1,"Bad Weather, Dense Schedule"
+2021-01-23,Chicago Bulls,Saturday,1512.5106,0,Low,1,Weak Opponent
+2021-01-02,Memphis Grizzlies,Saturday,2109.781,0,Low,1,"Weak Opponent, Bad Weather"
+2021-02-09,Houston Rockets,Tuesday,2207.1948,0,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2021-03-12,Detroit Pistons,Friday,2219.695,0,Low,1,Weak Opponent
+2020-12-27,Oklahoma City Thunder,Sunday,2483.814,0,Low,1,Weak Opponent
+2021-01-12,New York Knicks,Tuesday,3097.4055,0,Low,1,"Weekday, Bad Weather, Dense Schedule"
+2021-03-14,Toronto Raptors,Sunday,3107.2302,2861,Low,1,"Weak Opponent, Dense Schedule"
+2021-03-15,Sacramento Kings,Monday,3292.0327,2861,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2021-04-27,Milwaukee Bucks,Tuesday,3386.5886,3240,Low,1,"Weekday, Dense Schedule"
+2021-04-14,Cleveland Cavaliers,Wednesday,3668.7827,2955,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2021-05-01,Detroit Pistons,Saturday,3810.9636,3766,Low,1,Weak Opponent
+2021-04-18,Portland Trail Blazers,Sunday,3853.3462,3880,Low,1,No major risk signal
+2021-03-28,Phoenix Suns,Sunday,3947.038,3850,Low,1,"Bad Weather, Dense Schedule"
+2020-12-28,Brooklyn Nets,Monday,3971.6687,0,Low,1,"Weekday, Dense Schedule"
+2021-05-08,Orlando Magic,Saturday,4021.983,3751,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
+2021-05-06,Chicago Bulls,Thursday,4024.3809,3769,Low,1,"Weekday, Weak Opponent"
+2021-05-11,Denver Nuggets,Tuesday,4038.339,3997,Low,1,"Weekday, Bad Weather, Dense Schedule"
+2021-05-09,New Orleans Pelicans,Sunday,4083.3264,4196,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
+2021-05-03,Miami Heat,Monday,4216.187,4095,Low,1,"Weekday, Bad Weather, Dense Schedule"
+2021-04-14,Los Angeles Lakers,Wednesday,4224.6323,3676,Low,1,"Weekday, Bad Weather, Dense Schedule"
+2021-03-27,Miami Heat,Saturday,4351.388,4215,Low,1,Bad Weather
+2021-04-24,Cleveland Cavaliers,Saturday,4355.497,4060,Low,1,"Weak Opponent, Bad Weather"
+2021-04-25,Boston Celtics,Sunday,4525.9536,4493,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
+2021-05-13,LA Clippers,Thursday,4573.446,4442,Low,1,"Weekday, Dense Schedule"
+2021-04-11,Atlanta Hawks,Sunday,5676.6587,4148,Low,1,"Weak Opponent, Bad Weather"
+2019-12-11,Washington Wizards,Wednesday,12081.014,10626,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2020-03-04,San Antonio Spurs,Wednesday,12254.379,12008,Low,1,"Weekday, Weak Opponent"
+2019-12-03,Phoenix Suns,Tuesday,12451.561,11221,Low,1,"Weekday, Weak Opponent"
+2024-02-08,Toronto Raptors,Thursday,12538.418,11720,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2020-02-04,Orlando Magic,Tuesday,12546.107,12337,Low,1,"Weekday, Weak Opponent"
+2020-01-07,Indiana Pacers,Tuesday,12710.647,13009,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2019-12-18,Sacramento Kings,Wednesday,12917.559,13229,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-01-23,Sacramento Kings,Tuesday,12949.164,11806,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2018-01-18,Washington Wizards,Thursday,13021.271,11528,Low,1,"Weekday, Weak Opponent"
+2022-10-31,Sacramento Kings,Monday,13184.42,12020,Low,1,"Weekday, Bad Weather, Dense Schedule"
+2023-12-09,Toronto Raptors,Saturday,13270.267,11526,Low,1,Weak Opponent
+2018-11-29,Atlanta Hawks,Thursday,13305.06,12971,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2023-03-20,Indiana Pacers,Monday,13350.2705,12449,Low,1,"Weekday, Weak Opponent"
+2019-11-14,Memphis Grizzlies,Thursday,13383.584,13155,Low,1,"Weekday, Weak Opponent"
+2020-02-27,New York Knicks,Thursday,13469.41,13152,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2020-01-09,Toronto Raptors,Thursday,13660.828,13965,Low,1,"Weekday, Dense Schedule"
+2026-03-04,Dallas Mavericks,Wednesday,13779.119,19519,Low,1,"Weekday, Weak Opponent"
+2019-01-29,New York Knicks,Tuesday,13817.087,13963,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2020-01-29,New York Knicks,Wednesday,13853.431,14342,Low,1,"Weekday, Weak Opponent"
+2022-11-08,Washington Wizards,Tuesday,13873.001,13712,Low,1,"Weekday, Weak Opponent"
+2024-12-17,Philadelphia 76ers,Tuesday,13886.719,14677,Low,1,"Weekday, Weak Opponent"
+2024-02-01,Chicago Bulls,Thursday,13895.85,13712,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2024-10-30,Toronto Raptors,Wednesday,13933.949,13113,Low,1,"Weekday, Weak Opponent"
+2025-01-30,Brooklyn Nets,Thursday,14004.754,14307,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2022-03-21,New Orleans Pelicans,Monday,14006.852,13351,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2026-02-02,New Orleans Pelicans,Monday,14018.493,17263,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2018-11-07,Atlanta Hawks,Wednesday,14022.081,13955,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2025-02-04,Washington Wizards,Tuesday,14065.297,14129,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2018-12-31,Orlando Magic,Monday,14077.827,14694,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2022-02-08,Toronto Raptors,Tuesday,14143.056,14102,Low,1,"Weekday, Dense Schedule"
+2024-12-04,Philadelphia 76ers,Wednesday,14202.286,14956,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2020-03-06,Denver Nuggets,Friday,14215.826,13311,Low,1,"Bad Weather, Dense Schedule"
+2025-12-24,Washington Wizards,Wednesday,14290.067,18679,Low,1,"Weekday, Weak Opponent"
+2025-03-18,Atlanta Hawks,Tuesday,14300.747,15341,Low,1,"Weekday, Weak Opponent"
+2024-12-31,Chicago Bulls,Tuesday,14313.218,19197,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-11-27,Milwaukee Bucks,Tuesday,14335.885,13805,Low,1,"Weekday, Bad Weather"
+2019-12-05,Golden State Warriors,Thursday,14344.512,14355,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2023-11-09,Washington Wizards,Thursday,14361.061,14267,Low,1,"Weekday, Weak Opponent"
+2022-12-06,LA Clippers,Tuesday,14362.802,13945,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-01-11,Dallas Mavericks,Thursday,14370.49,14462,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-12-08,Denver Nuggets,Saturday,14380.223,13755,Low,1,Bad Weather
+2022-11-17,Indiana Pacers,Thursday,14402.174,14756,Low,1,"Weekday, Weak Opponent"
+2019-11-06,Indiana Pacers,Wednesday,14419.715,13341,Low,1,"Weekday, Weak Opponent"
+2022-12-15,Detroit Pistons,Thursday,14428.888,14303,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2025-01-08,Phoenix Suns,Wednesday,14453.202,16647,Low,1,"Weekday, Weak Opponent"
+2024-12-24,Houston Rockets,Tuesday,14499.823,19134,Low,1,"Weekday, Weak Opponent"
+2026-03-24,Sacramento Kings,Tuesday,14527.431,19450,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2023-04-04,Toronto Raptors,Tuesday,14541.612,14965,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2023-02-28,Detroit Pistons,Tuesday,14559.4375,14184,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2021-12-09,Philadelphia 76ers,Thursday,14564.863,15709,Low,1,"Weekday, Dense Schedule"
+2021-11-01,Cleveland Cavaliers,Monday,14581.694,13889,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2023-02-14,Atlanta Hawks,Tuesday,14604.76,14078,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2015-11-24,Sacramento Kings,Tuesday,14619.763,14163,Low,1,Weekday
+2023-10-30,Brooklyn Nets,Monday,14627.678,14491,Low,1,"Weekday, Weak Opponent"
+2018-03-09,Brooklyn Nets,Friday,14650.495,14173,Low,1,"Weak Opponent, Dense Schedule"
+2019-11-28,Detroit Pistons,Thursday,14651.258,15535,Low,1,"Weekday, Weak Opponent"
+2021-11-18,Washington Wizards,Thursday,14662.281,14402,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-03-26,New York Knicks,Monday,14666.839,14487,Low,1,"Weekday, Weak Opponent"
+2023-02-16,San Antonio Spurs,Thursday,14669.171,14155,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2018-12-13,Detroit Pistons,Thursday,14670.872,13997,Low,1,Weekday
+2018-02-28,Chicago Bulls,Wednesday,14681.623,14521,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2025-03-25,Orlando Magic,Tuesday,14684.763,14639,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-01-25,New Orleans Pelicans,Thursday,14742.8955,14588,Low,1,"Weekday, Dense Schedule"
+2018-10-30,Miami Heat,Tuesday,14763.107,14117,Low,1,"Weekday, Weak Opponent"
+2022-02-28,Detroit Pistons,Monday,14781.546,15348,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2024-01-09,Chicago Bulls,Tuesday,14826.431,14418,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2015-11-19,Brooklyn Nets,Thursday,14835.848,14040,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2019-03-26,San Antonio Spurs,Tuesday,14854.891,14227,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2017-12-09,Chicago Bulls,Saturday,14864.766,14077,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
+2016-11-22,Memphis Grizzlies,Tuesday,14894.02,14181,Low,1,"Weekday, Weak Opponent"
+2024-02-15,Atlanta Hawks,Thursday,14901.999,14336,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2024-01-11,Sacramento Kings,Thursday,14912.702,14173,Low,1,"Weekday, Dense Schedule"
+2022-01-06,Detroit Pistons,Thursday,14931.025,14427,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2023-12-12,Miami Heat,Tuesday,14997.557,15543,Low,1,"Weekday, Weak Opponent"
+2021-12-07,Philadelphia 76ers,Tuesday,15005.387,14462,Low,1,"Weekday, Bad Weather"
+2018-12-20,Cleveland Cavaliers,Thursday,15064.006,15179,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2017-12-05,Orlando Magic,Tuesday,15074.419,14419,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-03-22,Memphis Grizzlies,Thursday,15081.064,15033,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2018-02-23,Brooklyn Nets,Friday,15125.726,14112,Low,1,Weak Opponent
+2024-04-03,Portland Trail Blazers,Wednesday,15131.769,14209,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2025-10-30,Orlando Magic,Thursday,15153.236,18478,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2025-01-20,Dallas Mavericks,Monday,15166.35,19314,Low,1,"Weekday, Weak Opponent"
+2019-02-06,LA Clippers,Wednesday,15186.415,14300,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2017-03-20,Atlanta Hawks,Monday,15198.559,14278,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2016-11-30,Detroit Pistons,Wednesday,15283.161,14266,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2025-12-30,Milwaukee Bucks,Tuesday,15284.981,19562,Low,1,Weekday
+2015-03-25,Brooklyn Nets,Wednesday,15303.167,15091,Low,1,"Weekday, Weak Opponent"
+2021-10-31,Portland Trail Blazers,Sunday,15309.939,14960,Low,1,Weak Opponent
+2017-10-25,Denver Nuggets,Wednesday,15337.481,14253,Low,1,"Weekday, Weak Opponent"
+2021-10-20,Indiana Pacers,Wednesday,15340.302,15521,Low,1,"Weekday, Weak Opponent"
+2023-11-23,Washington Wizards,Thursday,15347.662,16432,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2015-04-01,Detroit Pistons,Wednesday,15362.765,15372,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2024-11-26,Orlando Magic,Tuesday,15368.186,14898,Low,1,"Weekday, Weak Opponent"
+2019-10-23,Chicago Bulls,Wednesday,15378.179,15424,Low,1,"Weekday, Weak Opponent"
+2020-01-20,Orlando Magic,Monday,15399.507,16133,Low,1,"Weekday, Weak Opponent"
+2022-01-11,Milwaukee Bucks,Tuesday,15407.438,14253,Low,1,"Weekday, Dense Schedule"
+2017-02-14,Philadelphia 76ers,Tuesday,15419.826,15775,Low,1,"Weekday, Weak Opponent"
+2015-03-30,Boston Celtics,Monday,15441.028,15140,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2020-01-24,Milwaukee Bucks,Friday,15454.604,15758,Low,1,Bad Weather
+2019-12-08,Atlanta Hawks,Sunday,15464.337,15489,Low,1,"Weak Opponent, Dense Schedule"
+2017-12-19,New York Knicks,Tuesday,15507.74,15386,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2018-11-22,Indiana Pacers,Thursday,15519.121,15913,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2022-01-24,Atlanta Hawks,Monday,15522.433,15822,Low,1,"Weekday, Dense Schedule"
+2024-11-28,Miami Heat,Thursday,15526.655,17710,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2018-11-01,Oklahoma City Thunder,Thursday,15546.928,14583,Low,1,"Weekday, Bad Weather, Dense Schedule"
+2016-12-08,Detroit Pistons,Thursday,15554.21,15141,Low,1,"Weekday, Weak Opponent"
+2019-03-21,Minnesota Timberwolves,Thursday,15559.195,15576,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2017-02-08,Brooklyn Nets,Wednesday,15566.806,15322,Low,1,"Weekday, Weak Opponent, Bad Weather"
+2015-12-08,Detroit Pistons,Tuesday,15579.112,15481,Low,1,Weekday
+2016-02-09,Chicago Bulls,Tuesday,15602.397,15886,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2023-03-14,Cleveland Cavaliers,Tuesday,15603.077,14690,Low,1,"Weekday, Bad Weather, Dense Schedule"
+2014-11-18,Dallas Mavericks,Tuesday,15612.452,15345,Low,1,"Weekday, Weak Opponent"
+2025-04-08,Memphis Grizzlies,Tuesday,15632.565,17125,Low,1,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2019-12-21,Utah Jazz,Saturday,15635.597,16187,Low,1,No major risk signal
+2021-12-11,Sacramento Kings,Saturday,15652.36,16335,Low,1,"Weak Opponent, Bad Weather, Dense Schedule"
+2017-01-19,Portland Trail Blazers,Thursday,15656.416,15451,Low,1,"Weekday, Weak Opponent"
+2015-04-08,Toronto Raptors,Wednesday,15660.657,15593,Low,1,"Weekday, Weak Opponent"
+2024-01-30,New York Knicks,Tuesday,15688.68,15546,Low,1,"Weekday, Dense Schedule"
+2015-01-08,New Orleans Pelicans,Thursday,15698.302,15171,Low,1,"Weekday, Bad Weather"
+2023-10-25,Atlanta Hawks,Wednesday,15706.932,16129,Low,1,"Weekday, Weak Opponent"
+2017-11-23,Washington Wizards,Thursday,15712.362,16041,Low,1,"Weekday, Weak Opponent, Dense Schedule"
+2014-12-18,Phoenix Suns,Thursday,15744.953,15459,Medium,0,"Weekday, Weak Opponent"
+2015-03-09,Washington Wizards,Monday,15745.707,15119,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2019-02-23,Washington Wizards,Saturday,15758.185,15572,Medium,0,"Weak Opponent, Bad Weather"
+2025-01-25,Portland Trail Blazers,Saturday,15764.669,16228,Medium,0,Weak Opponent
+2015-11-29,Milwaukee Bucks,Sunday,15778.543,14224,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2015-02-11,Detroit Pistons,Wednesday,15806.507,15876,Medium,0,"Weekday, Weak Opponent"
+2014-12-11,Boston Celtics,Thursday,15812.328,15276,Medium,0,"Weekday, Weak Opponent"
+2026-02-12,Atlanta Hawks,Thursday,15826.261,18710,Medium,0,"Weekday, Dense Schedule"
+2022-04-07,Orlando Magic,Thursday,15828.653,16427,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2025-11-29,Toronto Raptors,Saturday,15830.237,17060,Medium,0,Dense Schedule
+2019-10-25,Minnesota Timberwolves,Friday,15848.195,14879,Medium,0,"Weak Opponent, Dense Schedule"
+2018-03-07,Philadelphia 76ers,Wednesday,15854.93,15600,Medium,0,"Weekday, Bad Weather"
+2016-11-02,Philadelphia 76ers,Wednesday,15894.969,15275,Medium,0,"Weekday, Weak Opponent"
+2015-03-11,Sacramento Kings,Wednesday,15904.537,15885,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2016-12-10,Orlando Magic,Saturday,15907.221,15707,Medium,0,"Weak Opponent, Dense Schedule"
+2026-03-19,Orlando Magic,Thursday,15910.24,19565,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2017-01-24,Washington Wizards,Tuesday,15916.72,15285,Medium,0,"Weekday, Dense Schedule"
+2016-03-08,Minnesota Timberwolves,Tuesday,15941.53,15912,Medium,0,"Weekday, Weak Opponent"
+2015-11-04,Chicago Bulls,Wednesday,15952.849,15136,Medium,0,"Weekday, Weak Opponent"
+2025-12-31,Golden State Warriors,Wednesday,15955.997,19685,Medium,0,"Weekday, Dense Schedule"
+2018-10-26,Chicago Bulls,Friday,15980.326,15220,Medium,0,"Weak Opponent, Bad Weather"
+2024-11-07,Detroit Pistons,Thursday,15992.256,13247,Medium,0,"Weekday, Bad Weather"
+2016-01-14,Atlanta Hawks,Thursday,16015.207,15334,Medium,0,"Weekday, Weak Opponent"
+2025-04-04,Sacramento Kings,Friday,16028.238,15896,Medium,0,Weak Opponent
+2018-12-22,Detroit Pistons,Saturday,16034.093,15812,Medium,0,Dense Schedule
+2022-03-23,New York Knicks,Wednesday,16057.567,16290,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2016-12-02,Dallas Mavericks,Friday,16065.907,14471,Medium,0,"Weak Opponent, Dense Schedule"
+2026-01-08,Toronto Raptors,Thursday,16080.937,17337,Medium,0,Weekday
+2024-03-27,Cleveland Cavaliers,Wednesday,16110.503,15303,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2018-01-13,Utah Jazz,Saturday,16117.881,14848,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2017-11-01,Milwaukee Bucks,Wednesday,16121.607,15655,Medium,0,Weekday
+2014-11-06,Miami Heat,Thursday,16127.651,15874,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2022-11-10,Portland Trail Blazers,Thursday,16133.158,14774,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2025-03-31,Utah Jazz,Monday,16134.914,14410,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2017-11-21,Minnesota Timberwolves,Tuesday,16157.555,15978,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2016-03-14,Dallas Mavericks,Monday,16174.421,15686,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2023-11-15,Miami Heat,Wednesday,16177.371,15673,Medium,0,"Weekday, Weak Opponent"
+2026-03-17,Miami Heat,Tuesday,16178.284,19478,Medium,0,Weekday
+2016-11-08,Indiana Pacers,Tuesday,16179.201,16880,Medium,0,"Weekday, Weak Opponent"
+2019-03-19,Philadelphia 76ers,Tuesday,16184.542,16411,Medium,0,Weekday
+2022-12-03,Washington Wizards,Saturday,16205.252,15231,Medium,0,"Weak Opponent, Bad Weather"
+2019-03-07,Miami Heat,Thursday,16205.588,18137,Medium,0,"Weekday, Weak Opponent"
+2016-03-10,New Orleans Pelicans,Thursday,16207.297,16335,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2017-03-13,Chicago Bulls,Monday,16220.497,16489,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2026-03-21,Memphis Grizzlies,Saturday,16223.298,19487,Medium,0,"Weak Opponent, Dense Schedule"
+2017-03-07,Indiana Pacers,Tuesday,16224.356,16387,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2019-04-11,Orlando Magic,Thursday,16227.643,17719,Medium,0,"Weekday, Weak Opponent"
+2019-01-03,Dallas Mavericks,Thursday,16245.781,16955,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2017-12-21,Toronto Raptors,Thursday,16249.189,15023,Medium,0,"Weekday, Dense Schedule"
+2019-12-07,Brooklyn Nets,Saturday,16250.079,15075,Medium,0,"Weak Opponent, Dense Schedule"
+2026-04-03,Indiana Pacers,Friday,16252.962,19579,Medium,0,Dense Schedule
+2016-03-16,Orlando Magic,Wednesday,16257.668,16148,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2018-02-03,Indiana Pacers,Saturday,16279.139,17135,Medium,0,No major risk signal
+2024-03-06,Orlando Magic,Wednesday,16287.276,15928,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2025-10-22,Brooklyn Nets,Wednesday,16316.195,19516,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2019-11-16,Detroit Pistons,Saturday,16316.863,16778,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2022-01-22,Oklahoma City Thunder,Saturday,16328.785,15835,Medium,0,"Weak Opponent, Bad Weather"
+2017-12-16,Miami Heat,Saturday,16353.34,15565,Medium,0,Weak Opponent
+2015-11-12,New York Knicks,Thursday,16382.19,16643,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2018-01-27,Atlanta Hawks,Saturday,16384.975,15479,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2022-01-15,Orlando Magic,Saturday,16397.77,16011,Medium,0,Weak Opponent
+2014-12-23,Denver Nuggets,Tuesday,16417.447,16913,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2015-04-13,Houston Rockets,Monday,16433.375,15797,Medium,0,Weekday
+2018-12-01,Utah Jazz,Saturday,16433.754,15812,Medium,0,"Bad Weather, Dense Schedule"
+2015-11-26,Washington Wizards,Thursday,16448.613,17064,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2015-11-15,Portland Trail Blazers,Sunday,16469.95,15317,Medium,0,No major risk signal
+2016-11-10,Utah Jazz,Thursday,16473.785,15712,Medium,0,"Weekday, Dense Schedule"
+2014-12-30,Milwaukee Bucks,Tuesday,16477.486,17430,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2018-12-02,New Orleans Pelicans,Sunday,16496.154,15336,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2021-10-25,Boston Celtics,Monday,16529.166,17238,Medium,0,"Weekday, Bad Weather"
+2024-04-09,Dallas Mavericks,Tuesday,16531.916,17425,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2015-01-22,Miami Heat,Thursday,16547.453,16914,Medium,0,"Weekday, Weak Opponent"
+2019-02-02,Memphis Grizzlies,Saturday,16551.05,15387,Medium,0,Weak Opponent
+2025-02-08,San Antonio Spurs,Saturday,16565.863,19290,Medium,0,"Weak Opponent, Dense Schedule"
+2025-11-13,Milwaukee Bucks,Thursday,16578.607,17142,Medium,0,"Weekday, Dense Schedule"
+2026-04-02,Phoenix Suns,Thursday,16596.61,19594,Medium,0,Weekday
+2024-02-04,Indiana Pacers,Sunday,16605.121,15687,Medium,0,No major risk signal
+2019-01-18,Sacramento Kings,Friday,16623.895,15431,Medium,0,Weak Opponent
+2021-11-13,New York Knicks,Saturday,16637.02,19257,Medium,0,Weak Opponent
+2023-10-27,Detroit Pistons,Friday,16645.264,15855,Medium,0,"Weak Opponent, Dense Schedule"
+2024-11-30,Atlanta Hawks,Saturday,16655.895,17969,Medium,0,"Weak Opponent, Dense Schedule"
+2017-03-28,Milwaukee Bucks,Tuesday,16658.854,16505,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2015-01-19,Minnesota Timberwolves,Monday,16662.969,17989,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2024-11-09,Indiana Pacers,Saturday,16668.96,17024,Medium,0,Dense Schedule
+2024-02-13,Indiana Pacers,Tuesday,16678.19,12112,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2016-04-14,Orlando Magic,Thursday,16683.81,17372,Medium,0,"Weekday, Weak Opponent"
+2024-01-27,Houston Rockets,Saturday,16706.877,16164,Medium,0,"Weak Opponent, Bad Weather"
+2023-04-02,Toronto Raptors,Sunday,16748.617,16052,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2021-11-20,Indiana Pacers,Saturday,16755.068,16787,Medium,0,"Weak Opponent, Dense Schedule"
+2015-03-04,Los Angeles Lakers,Wednesday,16756.33,16947,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2025-12-13,Chicago Bulls,Saturday,16791.045,16205,Medium,0,Weak Opponent
+2026-01-22,Cleveland Cavaliers,Thursday,16795.81,17619,Medium,0,Weekday
+2025-03-06,Minnesota Timberwolves,Thursday,16810.006,17578,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2016-03-02,Phoenix Suns,Wednesday,16813.096,16849,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2016-01-18,Utah Jazz,Monday,16820.848,17459,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2026-01-26,Philadelphia 76ers,Monday,16822.309,16361,Medium,0,"Weekday, Dense Schedule"
+2018-11-03,Cleveland Cavaliers,Saturday,16826.088,16221,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2017-04-05,Miami Heat,Wednesday,16836.498,17758,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2014-11-08,Atlanta Hawks,Saturday,16846.123,15891,Medium,0,"Weak Opponent, Dense Schedule"
+2016-12-04,Minnesota Timberwolves,Sunday,16881.559,16982,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2022-11-24,Philadelphia 76ers,Thursday,16952.256,16910,Medium,0,Weekday
+2015-01-15,San Antonio Spurs,Thursday,16962.49,17309,Medium,0,Weekday
+2018-11-20,Boston Celtics,Tuesday,16969.023,18040,Medium,0,"Weekday, Dense Schedule"
+2015-12-18,Toronto Raptors,Friday,16976.508,15817,Medium,0,Bad Weather
+2017-12-17,Portland Trail Blazers,Sunday,16987.852,16687,Medium,0,Dense Schedule
+2015-12-10,Miami Heat,Thursday,16998.572,17404,Medium,0,"Weekday, Weak Opponent, Dense Schedule"
+2015-02-06,Washington Wizards,Friday,17025.082,17019,Medium,0,Weak Opponent
+2024-12-07,Cleveland Cavaliers,Saturday,17070.316,18832,Medium,0,No major risk signal
+2022-03-09,Brooklyn Nets,Wednesday,17089.693,17230,Medium,0,"Weekday, Bad Weather"
+2022-03-16,Atlanta Hawks,Wednesday,17090.906,16648,Medium,0,"Weekday, Bad Weather"
+2014-11-25,LA Clippers,Tuesday,17130.691,17180,Medium,0,"Weekday, Bad Weather"
+2025-02-06,Milwaukee Bucks,Thursday,17141.701,14385,Medium,0,"Weekday, Dense Schedule"
+2025-03-08,Brooklyn Nets,Saturday,17154.945,18652,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2022-02-26,Toronto Raptors,Saturday,17158.191,17577,Medium,0,No major risk signal
+2026-02-28,Portland Trail Blazers,Saturday,17168.54,19634,Medium,0,No major risk signal
+2026-01-09,Indiana Pacers,Friday,17170.613,17342,Medium,0,"Bad Weather, Dense Schedule"
+2018-12-15,New York Knicks,Saturday,17171.504,17622,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2023-12-16,New Orleans Pelicans,Saturday,17180.193,16080,Medium,0,Weak Opponent
+2026-01-24,Washington Wizards,Saturday,17189.27,15698,Medium,0,"Weak Opponent, Dense Schedule"
+2014-12-04,Chicago Bulls,Thursday,17204.148,16887,Medium,0,Weekday
+2025-03-04,Golden State Warriors,Tuesday,17207.398,19223,Medium,0,"Weekday, Bad Weather"
+2024-11-16,Milwaukee Bucks,Saturday,17235.717,19145,Medium,0,No major risk signal
+2025-01-28,Los Angeles Lakers,Tuesday,17240.672,19483,Medium,0,"Weekday, Dense Schedule"
+2025-11-02,Utah Jazz,Sunday,17247.455,17123,Medium,0,"Weak Opponent, Dense Schedule"
+2017-10-29,Orlando Magic,Sunday,17249.732,15531,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2025-11-29,Chicago Bulls,Saturday,17251.566,19453,Medium,0,"Weak Opponent, Dense Schedule"
+2024-11-22,Detroit Pistons,Friday,17256.115,14671,Medium,0,Bad Weather
+2014-11-27,Portland Trail Blazers,Thursday,17263.244,16972,Medium,0,"Weekday, Dense Schedule"
+2014-12-21,Utah Jazz,Sunday,17266.568,17384,Medium,0,Weak Opponent
+2017-01-05,Oklahoma City Thunder,Thursday,17274.646,18418,Medium,0,Weekday
+2025-11-27,New York Knicks,Thursday,17292.844,19588,Medium,0,Weekday
+2017-02-10,Houston Rockets,Friday,17313.23,16270,Medium,0,"Bad Weather, Dense Schedule"
+2025-01-26,New Orleans Pelicans,Sunday,17333.676,18461,Medium,0,"Weak Opponent, Dense Schedule"
+2018-12-29,Brooklyn Nets,Saturday,17352.053,19411,Medium,0,Weak Opponent
+2017-03-11,Orlando Magic,Saturday,17370.982,17444,Medium,0,Weak Opponent
+2019-03-09,Washington Wizards,Saturday,17377.207,18144,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2018-04-08,Indiana Pacers,Sunday,17406.34,16629,Medium,0,Bad Weather
+2015-11-21,Philadelphia 76ers,Saturday,17408.832,17926,Medium,0,"Weak Opponent, Dense Schedule"
+2017-03-26,Phoenix Suns,Sunday,17411.482,17292,Medium,0,"Weak Opponent, Dense Schedule"
+2017-11-19,LA Clippers,Sunday,17424.012,17640,Medium,0,"Weak Opponent, Bad Weather"
+2021-12-28,Houston Rockets,Tuesday,17439.984,19349,Medium,0,"Weekday, Weak Opponent, Bad Weather"
+2025-03-20,New York Knicks,Thursday,17451.635,18557,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2023-03-04,Orlando Magic,Saturday,17466.793,16683,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2023-01-27,Chicago Bulls,Friday,17483.387,17697,Medium,0,Weak Opponent
+2018-10-17,Milwaukee Bucks,Wednesday,17491.355,17889,Medium,0,Weekday
+2023-01-05,Memphis Grizzlies,Thursday,17499.822,19249,Medium,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2024-02-11,Memphis Grizzlies,Sunday,17537.1,17259,Medium,0,"Weak Opponent, Bad Weather"
+2026-03-26,New York Knicks,Thursday,17537.625,19625,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2019-11-10,New Orleans Pelicans,Sunday,17568.906,18513,Medium,0,"Weak Opponent, Dense Schedule"
+2014-12-14,Brooklyn Nets,Sunday,17621.254,17113,Medium,0,Weak Opponent
+2023-03-12,Utah Jazz,Sunday,17634.977,17221,Medium,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2017-10-20,Atlanta Hawks,Friday,17635.799,18417,Medium,0,Weak Opponent
+2022-03-28,Denver Nuggets,Monday,17641.56,17614,Medium,0,"Weekday, Bad Weather"
+2019-02-28,Houston Rockets,Thursday,17641.654,17903,Medium,0,"Weekday, Bad Weather, Dense Schedule"
+2019-11-24,Chicago Bulls,Sunday,17641.969,17891,Medium,0,Weak Opponent
+2022-03-10,Boston Celtics,Thursday,17643.664,18086,Medium,0,"Weekday, Dense Schedule"
+2014-11-22,Orlando Magic,Saturday,17654.604,18126,Medium,0,Weak Opponent
+2018-04-01,Philadelphia 76ers,Sunday,17672.541,17005,Medium,0,No major risk signal
+2020-02-23,Brooklyn Nets,Sunday,17685.018,19079,Medium,0,Weak Opponent
+2025-12-07,Denver Nuggets,Sunday,17692.938,18416,Medium,0,No major risk signal
+2017-10-27,Houston Rockets,Friday,17708.537,17339,Medium,0,Dense Schedule
+2024-03-01,Milwaukee Bucks,Friday,17721.586,18463,Medium,0,Bad Weather
+2023-03-31,Chicago Bulls,Friday,17734.924,18768,High,0,"Weak Opponent, Bad Weather"
+2016-04-08,Brooklyn Nets,Friday,17739.27,18337,High,0,Weak Opponent
+2021-11-27,Minnesota Timberwolves,Saturday,17756.967,19314,High,0,No major risk signal
+2022-12-17,Atlanta Hawks,Saturday,17763.88,17772,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2018-03-10,Phoenix Suns,Saturday,17773.209,19336,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2025-03-01,Washington Wizards,Saturday,17775.95,17904,High,0,"Weak Opponent, Bad Weather"
+2022-04-10,Washington Wizards,Sunday,17778.113,18465,High,0,Weak Opponent
+2015-04-04,Philadelphia 76ers,Saturday,17781.426,17286,High,0,"Weak Opponent, Bad Weather"
+2017-03-12,New Orleans Pelicans,Sunday,17784.754,18196,High,0,"Bad Weather, Dense Schedule"
+2020-02-09,Dallas Mavericks,Sunday,17787.697,19370,High,0,No major risk signal
+2016-01-24,New York Knicks,Sunday,17789.344,17768,High,0,Weak Opponent
+2015-02-08,Indiana Pacers,Sunday,17794.646,16991,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2020-03-01,Milwaukee Bucks,Sunday,17818.795,19149,High,0,No major risk signal
+2018-02-25,Detroit Pistons,Sunday,17823.13,17894,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2024-01-21,Philadelphia 76ers,Sunday,17833.234,18261,High,0,"Weak Opponent, Dense Schedule"
+2018-03-28,Cleveland Cavaliers,Wednesday,17835.635,19474,High,0,"Weekday, Bad Weather, Dense Schedule"
+2024-03-31,LA Clippers,Sunday,17840.2,15941,High,0,Dense Schedule
+2025-11-11,Los Angeles Lakers,Tuesday,17850.97,19537,High,0,"Weekday, Bad Weather"
+2022-02-10,Chicago Bulls,Thursday,17867.299,19099,High,0,"Weekday, Bad Weather, Dense Schedule"
+2020-03-07,Houston Rockets,Saturday,17896.549,19159,High,0,"Bad Weather, Dense Schedule"
+2023-03-02,Phoenix Suns,Thursday,17907.309,19137,High,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2023-02-05,Orlando Magic,Sunday,17919.836,18510,High,0,Weak Opponent
+2022-12-10,New York Knicks,Saturday,17930.469,17696,High,0,No major risk signal
+2017-12-24,Milwaukee Bucks,Sunday,17968.805,18363,High,0,No major risk signal
+2023-12-17,Philadelphia 76ers,Sunday,17978.006,17829,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2026-02-10,Detroit Pistons,Tuesday,17979.664,19476,High,0,"Weekday, Bad Weather"
+2014-10-29,Milwaukee Bucks,Wednesday,17982.992,19439,High,0,"Weekday, Weak Opponent"
+2016-01-17,Milwaukee Bucks,Sunday,17984.12,18288,High,0,"Weak Opponent, Bad Weather"
+2017-01-29,Sacramento Kings,Sunday,17985.195,18597,High,0,"Weak Opponent, Bad Weather"
+2022-11-25,Minnesota Timberwolves,Friday,17987.008,17924,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2024-10-26,Miami Heat,Saturday,17993.941,19102,High,0,"Weak Opponent, Bad Weather"
+2022-02-05,Cleveland Cavaliers,Saturday,17997.963,17733,High,0,"Weak Opponent, Bad Weather"
+2019-12-28,Oklahoma City Thunder,Saturday,18012.773,18418,High,0,No major risk signal
+2026-01-31,San Antonio Spurs,Saturday,18027.861,19533,High,0,Bad Weather
+2023-03-12,Cleveland Cavaliers,Sunday,18027.885,17342,High,0,Bad Weather
+2021-11-15,Golden State Warriors,Monday,18047.184,19559,High,0,"Weekday, Dense Schedule"
+2017-11-16,Cleveland Cavaliers,Thursday,18059.098,19427,High,0,Weekday
+2016-11-12,Toronto Raptors,Saturday,18064.71,18107,High,0,Dense Schedule
+2023-12-02,Minnesota Timberwolves,Saturday,18070.652,17731,High,0,No major risk signal
+2025-11-01,Minnesota Timberwolves,Saturday,18075.242,19444,High,0,Dense Schedule
+2017-03-31,Denver Nuggets,Friday,18080.762,18353,High,0,"Weak Opponent, Bad Weather"
+2022-01-30,LA Clippers,Sunday,18083.924,18674,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2022-03-06,San Antonio Spurs,Sunday,18092.227,18941,High,0,"Weak Opponent, Bad Weather"
+2022-12-03,Milwaukee Bucks,Saturday,18102.64,18128,High,0,"Bad Weather, Dense Schedule"
+2024-01-28,Utah Jazz,Sunday,18130.621,17633,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2025-12-19,Atlanta Hawks,Friday,18132.273,16124,High,0,Bad Weather
+2024-03-10,Brooklyn Nets,Sunday,18153.27,19090,High,0,"Weak Opponent, Bad Weather"
+2017-12-28,Boston Celtics,Thursday,18153.424,19611,High,0,"Weekday, Weak Opponent"
+2025-04-06,Chicago Bulls,Sunday,18175.383,18499,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2015-12-31,LA Clippers,Thursday,18183.84,19145,High,0,"Weekday, Bad Weather, Dense Schedule"
+2024-04-01,Boston Celtics,Monday,18188.621,19238,High,0,"Weekday, Dense Schedule"
+2026-02-21,Cleveland Cavaliers,Saturday,18189.943,19691,High,0,"Bad Weather, Dense Schedule"
+2015-11-01,Atlanta Hawks,Sunday,18197.775,18691,High,0,"Weak Opponent, Bad Weather"
+2015-12-13,Boston Celtics,Sunday,18197.795,18490,High,0,Weak Opponent
+2019-02-24,Brooklyn Nets,Sunday,18205.004,19158,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2014-12-06,New York Knicks,Saturday,18234.828,19102,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2019-01-19,Phoenix Suns,Saturday,18240.918,19278,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2014-12-28,Orlando Magic,Sunday,18241.885,19085,High,0,"Weak Opponent, Bad Weather"
+2016-03-12,Detroit Pistons,Saturday,18242.104,18189,High,0,Dense Schedule
+2016-11-24,San Antonio Spurs,Thursday,18249.432,18515,High,0,"Weekday, Bad Weather, Dense Schedule"
+2014-11-01,Memphis Grizzlies,Saturday,18251.014,18133,High,0,Bad Weather
+2024-01-20,San Antonio Spurs,Saturday,18253.137,19093,High,0,"Weak Opponent, Bad Weather"
+2016-11-19,Atlanta Hawks,Saturday,18277.707,17989,High,0,"Weak Opponent, Bad Weather"
+2023-04-07,Houston Rockets,Friday,18278.936,19102,High,0,"Weak Opponent, Bad Weather"
+2024-02-06,Los Angeles Lakers,Tuesday,18285.887,19375,High,0,"Weekday, Dense Schedule"
+2017-01-22,Brooklyn Nets,Sunday,18290.965,18583,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2016-02-06,Miami Heat,Saturday,18296.486,19147,High,0,"Weak Opponent, Dense Schedule"
+2022-10-29,Golden State Warriors,Saturday,18310.64,19079,High,0,No major risk signal
+2025-11-22,LA Clippers,Saturday,18318.756,18721,High,0,Bad Weather
+2018-02-11,Toronto Raptors,Sunday,18322.506,18320,High,0,Bad Weather
+2016-12-30,Miami Heat,Friday,18323.842,19471,High,0,"Weak Opponent, Bad Weather"
+2019-04-05,Toronto Raptors,Friday,18325.414,18684,High,0,Bad Weather
+2023-01-03,Los Angeles Lakers,Tuesday,18326.438,19210,High,0,"Weekday, Bad Weather, Dense Schedule"
+2022-02-18,Miami Heat,Friday,18340.146,17029,High,0,"Weak Opponent, Bad Weather"
+2022-12-30,Oklahoma City Thunder,Friday,18350.201,19425,High,0,Bad Weather
+2019-02-03,Chicago Bulls,Sunday,18353.164,19114,High,0,"Weak Opponent, Dense Schedule"
+2019-11-08,Boston Celtics,Friday,18369.154,18487,High,0,"Bad Weather, Dense Schedule"
+2026-03-07,Miami Heat,Saturday,18369.762,19653,High,0,Bad Weather
+2022-11-05,Brooklyn Nets,Saturday,18403.586,19398,High,0,"Weak Opponent, Bad Weather"
+2024-11-02,Boston Celtics,Saturday,18406.012,19253,High,0,Dense Schedule
+2022-03-19,Dallas Mavericks,Saturday,18436.793,19279,High,0,Bad Weather
+2016-03-19,Denver Nuggets,Saturday,18436.832,19271,High,0,"Weak Opponent, Bad Weather"
+2024-11-01,Boston Celtics,Friday,18438.627,18557,High,0,Dense Schedule
+2024-04-05,Orlando Magic,Friday,18450.037,16374,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2024-12-28,Oklahoma City Thunder,Saturday,18471.365,19325,High,0,Bad Weather
+2016-12-21,Los Angeles Lakers,Wednesday,18471.72,19093,High,0,"Weekday, Weak Opponent"
+2016-12-24,Chicago Bulls,Saturday,18473.09,19249,High,0,Bad Weather
+2017-11-26,San Antonio Spurs,Sunday,18493.076,18597,High,0,No major risk signal
+2015-12-24,Boston Celtics,Thursday,18493.545,19082,High,0,"Weekday, Weak Opponent, Bad Weather"
+2015-01-18,Indiana Pacers,Sunday,18494.2,19285,High,0,"Weak Opponent, Bad Weather"
+2016-02-07,Washington Wizards,Sunday,18501.562,18450,High,0,"Weak Opponent, Dense Schedule"
+2018-01-13,Oklahoma City Thunder,Saturday,18504.938,19624,High,0,"Bad Weather, Dense Schedule"
+2022-02-06,Miami Heat,Sunday,18509.248,19420,High,0,"Weak Opponent, Dense Schedule"
+2016-03-21,San Antonio Spurs,Monday,18513.86,18260,High,0,"Weekday, Dense Schedule"
+2017-01-21,Toronto Raptors,Saturday,18526.596,18378,High,0,"Bad Weather, Dense Schedule"
+2019-02-26,Golden State Warriors,Tuesday,18562.326,19419,High,0,"Weekday, Dense Schedule"
+2015-12-27,Memphis Grizzlies,Sunday,18562.492,19091,High,0,Weak Opponent
+2019-03-03,Portland Trail Blazers,Sunday,18571.307,18355,High,0,Bad Weather
+2025-03-08,Cleveland Cavaliers,Saturday,18605.842,19296,High,0,"Bad Weather, Dense Schedule"
+2015-11-28,Cleveland Cavaliers,Saturday,18639.398,19093,High,0,Dense Schedule
+2016-10-29,Boston Celtics,Saturday,18642.291,18708,High,0,No major risk signal
+2015-03-13,Chicago Bulls,Friday,18663.17,19183,High,0,"Bad Weather, Dense Schedule"
+2025-02-01,LA Clippers,Saturday,18675.168,15342,High,0,"Bad Weather, Dense Schedule"
+2023-02-12,Denver Nuggets,Sunday,18722.479,19256,High,0,Bad Weather
+2023-11-18,Milwaukee Bucks,Saturday,18726.291,19258,High,0,No major risk signal
+2022-02-13,Memphis Grizzlies,Sunday,18735.732,19454,High,0,No major risk signal
+2022-03-25,Utah Jazz,Friday,18738.48,19162,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2026-03-28,Philadelphia 76ers,Saturday,18742.395,19616,High,0,"Bad Weather, Dense Schedule"
+2024-11-29,New York Knicks,Friday,18743.719,19313,High,0,Dense Schedule
+2023-01-01,Brooklyn Nets,Sunday,18744.908,19386,High,0,"Weak Opponent, Dense Schedule"
+2025-11-16,Oklahoma City Thunder,Sunday,18746.854,19469,High,0,Bad Weather
+2015-01-25,New York Knicks,Sunday,18749.959,19117,High,0,Weak Opponent
+2016-11-27,New York Knicks,Sunday,18750.709,19195,High,0,Weak Opponent
+2026-02-20,Houston Rockets,Friday,18765.02,19622,High,0,Bad Weather
+2018-01-21,Miami Heat,Sunday,18771.205,18687,High,0,Weak Opponent
+2022-01-09,Milwaukee Bucks,Sunday,18802.725,19139,High,0,Bad Weather
+2016-03-13,Houston Rockets,Sunday,18814.086,19303,High,0,"Weak Opponent, Bad Weather, Dense Schedule"
+2023-11-18,New York Knicks,Saturday,18815.7,19171,High,0,Dense Schedule
+2017-03-18,Washington Wizards,Saturday,18830.303,19361,High,0,Bad Weather
+2017-03-24,Cleveland Cavaliers,Friday,18836.146,19511,High,0,No major risk signal
+2016-03-05,Indiana Pacers,Saturday,18838.86,19099,High,0,No major risk signal
+2023-12-24,Denver Nuggets,Sunday,18839.648,19165,High,0,No major risk signal
+2016-04-01,Philadelphia 76ers,Friday,18839.752,19244,High,0,"Weak Opponent, Bad Weather"
+2015-03-28,Atlanta Hawks,Saturday,18841.152,19122,High,0,Weak Opponent
+2024-04-07,Oklahoma City Thunder,Sunday,18841.744,16556,High,0,Dense Schedule
+2017-12-10,Los Angeles Lakers,Sunday,18845.533,19320,High,0,"Weak Opponent, Dense Schedule"
+2023-11-21,Boston Celtics,Tuesday,18861.047,19134,High,0,"Weekday, Bad Weather"
+2025-02-02,Denver Nuggets,Sunday,18873.584,19106,High,0,Dense Schedule
+2017-02-11,LA Clippers,Saturday,18882.488,19483,High,0,"Bad Weather, Dense Schedule"
+2019-12-31,Boston Celtics,Tuesday,18886.553,19216,High,0,Weekday
+2015-03-07,Toronto Raptors,Saturday,18899.676,19080,High,0,Weak Opponent
+2017-12-07,Golden State Warriors,Thursday,18924.074,19334,High,0,"Weekday, Dense Schedule"
+2024-03-15,Phoenix Suns,Friday,18932.582,18613,High,0,Bad Weather
+2022-01-03,Phoenix Suns,Monday,18937.797,19088,High,0,"Weekday, Bad Weather"
+2023-02-26,Miami Heat,Sunday,18949.674,19109,High,0,No major risk signal
+2023-03-26,Dallas Mavericks,Sunday,18952.908,19264,High,0,Bad Weather
+2022-01-29,Los Angeles Lakers,Saturday,18964.842,19469,High,0,Bad Weather
+2023-01-29,Miami Heat,Sunday,18970.98,19254,High,0,"Bad Weather, Dense Schedule"
+2023-01-16,Boston Celtics,Monday,18972.793,19227,High,0,"Weekday, Dense Schedule"
+2024-03-29,Golden State Warriors,Friday,18997.084,19487,High,0,"Bad Weather, Dense Schedule"
+2023-03-17,Philadelphia 76ers,Friday,19004.217,19096,High,0,Bad Weather
+2018-12-16,Los Angeles Lakers,Sunday,19011.863,19641,High,0,Dense Schedule
+2015-02-22,Oklahoma City Thunder,Sunday,19032.242,19303,High,0,Bad Weather
+2018-11-18,Philadelphia 76ers,Sunday,19063.684,19426,High,0,No major risk signal
+2026-03-29,Boston Celtics,Sunday,19078.305,19642,High,0,Dense Schedule
+2016-02-04,Cleveland Cavaliers,Thursday,19088.377,19189,High,0,"Weekday, Bad Weather"
+2022-10-21,New Orleans Pelicans,Friday,19151.68,19287,High,0,Weak Opponent
+2017-01-01,Cleveland Cavaliers,Sunday,19154.758,19519,High,0,"Bad Weather, Dense Schedule"
+2015-12-29,Los Angeles Lakers,Tuesday,19180.05,19632,High,0,"Weekday, Weak Opponent, Bad Weather, Dense Schedule"
+2019-03-23,Boston Celtics,Saturday,19185.121,19438,High,0,Dense Schedule
+2017-04-08,Boston Celtics,Saturday,19245.21,19407,High,0,No major risk signal
+2014-11-29,Golden State Warriors,Saturday,19246.623,19381,High,0,Dense Schedule
+2015-12-03,Golden State Warriors,Thursday,19324.574,19542,High,0,Weekday
+2015-01-03,Cleveland Cavaliers,Saturday,19357.52,19307,High,0,Bad Weather
+2017-01-26,Golden State Warriors,Thursday,19402.236,19639,High,0,"Weekday, Bad Weather, Dense Schedule"
+2016-01-03,Oklahoma City Thunder,Sunday,19418.38,19387,High,0,No major risk signal
+2023-01-15,Boston Celtics,Sunday,19443.07,19608,High,0,No major risk signal
