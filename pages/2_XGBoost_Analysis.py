@@ -374,6 +374,10 @@ if not marquee_weather_source.empty and year_filter and "game_date" in marquee_w
 
 marquee_weather_avg = build_marquee_weather_attendance(marquee_weather_source)
 if not marquee_weather_avg.empty:
+    theme_base = (st.get_option("theme.base") or "").lower()
+    theme_text_color = st.get_option("theme.textColor")
+    label_text_color = theme_text_color or ("#111827" if theme_base == "light" else "#e5e7eb")
+
     marquee_weather_avg = marquee_weather_avg.copy()
     marquee_weather_avg["avg_attendance"] = pd.to_numeric(marquee_weather_avg["avg_attendance"], errors="coerce")
     marquee_weather_avg["avg_label"] = marquee_weather_avg["avg_attendance"].map(
@@ -408,7 +412,7 @@ if not marquee_weather_avg.empty:
     fig.update_traces(
         textposition="outside",
         cliponaxis=False,
-        textfont=dict(color="#e5e7eb", size=12),
+        textfont=dict(color=label_text_color, size=12),
         hovertemplate=(
             "Game Type=%{x}<br>Weather=%{fullData.name}<br>Average Attendance=%{y:,.0f}<extra></extra>"
         )
