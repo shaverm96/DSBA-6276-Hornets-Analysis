@@ -374,13 +374,27 @@ if not marquee_weather_source.empty and year_filter and "game_date" in marquee_w
 
 marquee_weather_avg = build_marquee_weather_attendance(marquee_weather_source)
 if not marquee_weather_avg.empty:
+    marquee_weather_avg = marquee_weather_avg.copy()
+    marquee_weather_avg["avg_attendance"] = pd.to_numeric(marquee_weather_avg["avg_attendance"], errors="coerce")
+    marquee_weather_avg["avg_label"] = marquee_weather_avg["avg_attendance"].map(
+        lambda v: f"{v:,.0f}" if pd.notna(v) else ""
+    )
+
+    min_attendance = float(marquee_weather_avg["avg_attendance"].min(skipna=True))
+    max_attendance = float(marquee_weather_avg["avg_attendance"].max(skipna=True))
+    spread = max_attendance - min_attendance
+    pad = max(spread * 0.35, max_attendance * 0.02, 200)
+    y_floor = max(min_attendance - pad, 0)
+    y_ceiling = max_attendance + pad
+
     fig = px.bar(
         marquee_weather_avg,
         x="game_type",
         y="avg_attendance",
         color="weather_type",
+        text="avg_label",
         barmode="group",
-        color_discrete_map={"Good Weather": "#4A76C2", "Bad Weather": "#EC7C31"},
+        color_discrete_map={"Good Weather": "#22c55e", "Bad Weather": "#ef4444"},
         category_orders={
             "game_type": ["Marquee Game", "Non-Marquee Game"],
             "weather_type": ["Good Weather", "Bad Weather"],
@@ -392,6 +406,9 @@ if not marquee_weather_avg.empty:
         },
     )
     fig.update_traces(
+        textposition="outside",
+        cliponaxis=False,
+        textfont=dict(color="#e5e7eb", size=12),
         hovertemplate=(
             "Game Type=%{x}<br>Weather=%{fullData.name}<br>Average Attendance=%{y:,.0f}<extra></extra>"
         )
@@ -399,6 +416,7 @@ if not marquee_weather_avg.empty:
     fig.update_layout(
         xaxis_title="Game Type",
         yaxis_title="Average Attendance",
+        yaxis=dict(range=[y_floor, y_ceiling]),
         legend_title="",
         margin=dict(l=20, r=20, t=20, b=20),
     )
