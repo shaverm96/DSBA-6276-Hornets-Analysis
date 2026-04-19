@@ -290,6 +290,26 @@ st.markdown("### Theme and Recommendation Outputs (Notebook Artifacts)")
 def pretty_label(text: str) -> str:
     return str(text).replace("_", " ").strip().title()
 
+
+def parse_rate_series(series: pd.Series) -> pd.Series:
+    """Parse rate-like columns that may be decimals, percent strings, or percent-scale numerics."""
+    s = series.copy()
+    as_str = s.astype(str).str.strip()
+    has_pct = as_str.str.contains("%", regex=False, na=False)
+    numeric = pd.to_numeric(as_str.str.replace("%", "", regex=False), errors="coerce")
+
+    numeric = numeric.where(~has_pct, numeric / 100.0)
+    numeric = numeric.where(numeric.abs() <= 1.0, numeric / 100.0)
+    return numeric
+
+
+def find_gap_column(columns: pd.Index) -> str | None:
+    for c in columns:
+        name = str(c).strip().lower()
+        if all(token in name for token in ["low", "high", "gap"]):
+            return c
+    return None
+
 r1, r2 = st.columns(2)
 with r1:
     if not theme_summary.empty:
@@ -301,9 +321,12 @@ with r1:
 
         for rate_col in ["overall_mention_rate", "low_rating_mention_rate", "high_rating_mention_rate", "low_minus_high_gap"]:
             if rate_col in theme_tbl.columns:
-                theme_tbl[rate_col] = pd.to_numeric(theme_tbl[rate_col], errors="coerce")
+                theme_tbl[rate_col] = parse_rate_series(theme_tbl[rate_col])
 
-        if "overall_mention_rate" in theme_tbl.columns:
+        gap_col = find_gap_column(theme_tbl.columns)
+        if gap_col is not None:
+            theme_tbl = theme_tbl.sort_values(gap_col, ascending=False, na_position="last")
+        elif "overall_mention_rate" in theme_tbl.columns:
             theme_tbl = theme_tbl.sort_values("overall_mention_rate", ascending=False)
 
         for rate_col in ["overall_mention_rate", "low_rating_mention_rate", "high_rating_mention_rate", "low_minus_high_gap"]:
@@ -329,14 +352,25 @@ with r2:
         rec_tbl = recommendations.copy()
         rec_tbl.columns = [str(c).strip().lower() for c in rec_tbl.columns]
 
+        gap_col = find_gap_column(rec_tbl.columns)
+        if gap_col is not None:
+            rec_tbl[gap_col] = parse_rate_series(rec_tbl[gap_col])
+            rec_tbl = rec_tbl.sort_values(gap_col, ascending=False, na_position="last")
+
         if "focus_area" in rec_tbl.columns:
             rec_tbl["focus_area"] = rec_tbl["focus_area"].map(pretty_label)
 
-        if "priority" in rec_tbl.columns:
+        if "priority" in rec_tbl.columns and gap_col is None:
             priority_order = pd.CategoricalDtype(categories=["High", "Medium", "Low"], ordered=True)
             rec_tbl["priority"] = rec_tbl["priority"].astype(str).str.title().astype(priority_order)
             rec_tbl = rec_tbl.sort_values(["priority", "focus_area"] if "focus_area" in rec_tbl.columns else ["priority"])
             rec_tbl["priority"] = rec_tbl["priority"].astype(str)
+
+        if "priority" in rec_tbl.columns and gap_col is not None:
+            rec_tbl["priority"] = rec_tbl["priority"].astype(str).str.title()
+
+        if gap_col is not None:
+            rec_tbl[gap_col] = rec_tbl[gap_col].map(lambda v: f"{(100 * v):.1f}%" if pd.notna(v) else "N/A")
 
         rec_tbl = rec_tbl.rename(
             columns={
@@ -344,6 +378,8 @@ with r2:
                 "focus_area": "Focus Area",
                 "evidence": "Evidence",
                 "recommended_action": "Recommended Action",
+                "low_minus_high_gap": "Low-High Mention Gap",
+                "low_high_mention_gap": "Low-High Mention Gap",
             }
         )
 
