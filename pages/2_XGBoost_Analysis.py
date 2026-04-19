@@ -404,7 +404,6 @@ with st.container(border=True):
             paper_bgcolor="rgba(17, 8, 68, 0.98)",
             plot_bgcolor="rgba(17, 8, 68, 0.98)",
             xaxis=dict(
-                title="",
                 categoryorder="array",
                 categoryarray=["Marquee Game", "Non-Marquee Game"],
                 tickfont=dict(size=15, color="#e5e7eb"),
@@ -413,15 +412,13 @@ with st.container(border=True):
                 gridcolor="rgba(255,255,255,0)",
             ),
             yaxis=dict(
-                title="Average Attendance",
+                title=dict(text="Average Attendance", font=dict(size=13, color="#e5e7eb")),
                 tickfont=dict(size=12, color="#e5e7eb"),
-                titlefont=dict(size=13, color="#e5e7eb"),
                 range=[y_floor, y_ceiling],
                 gridcolor="rgba(148, 163, 184, 0.28)",
                 zeroline=False,
             ),
             legend=dict(
-                title="",
                 orientation="v",
                 yanchor="middle",
                 y=0.5,
