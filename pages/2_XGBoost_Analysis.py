@@ -580,6 +580,109 @@ if not tier_summary.empty:
             help="Difference in average actual attendance between High Demand and Low Demand tiers.",
         )
         st.caption("Average attendance separation between high- and low-demand tier outcomes.")
+
+    st.markdown("#### Attendance by Game Context Combination")
+    st.caption("Average attendance across weekday/weekend and weak-opponent/marquee combinations.")
+
+    combo_source = demand_source.copy()
+    if not combo_source.empty:
+        if "day_of_week" in combo_source.columns:
+            combo_source["day_name"] = combo_source["day_of_week"].astype(str).str.strip().str.title()
+        elif "game_date" in combo_source.columns:
+            combo_source["day_name"] = pd.to_datetime(combo_source["game_date"], errors="coerce").dt.day_name()
+        else:
+            combo_source["day_name"] = np.nan
+
+        combo_source["day_bucket"] = np.where(
+            combo_source["day_name"].isin(["Friday", "Saturday", "Sunday"]),
+            "Weekend",
+            "Weekday",
+        )
+
+        marquee_col_candidates = [
+            "is_marquee_game",
+            "marquee_game",
+            "marquee_flag",
+            "premium_opponent_flag",
+            "high_profile_matchup",
+        ]
+        marquee_col = next((c for c in marquee_col_candidates if c in combo_source.columns), None)
+
+        if marquee_col is not None:
+            marquee_raw = combo_source[marquee_col]
+            if pd.api.types.is_numeric_dtype(marquee_raw) or pd.api.types.is_bool_dtype(marquee_raw):
+                marquee_mask = pd.to_numeric(marquee_raw, errors="coerce").fillna(0).astype(float).gt(0)
+            else:
+                marquee_mask = marquee_raw.astype(str).str.strip().str.lower().isin(["1", "true", "yes", "y", "marquee"])
+        elif "opponent_all_stars_count" in combo_source.columns:
+            marquee_mask = pd.to_numeric(combo_source["opponent_all_stars_count"], errors="coerce").fillna(0).ge(1)
+        elif "key_explanatory_factors" in combo_source.columns:
+            weak_mask = combo_source["key_explanatory_factors"].fillna("").astype(str).str.contains("Weak Opponent", case=False, regex=False)
+            marquee_mask = ~weak_mask
+        else:
+            marquee_mask = pd.Series(False, index=combo_source.index)
+
+        combo_source["opp_bucket"] = np.where(marquee_mask, "Marquee", "Weak Opp")
+        combo_source["combo_bucket"] = combo_source["day_bucket"] + " + " + combo_source["opp_bucket"]
+
+        combo_order = [
+            "Weekday + Weak Opp",
+            "Weekday + Marquee",
+            "Weekend + Weak Opp",
+            "Weekend + Marquee",
+        ]
+        combo_avg = (
+            combo_source.groupby("combo_bucket", as_index=False)["actual_attendance"]
+            .mean()
+        )
+        combo_avg = combo_avg.set_index("combo_bucket").reindex(combo_order).reset_index()
+        combo_avg = combo_avg.dropna(subset=["actual_attendance"]).copy()
+
+        if not combo_avg.empty:
+            combo_avg["value_label"] = combo_avg["actual_attendance"].map(lambda v: f"{v:,.0f}")
+
+            combo_min = float(combo_avg["actual_attendance"].min(skipna=True))
+            combo_max = float(combo_avg["actual_attendance"].max(skipna=True))
+            combo_span = max(combo_max - combo_min, 1.0)
+            combo_pad = max(combo_span * 0.18, 250)
+            combo_floor = max(combo_min - combo_pad, 0)
+            combo_ceiling = combo_max + combo_pad
+
+            combo_fig = px.bar(
+                combo_avg,
+                x="combo_bucket",
+                y="actual_attendance",
+                color="combo_bucket",
+                text="value_label",
+                category_orders={"combo_bucket": combo_order},
+                color_discrete_map={
+                    "Weekday + Weak Opp": "#ef4444",
+                    "Weekday + Marquee": "#f59e0b",
+                    "Weekend + Weak Opp": "#0ea5a8",
+                    "Weekend + Marquee": "#22c55e",
+                },
+                labels={
+                    "combo_bucket": "Game Context",
+                    "actual_attendance": "Average Attendance",
+                },
+            )
+            combo_fig.update_traces(
+                textposition="outside",
+                cliponaxis=False,
+                hovertemplate="Context=%{x}<br>Average Attendance=%{y:,.0f}<extra></extra>",
+            )
+            combo_fig.update_layout(
+                showlegend=False,
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Game Context",
+                yaxis_title="Average Attendance",
+                yaxis=dict(range=[combo_floor, combo_ceiling]),
+            )
+            st.plotly_chart(combo_fig, use_container_width=True)
+        else:
+            st.info("Context-combination chart unavailable for current filter.")
+    else:
+        st.info("Context-combination chart unavailable for current filter.")
 else:
     st.info("Demand index summary unavailable for current filter.")
 
