@@ -5,7 +5,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import re
 
-from utils import (
+from project_utils import (
     build_hornets_frame,
     discover_repo_assets,
     extract_tables_from_notebook,

@@ -7,7 +7,7 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 import re
 
-from utils import (
+from project_utils import (
     build_reviews_frame,
     discover_repo_assets,
     format_float,

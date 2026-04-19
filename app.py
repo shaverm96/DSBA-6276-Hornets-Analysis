@@ -1,7 +1,7 @@
 import streamlit as st
 from pathlib import Path
 
-from utils import (
+from project_utils import (
     build_hornets_frame,
     build_reviews_frame,
     discover_repo_assets,
