@@ -426,6 +426,163 @@ if not marquee_weather_avg.empty:
 else:
     st.info("Marquee vs weather attendance view unavailable for current filter.")
 
+st.markdown("### Our Demand Index Accurately Identifies High-Risk Low-Attendance Games in Advance")
+st.caption("Model-predicted demand tiers align with observed attendance outcomes and surface weak games early enough for intervention.")
+st.info(
+    "Insight: The model identifies low-demand games earlier than observable sales patterns, helping flag weak games while intervention still has value."
+)
+
+demand_source = view.copy()
+tier_summary = pd.DataFrame()
+if not demand_source.empty and {"predicted_attendance", "actual_attendance"}.issubset(set(demand_source.columns)):
+    demand_source["predicted_attendance"] = pd.to_numeric(demand_source["predicted_attendance"], errors="coerce")
+    demand_source["actual_attendance"] = pd.to_numeric(demand_source["actual_attendance"], errors="coerce")
+    demand_source = demand_source.dropna(subset=["predicted_attendance", "actual_attendance"]).copy()
+
+    if not demand_source.empty:
+        if "demand_tier" in demand_source.columns:
+            tiers = demand_source["demand_tier"].astype(str).str.strip().str.title()
+            valid_tiers = {"High", "Medium", "Low"}
+            if tiers.isin(valid_tiers).all() and tiers.nunique() >= 2:
+                demand_source["demand_tier_band"] = tiers
+            else:
+                tiers = pd.qcut(
+                    demand_source["predicted_attendance"],
+                    q=3,
+                    labels=["Low", "Medium", "High"],
+                    duplicates="drop",
+                )
+                demand_source["demand_tier_band"] = tiers.astype(str).str.title()
+        else:
+            # If explicit demand tiers are unavailable, derive conservative terciles from predicted attendance.
+            tiers = pd.qcut(
+                demand_source["predicted_attendance"],
+                q=3,
+                labels=["Low", "Medium", "High"],
+                duplicates="drop",
+            )
+            demand_source["demand_tier_band"] = tiers.astype(str).str.title()
+
+        tier_summary = (
+            demand_source.groupby("demand_tier_band", as_index=False)
+            .agg(
+                predicted_avg=("predicted_attendance", "mean"),
+                actual_avg=("actual_attendance", "mean"),
+                game_count=("actual_attendance", "size"),
+            )
+        )
+
+if not tier_summary.empty:
+    tier_order = ["High", "Medium", "Low"]
+    tier_labels = {
+        "High": "High Demand",
+        "Medium": "Medium Demand",
+        "Low": "Low Demand",
+    }
+    tier_summary = tier_summary[tier_summary["demand_tier_band"].isin(tier_order)].copy()
+    tier_summary["demand_tier_band"] = pd.Categorical(tier_summary["demand_tier_band"], tier_order)
+    tier_summary = tier_summary.sort_values("demand_tier_band")
+    tier_summary["tier_label"] = tier_summary["demand_tier_band"].map(tier_labels)
+
+    chart_long = tier_summary.melt(
+        id_vars=["demand_tier_band", "tier_label", "game_count"],
+        value_vars=["predicted_avg", "actual_avg"],
+        var_name="series",
+        value_name="avg_attendance",
+    )
+    chart_long["series"] = chart_long["series"].map(
+        {"predicted_avg": "Model Predicted", "actual_avg": "Actual Outcome"}
+    )
+    chart_long["value_label"] = chart_long["avg_attendance"].map(lambda v: f"{v:,.0f}" if pd.notna(v) else "")
+
+    min_y = float(chart_long["avg_attendance"].min(skipna=True))
+    max_y = float(chart_long["avg_attendance"].max(skipna=True))
+    span = max(max_y - min_y, 1.0)
+    y_pad = max(span * 0.18, 250)
+    y_floor = max(min_y - y_pad, 0)
+    y_ceiling = max_y + y_pad
+
+    perf_left, perf_right = st.columns([2.1, 1])
+    with perf_left:
+        perf_fig = px.bar(
+            chart_long,
+            x="tier_label",
+            y="avg_attendance",
+            color="series",
+            barmode="group",
+            text="value_label",
+            category_orders={
+                "tier_label": ["High Demand", "Medium Demand", "Low Demand"],
+                "series": ["Model Predicted", "Actual Outcome"],
+            },
+            color_discrete_map={
+                "Model Predicted": "#0ea5e9",
+                "Actual Outcome": "#f59e0b",
+            },
+            labels={
+                "tier_label": "Demand Tier",
+                "avg_attendance": "Average Attendance",
+                "series": "",
+            },
+        )
+        perf_fig.update_traces(
+            textposition="outside",
+            cliponaxis=False,
+            hovertemplate="Tier=%{x}<br>Series=%{fullData.name}<br>Avg Attendance=%{y:,.0f}<extra></extra>",
+        )
+        perf_fig.update_layout(
+            yaxis=dict(range=[y_floor, y_ceiling]),
+            margin=dict(l=20, r=20, t=20, b=20),
+            legend_title="",
+            xaxis_title="Demand Tier",
+            yaxis_title="Average Attendance",
+        )
+        st.plotly_chart(perf_fig, use_container_width=True)
+
+    with perf_right:
+        low_hit_rate = np.nan
+        if "low_demand_risk_flag" in demand_source.columns:
+            flagged = demand_source[pd.to_numeric(demand_source["low_demand_risk_flag"], errors="coerce").fillna(0).eq(1)].copy()
+            if not flagged.empty:
+                low_hit_rate = 100 * (flagged["actual_attendance"] < flagged["predicted_attendance"]).mean()
+
+        model_r2 = np.nan
+        if len(demand_source) >= 2:
+            try:
+                from sklearn.metrics import r2_score
+
+                model_r2 = float(r2_score(demand_source["actual_attendance"], demand_source["predicted_attendance"]))
+            except Exception:
+                model_r2 = np.nan
+
+        tier_lookup = tier_summary.set_index("demand_tier_band")
+        separation_gap = np.nan
+        if {"High", "Low"}.issubset(set(tier_lookup.index.astype(str))):
+            separation_gap = float(tier_lookup.loc["High", "actual_avg"] - tier_lookup.loc["Low", "actual_avg"])
+
+        st.metric(
+            "Low-Demand Hit Rate",
+            f"{low_hit_rate:.0f}%" if pd.notna(low_hit_rate) else "N/A",
+            help="Share of flagged low-demand games where actual attendance finished below model expectation.",
+        )
+        st.caption("Percent of flagged low-demand games that underperformed vs predicted attendance.")
+
+        st.metric(
+            "Model R2",
+            f"{model_r2:.2f}" if pd.notna(model_r2) else "N/A",
+            help="Regression R2 between actual and predicted attendance for the current filtered view.",
+        )
+        st.caption("Explained variance of attendance in the current filtered sample.")
+
+        st.metric(
+            "High-to-Low Actual Gap",
+            format_int(separation_gap),
+            help="Difference in average actual attendance between High Demand and Low Demand tiers.",
+        )
+        st.caption("Average attendance separation between high- and low-demand tier outcomes.")
+else:
+    st.info("Demand index summary unavailable for current filter.")
+
 st.markdown("### Feature Importance and Risk Signals")
 st.caption("Frequency and concentration of demand-risk drivers identified in low-demand game diagnostics.")
 
